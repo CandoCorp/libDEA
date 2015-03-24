@@ -41,6 +41,7 @@ Generic StringSeekReadFromFile(FILE *pf,fpos_t *pos){
 	return lee;
 }
 
+/*
 int ListCmp(List *L1,List *L2){
 	if(L1==L2||sizeof(L1)==sizeof(L2))	return IGUALES;
 	if(sizeof(L1)>=sizeof(L2))	return MAYOR;
@@ -268,3 +269,5 @@ Estado_bool listDestroy(List **L){
 	}
 	free(*L);
 }
+
+*/
