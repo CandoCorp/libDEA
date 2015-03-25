@@ -5,8 +5,7 @@
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="include" displayName="include" projectFiles="true">
-        <itemPath>../../include/estudiante.c</itemPath>
-        <itemPath>../../include/estudiante.h</itemPath>
+        <itemPath>../../include/FrameWork.h</itemPath>
         <itemPath>../../include/generic.h</itemPath>
         <itemPath>../../include/graph.h</itemPath>
         <itemPath>../../include/hashmap.h</itemPath>
@@ -28,6 +27,7 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="src" displayName="src" projectFiles="true">
+        <itemPath>../../src/FrameWork.c</itemPath>
         <itemPath>../../src/generic.c</itemPath>
         <itemPath>../../src/graph.c</itemPath>
         <itemPath>../../src/hashmap.c</itemPath>
@@ -78,9 +78,7 @@
         <archiverTool>
         </archiverTool>
       </compileType>
-      <item path="../../include/estudiante.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="../../include/estudiante.h" ex="false" tool="3" flavor2="0">
+      <item path="../../include/FrameWork.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../include/generic.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -103,6 +101,8 @@
       <item path="../../include/stack.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../include/tree.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/FrameWork.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../../src/generic.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -149,9 +149,7 @@
         <archiverTool>
         </archiverTool>
       </compileType>
-      <item path="../../include/estudiante.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="../../include/estudiante.h" ex="false" tool="3" flavor2="0">
+      <item path="../../include/FrameWork.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../include/generic.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -174,6 +172,8 @@
       <item path="../../include/stack.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../include/tree.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/FrameWork.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../../src/generic.c" ex="false" tool="0" flavor2="0">
       </item>
