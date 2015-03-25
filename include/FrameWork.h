@@ -1,3 +1,10 @@
+#ifndef FRAMEWORK_H
+#define	FRAMEWORK_H
+
+#ifdef	__cplusplus
+extern "C" {
+#endif
+
 #include <ctype.h>
 #include "generic.h"
 
