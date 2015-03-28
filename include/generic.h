@@ -62,7 +62,20 @@ typedef int (*cmpfn)(Generic, Generic);
 */
 typedef void (*printfn) (Generic);
 
+typedef char* (*sprintfn) (Generic);
+
 typedef Generic (*getkeyfn) (Generic);
+
+typedef int (*writefn)(FILE *pf, Generic g);
+
+typedef Generic (*readSeekfn)(FILE *pf, fpos_t *g);
+
+int equals(Generic a, Generic b);
+
+int compareTo(Generic a, Generic b, cmpfn fn);
+
+char *toString(sprintf fn, ...);
+
 /**
 * integerNew permite crear un nuevo entero, asignarle un valor y retornarlo listo
 * para almacenarlo en una variable de tipo Generic.

@@ -86,6 +86,8 @@ int compareWithOrderType(Generic g, Generic h, cmpfn cmp, int type){
             return (cmp(g,h) <=0);
         else if(type == 1)
             return (cmp(g,h) > 0);
+        printf("a");
+        
 }
 
 
