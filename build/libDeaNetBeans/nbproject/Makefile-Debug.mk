@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/_ext/1445274692/FrameWork.o \
 	${OBJECTDIR}/_ext/1445274692/generic.o \
 	${OBJECTDIR}/_ext/1445274692/graph.o \
 	${OBJECTDIR}/_ext/1445274692/hashmap.o \
@@ -73,6 +74,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/liblibdeanetbeans.a: ${OBJECTFILES}
 	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/liblibdeanetbeans.a
 	${AR} -rv ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/liblibdeanetbeans.a ${OBJECTFILES} 
 	$(RANLIB) ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/liblibdeanetbeans.a
+
+${OBJECTDIR}/_ext/1445274692/FrameWork.o: ../../src/FrameWork.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1445274692
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -w -I../../include -std=c99 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1445274692/FrameWork.o ../../src/FrameWork.c
 
 ${OBJECTDIR}/_ext/1445274692/generic.o: ../../src/generic.c 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1445274692
