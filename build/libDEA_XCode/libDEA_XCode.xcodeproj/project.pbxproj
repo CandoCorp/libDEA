@@ -7,7 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A41740E71AC6AA8900DACD54 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = A41740E61AC6AA8900DACD54 /* main.c */; };
+		A41741071AC6AB1800DACD54 /* FrameWork.c in Sources */ = {isa = PBXBuildFile; fileRef = A41740FB1AC6AB1800DACD54 /* FrameWork.c */; };
+		A41741081AC6AB1800DACD54 /* generic.c in Sources */ = {isa = PBXBuildFile; fileRef = A41740FC1AC6AB1800DACD54 /* generic.c */; };
+		A41741091AC6AB1800DACD54 /* graph.c in Sources */ = {isa = PBXBuildFile; fileRef = A41740FD1AC6AB1800DACD54 /* graph.c */; };
+		A417410A1AC6AB1800DACD54 /* hashmap.c in Sources */ = {isa = PBXBuildFile; fileRef = A41740FE1AC6AB1800DACD54 /* hashmap.c */; };
+		A417410B1AC6AB1800DACD54 /* heap.c in Sources */ = {isa = PBXBuildFile; fileRef = A41740FF1AC6AB1800DACD54 /* heap.c */; };
+		A417410C1AC6AB1800DACD54 /* list.c in Sources */ = {isa = PBXBuildFile; fileRef = A41741001AC6AB1800DACD54 /* list.c */; };
+		A417410D1AC6AB1800DACD54 /* nodelist.c in Sources */ = {isa = PBXBuildFile; fileRef = A41741011AC6AB1800DACD54 /* nodelist.c */; };
+		A417410E1AC6AB1800DACD54 /* nodetree.c in Sources */ = {isa = PBXBuildFile; fileRef = A41741021AC6AB1800DACD54 /* nodetree.c */; };
+		A417410F1AC6AB1800DACD54 /* quebrado.c in Sources */ = {isa = PBXBuildFile; fileRef = A41741031AC6AB1800DACD54 /* quebrado.c */; };
+		A41741101AC6AB1800DACD54 /* queue.c in Sources */ = {isa = PBXBuildFile; fileRef = A41741041AC6AB1800DACD54 /* queue.c */; };
+		A41741111AC6AB1800DACD54 /* stack.c in Sources */ = {isa = PBXBuildFile; fileRef = A41741051AC6AB1800DACD54 /* stack.c */; };
+		A41741121AC6AB1800DACD54 /* tree.c in Sources */ = {isa = PBXBuildFile; fileRef = A41741061AC6AB1800DACD54 /* tree.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +35,30 @@
 
 /* Begin PBXFileReference section */
 		A41740E31AC6AA8900DACD54 /* libDEA_XCode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = libDEA_XCode; sourceTree = BUILT_PRODUCTS_DIR; };
-		A41740E61AC6AA8900DACD54 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		A41740EE1AC6AB0800DACD54 /* FrameWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameWork.h; sourceTree = "<group>"; };
+		A41740EF1AC6AB0800DACD54 /* generic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = generic.h; sourceTree = "<group>"; };
+		A41740F01AC6AB0800DACD54 /* graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graph.h; sourceTree = "<group>"; };
+		A41740F11AC6AB0800DACD54 /* hashmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hashmap.h; sourceTree = "<group>"; };
+		A41740F21AC6AB0800DACD54 /* heap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = heap.h; sourceTree = "<group>"; };
+		A41740F31AC6AB0800DACD54 /* list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = list.h; sourceTree = "<group>"; };
+		A41740F41AC6AB0800DACD54 /* nodelist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nodelist.h; sourceTree = "<group>"; };
+		A41740F51AC6AB0800DACD54 /* nodetree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nodetree.h; sourceTree = "<group>"; };
+		A41740F61AC6AB0800DACD54 /* quebrado.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = quebrado.h; sourceTree = "<group>"; };
+		A41740F71AC6AB0800DACD54 /* queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = queue.h; sourceTree = "<group>"; };
+		A41740F81AC6AB0800DACD54 /* stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stack.h; sourceTree = "<group>"; };
+		A41740F91AC6AB0800DACD54 /* tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tree.h; sourceTree = "<group>"; };
+		A41740FB1AC6AB1800DACD54 /* FrameWork.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = FrameWork.c; sourceTree = "<group>"; };
+		A41740FC1AC6AB1800DACD54 /* generic.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = generic.c; sourceTree = "<group>"; };
+		A41740FD1AC6AB1800DACD54 /* graph.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = graph.c; sourceTree = "<group>"; };
+		A41740FE1AC6AB1800DACD54 /* hashmap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hashmap.c; sourceTree = "<group>"; };
+		A41740FF1AC6AB1800DACD54 /* heap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = heap.c; sourceTree = "<group>"; };
+		A41741001AC6AB1800DACD54 /* list.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = list.c; sourceTree = "<group>"; };
+		A41741011AC6AB1800DACD54 /* nodelist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = nodelist.c; sourceTree = "<group>"; };
+		A41741021AC6AB1800DACD54 /* nodetree.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = nodetree.c; sourceTree = "<group>"; };
+		A41741031AC6AB1800DACD54 /* quebrado.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = quebrado.c; sourceTree = "<group>"; };
+		A41741041AC6AB1800DACD54 /* queue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = queue.c; sourceTree = "<group>"; };
+		A41741051AC6AB1800DACD54 /* stack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stack.c; sourceTree = "<group>"; };
+		A41741061AC6AB1800DACD54 /* tree.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tree.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +91,50 @@
 		A41740E51AC6AA8900DACD54 /* libDEA_XCode */ = {
 			isa = PBXGroup;
 			children = (
-				A41740E61AC6AA8900DACD54 /* main.c */,
+				A41740FA1AC6AB1800DACD54 /* src */,
+				A41740ED1AC6AB0800DACD54 /* include */,
 			);
 			path = libDEA_XCode;
+			sourceTree = "<group>";
+		};
+		A41740ED1AC6AB0800DACD54 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				A41740EE1AC6AB0800DACD54 /* FrameWork.h */,
+				A41740EF1AC6AB0800DACD54 /* generic.h */,
+				A41740F01AC6AB0800DACD54 /* graph.h */,
+				A41740F11AC6AB0800DACD54 /* hashmap.h */,
+				A41740F21AC6AB0800DACD54 /* heap.h */,
+				A41740F31AC6AB0800DACD54 /* list.h */,
+				A41740F41AC6AB0800DACD54 /* nodelist.h */,
+				A41740F51AC6AB0800DACD54 /* nodetree.h */,
+				A41740F61AC6AB0800DACD54 /* quebrado.h */,
+				A41740F71AC6AB0800DACD54 /* queue.h */,
+				A41740F81AC6AB0800DACD54 /* stack.h */,
+				A41740F91AC6AB0800DACD54 /* tree.h */,
+			);
+			name = include;
+			path = ../../../include;
+			sourceTree = "<group>";
+		};
+		A41740FA1AC6AB1800DACD54 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				A41740FB1AC6AB1800DACD54 /* FrameWork.c */,
+				A41740FC1AC6AB1800DACD54 /* generic.c */,
+				A41740FD1AC6AB1800DACD54 /* graph.c */,
+				A41740FE1AC6AB1800DACD54 /* hashmap.c */,
+				A41740FF1AC6AB1800DACD54 /* heap.c */,
+				A41741001AC6AB1800DACD54 /* list.c */,
+				A41741011AC6AB1800DACD54 /* nodelist.c */,
+				A41741021AC6AB1800DACD54 /* nodetree.c */,
+				A41741031AC6AB1800DACD54 /* quebrado.c */,
+				A41741041AC6AB1800DACD54 /* queue.c */,
+				A41741051AC6AB1800DACD54 /* stack.c */,
+				A41741061AC6AB1800DACD54 /* tree.c */,
+			);
+			name = src;
+			path = ../../../src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,7 +193,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A41740E71AC6AA8900DACD54 /* main.c in Sources */,
+				A41741121AC6AB1800DACD54 /* tree.c in Sources */,
+				A417410A1AC6AB1800DACD54 /* hashmap.c in Sources */,
+				A417410B1AC6AB1800DACD54 /* heap.c in Sources */,
+				A41741071AC6AB1800DACD54 /* FrameWork.c in Sources */,
+				A41741101AC6AB1800DACD54 /* queue.c in Sources */,
+				A41741081AC6AB1800DACD54 /* generic.c in Sources */,
+				A417410C1AC6AB1800DACD54 /* list.c in Sources */,
+				A41741111AC6AB1800DACD54 /* stack.c in Sources */,
+				A417410E1AC6AB1800DACD54 /* nodetree.c in Sources */,
+				A417410D1AC6AB1800DACD54 /* nodelist.c in Sources */,
+				A41741091AC6AB1800DACD54 /* graph.c in Sources */,
+				A417410F1AC6AB1800DACD54 /* quebrado.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
