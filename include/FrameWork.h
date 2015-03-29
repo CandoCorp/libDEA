@@ -1,4 +1,4 @@
-#ifndef FRAMEWORK_H
+#ifndef     FRAMEWORK_H
 #define	FRAMEWORK_H
 
 #ifdef	__cplusplus
@@ -6,14 +6,18 @@ extern "C" {
 #endif
 
 #include <ctype.h>
-#include "generic.h"
+#include <stdio.h>
 
 //Constantes numericas o de cadena de caracteres fijas
-#define ACTUALIZAR "a+"
-#define LEER "r"
-#define ESCRIBIR "w"
-#define SOBREESCRIBIR "w+"
-#define LEER_Y_ESCRIBIR "r+"
+/*
+ * Opens the file
+*/
+#define APPEND "a+"
+#define READ "r"
+#define WRITE "w"
+#define WRITE_UPDATE "w+"
+#define READ_UPDATE "r+"
+#define APPEND_UPDATE "a+"
 #define MAX_BUFF 50000
 #define MIN_BUFF 20
 
@@ -27,6 +31,7 @@ extern "C" {
 #define CHAR_TO_INT_PTR(char) (INT_POINTER_CAST(integerNew(atoi(char))))
 #define INT_CONVERT_TO_STRING(int) (ItoStr(int,10))
 
+
 //Funciones para simplificar la asignacion de memoria dinamica
 #define STRING_NEW_MAX() (STRING_CAST(malloc(sizeof(char)*MAX_BUFF)))
 #define STRING_NEW_MIN() (STRING_CAST(malloc(sizeof(char)*MIN_BUFF)))
@@ -37,22 +42,10 @@ typedef enum Estado_Retorno{
 	ERROR=-1, EXITO=1 
 }Estado_Retorno;
 
-typedef enum CmpEstate{ MENOR=-1, IGUALES, MAYOR }CmpEstate;
+typedef enum CmpEstate{ LESS=-1, EQUAL, GREATER }CmpEstate;
 
 typedef enum Boolean { FALSE, TRUE }Boolean;
 
-typedef int (*writefn)(FILE *pf, Generic g);
-typedef Generic (*readSeekfn)(FILE *pf, fpos_t *g);
-
-int StringWriteToFile(FILE *pf, Generic string);
-
-Generic StringReadFromFile(FILE *pf);
-
-Generic StringSeekReadFromFile(FILE *pf, fpos_t *pos);
-
-int Fseek(FILE *pf, readSeekfn leerLinea, Generic id, cmpfn comp);
-
-char *ItoStr(int num, int radix);
 
 #ifdef	__cplusplus
 }
