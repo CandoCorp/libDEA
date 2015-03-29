@@ -10,76 +10,84 @@
 * puede recuperar su valor y modificar su valor con las funciones
 * aqui especificadas.
 *
-* @author Marcelo Loor
+* @author Kevin Cando
 * @author Marisol Villacres
 * @author Veronica Macias
 *
-* @date 10/26/2011
+* @date 03/28/2015
 */
-Generic integerNew(int newvalue){
+int equals(Generic a, Generic b){
+    
+}
+
+int compareTo(Generic a, Generic b, cmpfn fn){
+    
+}
+
+char *toString(const char* format, ...){
+    
+}
+
+int StringWriteToFile(FILE *pf, Generic string){
+    if(pf!=NULL||string!=NULL){
+		fprintf(pf,"[");
+		fprintf(pf,"%s",string);
+		fprintf(pf,"]");
+		fprintf(pf," ",string);
+		fflush(pf);
+		return EXITO;
+	}
+	fflush(pf);
+	return ERROR;
+}
+
+Generic StringReadFromFile(FILE *pf){
+    char *lee=STRING_NEW_MAX();
+	int longi;
+	
+	//fflush(pf);
+	fgetc(pf);
+	if(pf!=NULL) fscanf(pf,"%[^]]",lee);
+	longi=strlen(lee);
+	//lee=STRING_CAST(realloc(lee,sizeof(char)*longi+1));
+	fgetc(pf);
+	fgetc(pf);
+	return lee;
+}
+
+Generic StringSeekReadFromFile(FILE *pf, fpos_t *pos){
+    char *lee=STRING_NEW_MAX();
+	int longi;
+	fgetpos(pf,pos);
+	fgetc(pf);
+	if(pf!=NULL) fscanf(pf,"%[^]]",lee);
+	longi=strlen(lee);
+	lee=STRING_CAST(realloc(lee,sizeof(char)*longi+1));
+	fgetc(pf);
+	fgetc(pf);
+	return lee;
+}
+
+int Fseek(FILE *pf, readSeekfn leerLinea, Generic id, cmpfn comp){
     Generic g;
-    g = malloc(sizeof(int));
-    *(int *)g = newvalue;
-    return g;
-}
-void integerSet(Generic g, int newvalue)
-{
-    *(int *)g = newvalue;
-}
-
-int integerGet(Generic g){
-    int valor = *(int *)g;
-    return valor;
-
-}
-
-int integerCmp(Generic a, Generic b){
-    if(integerGet(a) == integerGet(b)) return 0;
-    else if(integerGet(a) > integerGet(b)) return 1;
-    return -1;
+	fpos_t ini,fin;
+	char *temp=STRING_NEW_MAX();
+	if(pf==NULL||id==NULL) return ERROR;
+	rewind(pf);
+	while(!feof(pf)){
+		g=leerLinea(pf,&ini);
+		if(comp(id,g)==IGUALES){
+			fgetpos(pf,&fin);
+			fscanf(pf,"%[^-1]",temp);
+			fsetpos(pf,&ini);
+			fputs(temp,pf);
+			free(temp);
+			return EXITO;
+		}
+	}
+	return ERROR;
 }
 
-int integerMax(Generic a, Generic b){
-    if(integerGet(b) > integerGet(a)) return 1;
-    return 0;
-}
-
-int integerMin(Generic a, Generic b){
-    if(integerGet(b) < integerGet(a)) return 1;
-    return 0;
-}
-
-void integerPrint(Generic *g){
-    printf("%d ",integerGet(g));
-}
-
-
-Generic charNew(char newvalue){
-    Generic g;
-    g = malloc(sizeof(char));
-    *(char *)g = newvalue;
-    return g;
-}
-
-void charSet(Generic g, char newvalue){
-    *(char *)g = newvalue;
-}
-
-char charGet(Generic g){
-    char valor = *(char *)g;
-    return valor;
-}
-
-void charPrint(Generic *g){
-    printf("%c",charGet(g));
-}
-
-int charCmp(Generic a, Generic b){
-    if(charGet(a) == charGet(b)) return 0;
-    else if(charGet(a) > charGet(b)) return 1;
-    return -1;
-
-}
 
 int compareWithOrderType(Generic g, Generic h, cmpfn cmp, int type){
         if(type == 0)
