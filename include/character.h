@@ -13,6 +13,10 @@
 extern "C" {
 #endif
     
+#include "generic.h"
+    
+typedef Generic Character;
+    
 /**
 * charNew permite crear un nuevo Generic y asignarle
 * como valor un char
@@ -21,7 +25,7 @@ extern "C" {
 * @return retorna un nuevo char en forma de Generic
 * @date 03/27/2015
 */
-Generic charNew( char value );
+Character charNew( char value );
 
 /**
 * characterCompare permite comparar dos Generic con sus valores char,
@@ -33,7 +37,7 @@ Generic charNew( char value );
 * @return  el valor entero (0, 1, -1), resultado de la comparación
 * @date 03/27/2015
 */
-int characterCompare( Generic x, Generic y );
+int characterCompare( Character x, Character y );
 
 /**
 * characterGet retorna el valor char del Generic
@@ -42,7 +46,7 @@ int characterCompare( Generic x, Generic y );
 * @return  el valor char
 * @date 03/27/2015
 */
-char characterGet( Generic g );
+char characterGet( Character g );
 
 /**
 * characterHashCode retorna un hash code representando al char del Generic
@@ -51,7 +55,7 @@ char characterGet( Generic g );
 * @return  el hash code que representa al caracter
 * @date 03/27/2015
 */
-int characterHashCode( Generic g );
+int characterHashCode( Character g );
 
 /**
 * characterSet permite asignar un valor int a un Generic
@@ -60,7 +64,7 @@ int characterHashCode( Generic g );
 * @param value el valor que se va a asignar al Generic
 * @date 03/27/2015
 */
-void characterSet( Generic g, char value );
+void characterSet( Character g, char value );
 
 /**
 * characterToString convierte el valor del Generic a un string
@@ -69,7 +73,9 @@ void characterSet( Generic g, char value );
 * @return  la representación del valor del Generic como string
 * @date 03/27/2015
 */
-char * characterToString( Generic g );
+char * characterToString( Character g );
+
+void characterPrint( Character g );
 
 #ifdef	__cplusplus
 }

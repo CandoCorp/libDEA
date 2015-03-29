@@ -13,6 +13,10 @@
 extern "C" {
 #endif
     
+#include "generic.h"
+
+typedef Generic Integer;
+
 /**
 * integerNew permite crear un nuevo Generic y asignarle
 * como valor un entero
@@ -21,8 +25,8 @@ extern "C" {
 * @return retorna un nuevo int en forma de Generic
 * @date 03/26/2015
 */
-Generic integerNew( int value );
-//Generic integerNew( char *value );
+Integer integerNew( int value );
+Integer integerNew( char *value );
 
 /**
 * integerCompare permite comparar dos Generic con sus valores enteros,
@@ -34,7 +38,8 @@ Generic integerNew( int value );
 * @return  el valor entero (0, 1, -1), resultado de la comparación
 * @date 03/26/2015
 */
-int integerCompare( Generic x, Generic y );
+int integerCompare( Integer x, Integer y );
+
 
 /**
 * integerDoubleValue retorna el valor del Generic como un double
@@ -43,7 +48,7 @@ int integerCompare( Generic x, Generic y );
 * @return  el valor double del Generic
 * @date 03/26/2015
 */
-double integerDoubleValue( Generic g );
+double integerDoubleValue( Integer g );
 
 /**
 * integerFloatValue retorna el valor del Generic como un float
@@ -52,7 +57,7 @@ double integerDoubleValue( Generic g );
 * @return  el valor float del Generic
 * @date 03/26/2015
 */
-float integerFloatValue( Generic g );
+float integerFloatValue( Integer g );
 
 /**
 * integerGet retorna el valor int del Generic
@@ -61,12 +66,9 @@ float integerFloatValue( Generic g );
 * @return  el valor int
 * @date 03/26/2015
 */
-int integerGet( Generic g );
-//int integerValue( Generic g );
+int integerGet( Integer g );
 
 /**
-*PENDIENTE: VER CUAL ES LA DIFERENCIA CON integerValue
-
 * integerHashCode retorna un hash code representando al Generic,
 * hash code es simplemente el valor del Generic
 * @author Johnny Suárez
@@ -74,7 +76,7 @@ int integerGet( Generic g );
 * @return  el hash code del Generic
 * @date 03/26/2015
 */
-//int integerHashCode( Generic g );
+int integerHashCode( Generic g );
 
 /**
 * integerSet permite asignar un valor int a un Generic
@@ -83,7 +85,7 @@ int integerGet( Generic g );
 * @param value el valor que se va a asignar al Generic
 * @date 03/26/2015
 */
-void integerSet( Generic g, int value );
+void integerSet( Integer g, int value );
 
 /**
 * integerToString convierte el valor del Generic a un string
@@ -92,10 +94,15 @@ void integerSet( Generic g, int value );
 * @return  la representación del valor del Generic como string
 * @date 03/26/2015
 */
-char * integerToString( Generic g );
+char * integerToString( Integer g );
 
-int integerCompareMax( Generic a, Generic b );
-int integerCompareMin( Generic a, Generic b );
+int integerCompMax( Integer a, Integer b );
+int integerCompMin( Integer a, Integer b );
+
+int integerValueOfMax( Integer a, Integer b );
+int integerValueOfMin( Integer a, Integer b );
+
+void integerPrint( Integer *g );
     
 #ifdef	__cplusplus
 }

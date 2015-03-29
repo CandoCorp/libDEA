@@ -32,7 +32,9 @@
 extern "C" {
 #endif
     
-#include <stdio.h>    
+#include <stdio.h>   
+#include "FrameWork.h"
+
 /** @defgroup hs TDA Generic
  * Estas definiciones y funciones componenen el TDA Generic
  * @{
