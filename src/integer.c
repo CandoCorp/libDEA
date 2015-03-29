@@ -1,5 +1,4 @@
 
-#include "generic.h"
 #include "integer.h"
 
 /**
@@ -12,15 +11,15 @@
 
 //#define INT_SIZE_STRING ((CHAR_BIT * sizeof(int) - 1) / 3 + 2)
 
-Generic integerNew( int value ){
-    Generic g = malloc( sizeof(int) );
+Integer integerNew( int value ){
+    Integer g = NEW(int);
     *(int *) g = value;
     return g;
 }
 //Generic integerNew( char *value );
 
-int integerCompare( Generic x, Generic y ){
-    return ( integerGet(x) == integerGet(y) ) ? 0 : ( integerGet(x) > integerGet(y) ) ? 1 : -1;
+int integerCompare( Integer x, Integer y ){
+    return compareTo( x, y, cmpInt );
 /*
     if(integerGet(x) == integerGet(y)) return 0;
     else if(integerGet(x) > integerGet(y)) return 1;
@@ -28,32 +27,24 @@ int integerCompare( Generic x, Generic y ){
 */
 }
 
-double integerDoubleValue( Generic g ){
+double integerDoubleValue( Integer g ){
     return (double)integerGet(g);
 }
 
-float integerFloatValue( Generic g ){
+float integerFloatValue( Integer g ){
     return (float)integerGet(g);
 }
 
-int integerGet( Generic g ){
+int integerGet( Integer g ){
     return *(int *)g;
 }
-//int integerValue( Generic g );
 
-/**
-*PENDIENTE: VER CUAL ES LA DIFERENCIA CON integerValue
+//PENDIENTE: VER CUAL ES LA DIFERENCIA CON integerValue
+int integerHashCode( Generic g ){
+    
+}
 
-* integerHashCode retorna un hash code representando al Generic,
-* hash code es simplemente el valor del Generic
-* @author Johnny Suárez
-* @param g Generic que se desea obtener su hash code
-* @return  el hash code del Generic
-* @date 03/26/2015
-*/
-//int integerHashCode( Generic g );
-
-void integerSet( Generic g, int value ){
+void integerSet( Integer g, int value ){
     *(int *)g = value;
 }
 
@@ -67,10 +58,38 @@ char * integerToString( Generic g ){
     return buf;
 }
 
-int integerCompareMax( Generic a, Generic b ){
+int integerCmpMax( Integer x, Integer y ){
+    return compareTo( x, y, cmpMax );
+}
+
+int integerCmpMin( Generic x, Generic y ){
+    return compareTo( x, y, cmpMin );
+}
+
+int integerValueOfMax( Integer a, Integer b ){
     
 }
 
-int integerCompareMin( Generic a, Generic b ){
+int integerValueOfMin( Integer a, Integer b ){
     
+}
+
+void integerPrint( Integer *g ){
+    printf(" %d ", integerGet(g));
+}
+
+
+
+
+
+int cmpInt( Generic a, Generic b ){
+    return ( integerGet(a) == integerGet(b) ) ? 0 : ( integerGet(a) > integerGet(b) ) ? 1 : -1;
+}
+
+int cmpMax( Generic a, Generic b ){
+    return ( integerGet(b) > integerGet(a) ) ? 1 : 0;
+}
+
+int cmpMin( Generic a, Generic b ){
+    return ( integerGet(b) < integerGet(a) ) ? 1 : 0;;
 }

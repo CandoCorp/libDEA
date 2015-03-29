@@ -1,5 +1,4 @@
 
-#include "generic.h"
 #include "character.h"
 
 /**
@@ -10,14 +9,14 @@
 * @date 03/27/2015
 */
 
-Generic charNew( char value ){
-    Generic g = malloc( sizeof(char) );
+Character charNew( char value ){
+    Character g = NEW(char);
     *(char *)g = value;
     return g;
 }
 
-int characterCompare( Generic x, Generic y ){
-    return ( integerGet(x) == integerGet(y) ) ? 0 : ( integerGet(x) > integerGet(y) ) ? 1 : -1;
+int characterCompare( Character x, Character y ){
+    return compareTo( x, y, cmpChar );
 /*
     if(charGet(a) == charGet(b)) return 0;
     else if(charGet(a) > charGet(b)) return 1;
@@ -25,22 +24,30 @@ int characterCompare( Generic x, Generic y ){
 */
 }
 
-char characterGet( Generic g ){
+int cmpChar( Generic a, Generic b ){
+    ( characterGet(a) == characterGet(b) ) ? 0 : ( characterGet(a) > characterGet(b) ) ? 1 : -1;
+}
+
+char characterGet( Character g ){
     return *(char *)g;
 }
 
-int characterHashCode( Generic g ){
+int characterHashCode( Character g ){
     char buf = charGet(g);
     return (int)buf;
 }
 
-void characterSet( Generic g, char value ){
+void characterSet( Character g, char value ){
     *(char *)g = value;
 }
 
-char * characterToString( Generic g ){
+char * characterToString( Character g ){
     char *buf = malloc(2);;
     buf[0] = charGet(g);
     buf[1] = '\0';
     return buf;
+}
+
+void characterPrint(Generic *g){
+    printf("%c", charGet(g));
 }
