@@ -14,8 +14,9 @@ extern "C" {
 #endif
     
 #include "generic.h"
-
+    
 typedef Generic Integer;
+
 
 /**
 * integerNew permite crear un nuevo Generic y asignarle
@@ -26,6 +27,8 @@ typedef Generic Integer;
 * @date 03/26/2015
 */
 Integer integerNew( int value );
+
+
 Integer integerNew( char *value );
 
 /**

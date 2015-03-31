@@ -7,11 +7,13 @@ extern "C" {
 
 #include <ctype.h>
 #include <stdio.h>
-
+#include <stdbool.h>
+#include <complex.h>
 //Constantes numericas o de cadena de caracteres fijas
 /*
  * Opens the file
 */
+    
 #define APPEND "a+"
 #define READ "r"
 #define WRITE "w"
@@ -37,14 +39,18 @@ extern "C" {
 #define STRING_NEW_MIN() (STRING_CAST(malloc(sizeof(char)*MIN_BUFF)))
 #define NEW(type) ((type*)malloc(sizeof(type)))
 #define NEW_ARRAY(type,num_elem) (malloc(sizeof(type)*num_elem))
-
+#define TRY {
+    
 typedef enum Estado_Retorno{ 
 	ERROR=-1, EXITO=1 
 }Estado_Retorno;
 
 typedef enum CmpEstate{ LESS=-1, EQUAL, GREATER }CmpEstate;
 
-typedef enum Boolean { FALSE, TRUE }Boolean;
+inline void* New(void *type){
+    if(type != NULL)
+        ;
+}
 
 
 #ifdef	__cplusplus

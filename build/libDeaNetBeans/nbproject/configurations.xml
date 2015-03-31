@@ -93,6 +93,20 @@
       </compileType>
       <item path="../../include/FrameWork.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="../../include/String.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../include/String.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../include/StringTokenizer.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../include/StringTokenizer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../include/character.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../include/double.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../include/float.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="../../include/generic.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../include/graph.h" ex="false" tool="3" flavor2="0">
@@ -100,6 +114,8 @@
       <item path="../../include/hashmap.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../include/heap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../include/integer.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../include/list.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -117,6 +133,12 @@
       </item>
       <item path="../../src/FrameWork.c" ex="false" tool="0" flavor2="0">
       </item>
+      <item path="../../src/character.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../src/double.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../src/float.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="../../src/generic.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../../src/graph.c" ex="false" tool="0" flavor2="0">
@@ -124,6 +146,8 @@
       <item path="../../src/hashmap.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../../src/heap.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../src/integer.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../../src/list.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -164,6 +188,20 @@
       </compileType>
       <item path="../../include/FrameWork.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="../../include/String.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../include/String.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../include/StringTokenizer.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../include/StringTokenizer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../include/character.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../include/double.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../include/float.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="../../include/generic.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../include/graph.h" ex="false" tool="3" flavor2="0">
@@ -171,6 +209,8 @@
       <item path="../../include/hashmap.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../include/heap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../include/integer.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../include/list.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -188,6 +228,12 @@
       </item>
       <item path="../../src/FrameWork.c" ex="false" tool="0" flavor2="0">
       </item>
+      <item path="../../src/character.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../src/double.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../src/float.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="../../src/generic.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../../src/graph.c" ex="false" tool="0" flavor2="0">
@@ -195,6 +241,8 @@
       <item path="../../src/hashmap.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../../src/heap.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../src/integer.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../../src/list.c" ex="false" tool="0" flavor2="0">
       </item>
