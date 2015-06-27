@@ -1,0 +1,454 @@
+<?xml version="1.0"?>
+<project name="Plan de Trabajo Marzo - Mayo" company="WhiteFoxDevelopment" manager="Kevin Cando" phase="Etapa de Desarrollo" project-start="20150325T000000Z" mrproject-version="2" calendar="3">
+  <properties/>
+  <phases>
+    <phase name="Etapa de Desarrollo"/>
+  </phases>
+  <calendars>
+    <day-types>
+      <day-type id="0" name="Working" description="A default working day"/>
+      <day-type id="1" name="Nonworking" description="A default non working day"/>
+      <day-type id="2" name="Use base" description="Use day from base calendar"/>
+    </day-types>
+    <calendar id="1" name="Working Calendar + Sunday">
+      <default-week mon="1" tue="0" wed="1" thu="0" fri="2" sat="0" sun="2"/>
+      <overridden-day-types>
+        <overridden-day-type id="0">
+          <interval start="0900" end="1200"/>
+          <interval start="1300" end="1500"/>
+        </overridden-day-type>
+      </overridden-day-types>
+      <days>
+        <day date="20150327" type="day-type" id="1"/>
+        <day date="20150328" type="day-type" id="0"/>
+        <day date="20150329" type="day-type" id="0"/>
+        <day date="20150324" type="day-type" id="0"/>
+        <day date="20150326" type="day-type" id="0"/>
+      </days>
+    </calendar>
+    <calendar id="2" name="Working Calendar OffHours">
+      <default-week mon="0" tue="0" wed="0" thu="0" fri="0" sat="0" sun="0"/>
+      <overridden-day-types>
+        <overridden-day-type id="0">
+          <interval start="0900" end="1300"/>
+          <interval start="1400" end="1700"/>
+        </overridden-day-type>
+      </overridden-day-types>
+      <days>
+        <day date="20150327" type="day-type" id="0"/>
+        <day date="20150328" type="day-type" id="0"/>
+        <day date="20150323" type="day-type" id="0"/>
+        <day date="20150324" type="day-type" id="0"/>
+        <day date="20150325" type="day-type" id="0"/>
+        <day date="20150326" type="day-type" id="0"/>
+      </days>
+    </calendar>
+    <calendar id="3" name="Working Calendar">
+      <default-week mon="1" tue="0" wed="1" thu="0" fri="2" sat="0" sun="2"/>
+      <overridden-day-types>
+        <overridden-day-type id="0">
+          <interval start="0900" end="1200"/>
+          <interval start="1300" end="1500"/>
+        </overridden-day-type>
+      </overridden-day-types>
+      <days>
+        <day date="20150327" type="day-type" id="1"/>
+        <day date="20150328" type="day-type" id="0"/>
+        <day date="20150324" type="day-type" id="0"/>
+        <day date="20150326" type="day-type" id="0"/>
+      </days>
+    </calendar>
+    <calendar id="4" name="Default">
+      <default-week mon="0" tue="0" wed="0" thu="0" fri="0" sat="1" sun="1"/>
+      <overridden-day-types>
+        <overridden-day-type id="0">
+          <interval start="0800" end="1200"/>
+          <interval start="1300" end="1700"/>
+        </overridden-day-type>
+      </overridden-day-types>
+      <days>
+        <day date="20150325" type="day-type" id="0"/>
+      </days>
+    </calendar>
+  </calendars>
+  <tasks>
+    <task id="1" name="Elaboracion de libDEA" note="" work="2923200" start="20150325T000000Z" end="20150423T150000Z" work-start="20150325T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <task id="2" name="Creacion de la base del Framework" note="" work="72000" start="20150325T000000Z" end="20150326T140000Z" work-start="20150325T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <task id="3" name="Creacion de la clase Generic" note="" work="14400" start="20150325T000000Z" end="20150325T130000Z" work-start="20150325T090000Z" percent-complete="80" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="4" name="Creacion de las clases Wrapper para los tipos de datos base" note="" work="14400" start="20150325T130000Z" end="20150326T140000Z" work-start="20150326T090000Z" percent-complete="80" priority="0" type="normal" scheduling="fixed-work">
+          <constraint type="start-no-earlier-than" time="20150325T000000Z"/>
+          <predecessors>
+            <predecessor id="1" predecessor-id="3" type="FS"/>
+          </predecessors>
+        </task>
+        <task id="5" name="Creacion de la Clase String" note="" work="14400" start="20150325T130000Z" end="20150326T100000Z" work-start="20150325T130000Z" percent-complete="36" priority="0" type="normal" scheduling="fixed-work">
+          <predecessors>
+            <predecessor id="1" predecessor-id="3" type="FS"/>
+          </predecessors>
+        </task>
+        <task id="6" name="Creacion de la Clase StringTokenizer" note="" work="14400" start="20150325T130000Z" end="20150326T100000Z" work-start="20150325T130000Z" percent-complete="20" priority="0" type="normal" scheduling="fixed-work">
+          <constraint type="start-no-earlier-than" time="20150325T000000Z"/>
+          <predecessors>
+            <predecessor id="1" predecessor-id="3" type="FS"/>
+          </predecessors>
+        </task>
+        <task id="7" name="Creacion de la Clase StringBuilder" note="" work="14400" start="20150325T130000Z" end="20150326T100000Z" work-start="20150325T130000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+          <predecessors>
+            <predecessor id="1" predecessor-id="3" type="FS"/>
+          </predecessors>
+        </task>
+      </task>
+      <task id="8" name="Elaboracion del manejo y control de Errores" note="" work="36000" start="20150328T000000Z" end="20150328T163000Z" work-start="20150328T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <predecessors>
+          <predecessor id="1" predecessor-id="2" type="FS"/>
+        </predecessors>
+        <task id="9" name="Elaboracion de los tipos de errores" note="" work="7200" start="20150328T000000Z" end="20150328T100000Z" work-start="20150328T090000Z" percent-complete="100" priority="0" type="normal" scheduling="fixed-work">
+          <constraint type="start-no-earlier-than" time="20150328T000000Z"/>
+        </task>
+        <task id="10" name="Elaboracion del TDA error" note="" work="10800" start="20150328T000000Z" end="20150328T103000Z" work-start="20150328T090000Z" percent-complete="20" priority="0" type="normal" scheduling="fixed-work">
+          <constraint type="start-no-earlier-than" time="20150328T000000Z"/>
+          <predecessors>
+            <predecessor id="1" predecessor-id="9" type="SS"/>
+          </predecessors>
+        </task>
+        <task id="11" name="Implementacion del control y manejo de errores" note="" work="18000" start="20150328T103000Z" end="20150328T163000Z" work-start="20150328T103000Z" percent-complete="20" priority="0" type="normal" scheduling="fixed-work">
+          <constraint type="start-no-earlier-than" time="20150328T000000Z"/>
+          <predecessors>
+            <predecessor id="1" predecessor-id="10" type="FS"/>
+          </predecessors>
+        </task>
+      </task>
+      <task id="12" name="Implementacion de las Estructuras de Datos" note="" work="2725200" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <task id="13" name="Arrays" note="" work="136800" start="20150331T000000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+          <predecessors>
+            <predecessor id="1" predecessor-id="8" type="FS"/>
+          </predecessors>
+          <task id="14" name="Array" note="" work="7200" start="20150331T000000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+            <constraint type="start-no-earlier-than" time="20150331T000000Z"/>
+          </task>
+          <task id="15" name="Bidireccional Map" note="" work="7200" start="20150331T000000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+            <constraint type="start-no-earlier-than" time="20150331T000000Z"/>
+          </task>
+          <task id="16" name="Bit array" note="" work="7200" start="20150331T000000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+            <constraint type="start-no-earlier-than" time="20150331T000000Z"/>
+          </task>
+          <task id="17" name="Bit Field" note="" work="7200" start="20150331T000000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+            <constraint type="start-no-earlier-than" time="20150331T000000Z"/>
+          </task>
+          <task id="18" name="Bitmap" note="" work="7200" start="20150331T000000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+            <constraint type="start-no-earlier-than" time="20150331T000000Z"/>
+          </task>
+          <task id="19" name="Circular Buffer" note="" work="7200" start="20150331T000000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+            <constraint type="start-no-earlier-than" time="20150331T000000Z"/>
+          </task>
+          <task id="20" name="Control table" note="" work="7200" start="20150331T000000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+            <constraint type="start-no-earlier-than" time="20150331T000000Z"/>
+          </task>
+          <task id="21" name="Dinamic array" note="" work="7200" start="20150331T000000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+            <constraint type="start-no-earlier-than" time="20150331T000000Z"/>
+          </task>
+          <task id="22" name="Gap buffer" note="" work="7200" start="20150331T000000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+            <constraint type="start-no-earlier-than" time="20150331T000000Z"/>
+          </task>
+          <task id="23" name="Hashed array tree" note="" work="7200" start="20150331T000000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+            <constraint type="start-no-earlier-than" time="20150331T000000Z"/>
+          </task>
+          <task id="24" name="Heightmap" note="" work="7200" start="20150331T000000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+            <constraint type="start-no-earlier-than" time="20150331T000000Z"/>
+          </task>
+          <task id="25" name="Lookup table" note="" work="7200" start="20150331T000000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+            <constraint type="start-no-earlier-than" time="20150331T000000Z"/>
+          </task>
+          <task id="26" name="Matrix" note="" work="7200" start="20150331T000000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+            <constraint type="start-no-earlier-than" time="20150331T000000Z"/>
+          </task>
+          <task id="27" name="Parralel array" note="" work="7200" start="20150331T000000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+            <constraint type="start-no-earlier-than" time="20150331T000000Z"/>
+          </task>
+          <task id="28" name="Sorted array" note="" work="7200" start="20150331T000000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+            <constraint type="start-no-earlier-than" time="20150331T000000Z"/>
+          </task>
+          <task id="29" name="Sparse array" note="" work="7200" start="20150331T000000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+            <constraint type="start-no-earlier-than" time="20150331T000000Z"/>
+          </task>
+          <task id="30" name="Sparse matrix" note="" work="7200" start="20150331T000000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+            <constraint type="start-no-earlier-than" time="20150331T000000Z"/>
+          </task>
+          <task id="31" name="Iliffe vector" note="" work="7200" start="20150331T000000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+            <constraint type="start-no-earlier-than" time="20150331T000000Z"/>
+          </task>
+          <task id="32" name="Variable-length array" note="" work="7200" start="20150331T000000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+            <constraint type="start-no-earlier-than" time="20150331T000000Z"/>
+          </task>
+        </task>
+        <task id="33" name="Listas" note="" work="86400" start="20150328T163000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+          <predecessors>
+            <predecessor id="1" predecessor-id="8" type="FS"/>
+          </predecessors>
+          <task id="34" name="Array List" note="" work="7200" start="20150328T163000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="35" name="Doubly linked list" note="" work="7200" start="20150328T163000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="36" name="Linked list" note="" work="7200" start="20150328T163000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="37" name="Self-organizing list" note="" work="7200" start="20150328T163000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="38" name="Skip list" note="" work="7200" start="20150328T163000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="39" name="Unrolled linked list" note="" work="7200" start="20150328T163000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="40" name="VList" note="" work="7200" start="20150328T163000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="41" name="Xor linked list" note="" work="7200" start="20150328T163000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="42" name="Zipper" note="" work="7200" start="20150328T163000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="43" name="Double connected edge list" note="" work="7200" start="20150328T163000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="44" name="Difference list" note="" work="7200" start="20150328T163000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="45" name="Free List" note="" work="7200" start="20150328T163000Z" end="20150331T110000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        </task>
+        <task id="46" name="Arboles" note="" work="1908000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+          <predecessors>
+            <predecessor id="1" predecessor-id="8" type="FS"/>
+          </predecessors>
+          <task id="47" name="Binary Tree" note="" work="342000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+            <task id="48" name="AA tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="49" name="AVL tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="50" name="Binary search tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="51" name="Cartesian tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="52" name="Order statistic tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="53" name="Pagoda" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="54" name="Randomized binary seach tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="55" name="Red black tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="56" name="Rope" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="57" name="Scapegoat tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="58" name="Self-balancing binary search tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="59" name="Splay tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="60" name="T-tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="61" name="Tango tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="62" name="Threaded binary tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="63" name="Top tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="64" name="Treap" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="65" name="Weight-balanced tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="66" name="Binary data structure" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          </task>
+          <task id="67" name="B-Tree" note="" work="198000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+            <task id="68" name="B-tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="69" name="B+ tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="70" name="B*- tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="71" name="B sharp tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="72" name="Dancing tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="73" name="2-3 tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="74" name="2-3-4 tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="75" name="Queap" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="76" name="Fusion tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="77" name="Bx-tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="78" name="Alist" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          </task>
+          <task id="79" name="Heaps" note="" work="288000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+            <task id="80" name="Heap" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="81" name="Binary heap" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="82" name="Weak heap" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="83" name="Binomial heap" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="84" name="Fibonacci heap" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+              <task id="85" name="AF-heap" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            </task>
+            <task id="86" name="Leonardo heap" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="87" name="2-3 heap" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="88" name="Soft heap" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="89" name="Pairing heap" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="90" name="Leftist heap" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="91" name="Treap" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="92" name="Beap" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="93" name="Skew heap" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="94" name="Ternary heap" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="95" name="D-ary heap" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="96" name="Brodal queue" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          </task>
+          <task id="97" name="Tries" note="" work="216000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+            <task id="98" name="Trie" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="99" name="Radix tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="100" name="Suffix tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="101" name="Suffix array" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="102" name="Compressed suffix array" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="103" name="FM-index" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="104" name="Generalised suffix tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="105" name="B-trie" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="106" name="Judy array" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="107" name="X-fast trie" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="108" name="Y-fast trie" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="109" name="Ctrie" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          </task>
+          <task id="110" name="Multiway trees" note="" work="252000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+            <task id="111" name="Ternary tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="112" name="K-ary tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="113" name="And-or tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="114" name="(a,b)-tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="115" name="Link/cut tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="116" name="SPQR-tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="117" name="Spaghetti stack" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="118" name="Disjoint-set data structure" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="119" name="Fusion tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="120" name="Enfilade" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="121" name="Exponential tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="122" name="Fenwick tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="123" name="Van Emde Boas tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="124" name="Rose tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          </task>
+          <task id="125" name="Space-partitioning trees" note="" work="450000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+            <task id="126" name="Segment tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="127" name="Interval tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="128" name="Range tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="129" name="Bin " note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="130" name="Kd-tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="131" name="Implicit kd-tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="132" name="Adaptative k-d tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="133" name="Quadtree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="134" name="Octree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="135" name="Linea octree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="136" name="Z-order" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="137" name="UB-tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="138" name="R-tree " note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="139" name="R+ tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="140" name="R* tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="141" name="Hilbert R-tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="142" name="X-tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="143" name="Metric tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="144" name="Cover tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="145" name="M-tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="146" name="VP-tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="147" name="BK-tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="148" name="Bounding interval hierarchy" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="149" name="BSP tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="150" name="Rapidly exploring random tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          </task>
+          <task id="151" name="Application-specific trees" note="" work="162000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+            <task id="152" name="Abstract syntax free" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="153" name="Parse tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="154" name="Decision tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="155" name="Alternating decision tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="156" name="Minimax tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="157" name="Expectiminimax tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="158" name="Finger tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="159" name="Expression tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+            <task id="160" name="Log-structured merge-tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          </task>
+        </task>
+        <task id="161" name="Hashes" note="" work="252000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+          <predecessors>
+            <predecessor id="1" predecessor-id="8" type="FS"/>
+          </predecessors>
+          <task id="162" name="Bloom filter" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="163" name="Count-Min sketch" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="164" name="Distributed hash table" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="165" name="Double Hashing" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="166" name="Dynamic perfect hash table" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="167" name="Hash array mapped trie" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="168" name="Hash list" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="169" name="Hash table" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="170" name="Hash trie" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="171" name="Prefix hash tree" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="172" name="Rolling hash" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="173" name="MinHash" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="174" name="Quotient filter" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="175" name="Ctrie" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        </task>
+        <task id="176" name="Grafos" note="" work="234000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+          <predecessors>
+            <predecessor id="1" predecessor-id="8" type="FS"/>
+          </predecessors>
+          <task id="177" name="Graph" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="178" name="Adjacency list" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="179" name="Adjacency matrix" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="180" name="Graph-structured stack" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="181" name="Scene graph" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="182" name="Binary decision diagram" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="183" name="Zero-suppressed decision diagram" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="184" name="And-inverter graph" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="185" name="Directed graph" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="186" name="Directed acyclic graph" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="187" name="Propositional directed acyclic graph" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="188" name="Multigraph" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="189" name="Hypergraph" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        </task>
+        <task id="190" name="Otros" note="" work="108000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+          <predecessors>
+            <predecessor id="1" predecessor-id="8" type="FS"/>
+          </predecessors>
+          <task id="191" name="LightMap" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="192" name="Winged edge" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="193" name="Doubly connected edge list" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="194" name="Quad-edge" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="195" name="Routing table" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+          <task id="196" name="Symbol table" note="" work="18000" start="20150328T163000Z" end="20150331T150000Z" work-start="20150331T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        </task>
+      </task>
+      <task id="197" name="Implementacion de los Algoritmos" note="" work="36000" start="20150414T000000Z" end="20150416T150000Z" work-start="20150414T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <constraint type="start-no-earlier-than" time="20150414T000000Z"/>
+        <predecessors>
+          <predecessor id="1" predecessor-id="12" type="FS"/>
+        </predecessors>
+      </task>
+      <task id="198" name="Debug y pruebas de Control para errores de Diseno" note="" work="18000" start="20150416T150000Z" end="20150418T150000Z" work-start="20150418T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <predecessors>
+          <predecessor id="1" predecessor-id="197" type="FS"/>
+        </predecessors>
+      </task>
+      <task id="199" name="Implementacion de demos y ejemplos" note="" work="36000" start="20150418T150000Z" end="20150423T150000Z" work-start="20150421T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <predecessors>
+          <predecessor id="1" predecessor-id="198" type="FS"/>
+        </predecessors>
+      </task>
+    </task>
+    <task id="200" name="Elaboracion de VisualDEA" note="" work="345600" start="20150423T150000Z" end="20150516T120000Z" work-start="20150425T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <task id="201" name="Explicacion y Capacitacion de las librerias GNOME" note="" work="144000" start="20150423T150000Z" end="20150512T150000Z" work-start="20150425T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <predecessors>
+          <predecessor id="1" predecessor-id="199" type="FS"/>
+        </predecessors>
+      </task>
+      <task id="202" name="Explicacion y Capacitacion de la libreria PyGtk" note="" work="144000" start="20150423T150000Z" end="20150512T150000Z" work-start="20150425T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <predecessors>
+          <predecessor id="1" predecessor-id="199" type="FS"/>
+        </predecessors>
+      </task>
+      <task id="203" name="Elaboracion de Ejemplos en PyGtk para cada uno de los demos" note="" work="28800" start="20150512T150000Z" end="20150516T120000Z" work-start="20150514T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <predecessors>
+          <predecessor id="1" predecessor-id="202" type="FS"/>
+        </predecessors>
+      </task>
+      <task id="204" name="Elaboracion de Ejemplos usando GNOME" note="" work="28800" start="20150512T150000Z" end="20150516T120000Z" work-start="20150514T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <predecessors>
+          <predecessor id="1" predecessor-id="201" type="FS"/>
+        </predecessors>
+      </task>
+    </task>
+  </tasks>
+  <resource-groups>
+    <group id="1" name="Development" admin-name="Kevin Cando" admin-phone="0991255666" admin-email=""/>
+  </resource-groups>
+  <resources>
+    <resource group="1" id="1" name="Johny Suarez" short-name="" type="1" units="0" email="" note="" std-rate="0" calendar="3"/>
+    <resource group="1" id="2" name="Kevin Cando" short-name="" type="1" units="0" email="scando@fiec.espol.edu.ec" note="" std-rate="0" calendar="2"/>
+  </resources>
+  <allocations>
+    <allocation task-id="26" resource-id="1" units="100"/>
+    <allocation task-id="32" resource-id="1" units="100"/>
+    <allocation task-id="28" resource-id="1" units="100"/>
+    <allocation task-id="27" resource-id="1" units="100"/>
+    <allocation task-id="21" resource-id="1" units="100"/>
+    <allocation task-id="18" resource-id="1" units="100"/>
+    <allocation task-id="17" resource-id="1" units="100"/>
+    <allocation task-id="16" resource-id="1" units="100"/>
+    <allocation task-id="14" resource-id="1" units="100"/>
+    <allocation task-id="12" resource-id="1" units="100"/>
+    <allocation task-id="9" resource-id="1" units="100"/>
+    <allocation task-id="33" resource-id="1" units="100"/>
+    <allocation task-id="176" resource-id="1" units="100"/>
+    <allocation task-id="13" resource-id="1" units="100"/>
+    <allocation task-id="10" resource-id="1" units="100"/>
+    <allocation task-id="4" resource-id="1" units="100"/>
+    <allocation task-id="97" resource-id="2" units="100"/>
+    <allocation task-id="79" resource-id="2" units="100"/>
+    <allocation task-id="47" resource-id="2" units="100"/>
+    <allocation task-id="161" resource-id="2" units="100"/>
+    <allocation task-id="7" resource-id="2" units="100"/>
+    <allocation task-id="6" resource-id="2" units="100"/>
+    <allocation task-id="5" resource-id="2" units="100"/>
+    <allocation task-id="12" resource-id="2" units="100"/>
+    <allocation task-id="9" resource-id="2" units="100"/>
+    <allocation task-id="3" resource-id="2" units="100"/>
+    <allocation task-id="11" resource-id="2" units="100"/>
+    <allocation task-id="10" resource-id="2" units="100"/>
+  </allocations>
+</project>
