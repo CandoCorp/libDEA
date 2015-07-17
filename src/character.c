@@ -33,7 +33,7 @@ char characterGet( Character g ){
 }
 
 int characterHashCode( Character g ){
-    char buf = charGet(g);
+    char buf = characterGet(g);
     return (int)buf;
 }
 
@@ -42,12 +42,12 @@ void characterSet( Character g, char value ){
 }
 
 char * characterToString( Character g ){
-    char *buf = malloc(2);;
-    buf[0] = charGet(g);
+    char *buf = malloc(2);
+    buf[0] = characterGet(g);
     buf[1] = '\0';
     return buf;
 }
 
 void characterPrint(Generic *g){
-    printf("%c", charGet(g));
+    printf("%c", characterGet(g));
 }

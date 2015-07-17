@@ -30,6 +30,7 @@ extern "C" {
     
 #include <stdio.h>   
 #include "FrameWork.h"
+#include "Const.h"
 
 /** @defgroup hs TDA Generic
  * Estas definiciones y funciones componenen el TDA Generic
@@ -39,7 +40,8 @@ extern "C" {
 /**
 * @brief Definicion del tipo de dato Generic, el cual permite crear variables a las cuales se les puede asignar cualquier tipo de dato.
 */
-typedef void * Generic;
+typedef void *Generic;
+    
 
 /**
 * @brief Definicion de las funciones que pueden leer una linea de un archivo
@@ -52,7 +54,7 @@ typedef Generic (*readfn)(FILE *F);
  * compararlos y retornar 0 si son iguales, 1 si el primero es mayor que el
  * segundo y -1 si el primero es menor que el segundo
 */
-typedef CmpEstate (*cmpfn)(Generic, Generic);
+typedef CmpState (*cmpfn)(Generic, Generic);
 
 /**
 * @brief Definicion de las funciones que dado un generico pueden
@@ -68,40 +70,16 @@ typedef int (*writefn)(FILE *pf, Generic g);
 
 typedef Generic (*readSeekfn)(FILE *pf, fpos_t *g);
 
-#ifndef
-#define BUFFER_STRING_FILE "tmp.data" 
+#ifndef BUFFER_STRING_FILE
+    #define BUFFER_STRING_FILE "tmp.data" 
 #endif
 
-//Numeric Constants for better visualization of data
-#define ACTUALIZAR "a+"
-#define READ "r"
-#define WRITE "w"
-#define REWRITE "w+"
-#define READ_AND_WRITE "r+"
-#define MAX_BUFF 50000
-#define MIN_BUFF 20
-
-//Funciones de "Cast" para tipos de datos basicos
-#define STRING_CAST(void) ((char*)void)
-#define INT_PTR_CAST(void) ((int*)void)
-#define CHAR_CAST(void) ((char)void)
-#define INT_CAST(void) ((int)void)
-#define FLOAT_CAST(void) ((float)void)
-#define INT_PTR(int) (INT_POINTER_CAST(integerNew(int)))
-#define CHAR_TO_INT_PTR(char) (INT_POINTER_CAST(integerNew(atoi(char))))
-#define INT_CONVERT_TO_STRING(int) (ItoStr(int,10))
-
-//Funciones para simplificar la asignacion de memoria dinamica
-#define STRING_NEW_MAX() (STRING_CAST(malloc(sizeof(char)*MAX_BUFF)))
-#define STRING_NEW_MIN() (STRING_CAST(malloc(sizeof(char)*MIN_BUFF)))
-#define NEW(type) ((type*)malloc(sizeof(type)))
-#define NEW_ARRAY(type,num_elem) (malloc(sizeof(type)*num_elem))
-
-
-#define SELECT(s, v1, v2)   ((s) ? (v1) : (v2))
-#define IN ,
-#define FOR_EACH(ini, cond, increment) (for(ini;cond;increment))
-
+typedef struct GenericClass{ 
+    Generic data;
+    int(*equals)(Generic data);
+    int (*compareTo)(Generic data,cmpfn fn);
+    char *(*toString)(const char *format);
+}GenericClass;
 
 int equals(Generic a, Generic b);
 

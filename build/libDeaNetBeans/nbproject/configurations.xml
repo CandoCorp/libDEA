@@ -5,11 +5,21 @@
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="include" displayName="include" projectFiles="true">
+        <itemPath>/Users/kevincando/Documents/libDEA/include/Const.h</itemPath>
         <itemPath>../../include/FrameWork.h</itemPath>
+        <itemPath>/Users/kevincando/Documents/libDEA/include/GenFunctions.h</itemPath>
+        <itemPath>/Users/kevincando/Documents/libDEA/include/MemManagement.h</itemPath>
+        <itemPath>/Users/kevincando/Documents/libDEA/include/String.h</itemPath>
+        <itemPath>/Users/kevincando/Documents/libDEA/include/StringTokenizer.h</itemPath>
+        <itemPath>/Users/kevincando/Documents/libDEA/include/character.h</itemPath>
+        <itemPath>/Users/kevincando/Documents/libDEA/include/double.h</itemPath>
+        <itemPath>/Users/kevincando/Documents/libDEA/include/exceptions.h</itemPath>
+        <itemPath>/Users/kevincando/Documents/libDEA/include/float.h</itemPath>
         <itemPath>../../include/generic.h</itemPath>
         <itemPath>../../include/graph.h</itemPath>
         <itemPath>../../include/hashmap.h</itemPath>
         <itemPath>../../include/heap.h</itemPath>
+        <itemPath>/Users/kevincando/Documents/libDEA/include/integer.h</itemPath>
         <itemPath>../../include/list.h</itemPath>
         <itemPath>../../include/nodelist.h</itemPath>
         <itemPath>../../include/nodetree.h</itemPath>
@@ -28,10 +38,14 @@
                    projectFiles="true">
       <logicalFolder name="src" displayName="src" projectFiles="true">
         <itemPath>../../src/FrameWork.c</itemPath>
+        <itemPath>/Users/kevincando/Documents/libDEA/src/character.c</itemPath>
+        <itemPath>/Users/kevincando/Documents/libDEA/src/double.c</itemPath>
+        <itemPath>/Users/kevincando/Documents/libDEA/src/float.c</itemPath>
         <itemPath>../../src/generic.c</itemPath>
         <itemPath>../../src/graph.c</itemPath>
         <itemPath>../../src/hashmap.c</itemPath>
         <itemPath>../../src/heap.c</itemPath>
+        <itemPath>/Users/kevincando/Documents/libDEA/src/integer.c</itemPath>
         <itemPath>../../src/list.c</itemPath>
         <itemPath>../../src/nodelist.c</itemPath>
         <itemPath>../../src/nodetree.c</itemPath>
@@ -40,11 +54,18 @@
         <itemPath>../../src/stack.c</itemPath>
         <itemPath>../../src/tree.c</itemPath>
       </logicalFolder>
+      <itemPath>/Users/kevincando/Documents/libDEA/include/exceptions.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
                    projectFiles="false"
                    kind="TEST_LOGICAL_FOLDER">
+      <logicalFolder name="f1"
+                     displayName="Mem_managment"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>/Users/kevincando/Documents/libDEA/include/tests/Mem_managment_test.c</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -93,20 +114,6 @@
       </compileType>
       <item path="../../include/FrameWork.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../../include/String.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="../../include/String.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../include/StringTokenizer.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="../../include/StringTokenizer.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../include/character.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../include/double.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../include/float.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="../../include/generic.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../include/graph.h" ex="false" tool="3" flavor2="0">
@@ -114,8 +121,6 @@
       <item path="../../include/hashmap.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../include/heap.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../include/integer.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../include/list.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -133,12 +138,6 @@
       </item>
       <item path="../../src/FrameWork.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="../../src/character.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="../../src/double.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="../../src/float.c" ex="false" tool="0" flavor2="0">
-      </item>
       <item path="../../src/generic.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../../src/graph.c" ex="false" tool="0" flavor2="0">
@@ -146,8 +145,6 @@
       <item path="../../src/hashmap.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../../src/heap.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="../../src/integer.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../../src/list.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -163,6 +160,102 @@
       </item>
       <item path="../../src/tree.c" ex="false" tool="0" flavor2="0">
       </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/Const.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/GenFunctions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/MemManagement.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/String.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/StringTokenizer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/character.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/double.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/exceptions.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/exceptions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/float.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/integer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/tests/Mem_managment_test.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/src/character.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/src/double.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/src/float.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/src/integer.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+          <commandlineTool>gcc</commandlineTool>
+        </linkerTool>
+      </folder>
     </conf>
     <conf name="Release" type="3">
       <toolsSet>
@@ -188,20 +281,6 @@
       </compileType>
       <item path="../../include/FrameWork.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../../include/String.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="../../include/String.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../include/StringTokenizer.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="../../include/StringTokenizer.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../include/character.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../include/double.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../include/float.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="../../include/generic.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../include/graph.h" ex="false" tool="3" flavor2="0">
@@ -209,8 +288,6 @@
       <item path="../../include/hashmap.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../include/heap.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../include/integer.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../include/list.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -228,12 +305,6 @@
       </item>
       <item path="../../src/FrameWork.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="../../src/character.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="../../src/double.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="../../src/float.c" ex="false" tool="0" flavor2="0">
-      </item>
       <item path="../../src/generic.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../../src/graph.c" ex="false" tool="0" flavor2="0">
@@ -241,8 +312,6 @@
       <item path="../../src/hashmap.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../../src/heap.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="../../src/integer.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../../src/list.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -258,6 +327,101 @@
       </item>
       <item path="../../src/tree.c" ex="false" tool="0" flavor2="0">
       </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/Const.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/GenFunctions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/MemManagement.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/String.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/StringTokenizer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/character.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/double.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/exceptions.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/exceptions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/float.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/integer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/tests/Mem_managment_test.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/src/character.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/src/double.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/src/float.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/src/integer.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+        </linkerTool>
+      </folder>
     </conf>
   </confs>
 </configurationDescriptor>

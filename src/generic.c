@@ -17,6 +17,8 @@
 * @date 03/28/2015
 */
 int equals(Generic a, Generic b){
+    GenericClass A;
+    A.compareTo = compareTo;
     
 }
 

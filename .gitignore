@@ -1,12 +1,17 @@
-/build/
-/build/libDeaNetBeans//nbproject/private/
-/build/libDeaNetBeans//nbproject/
-/build/libDEAVisualStudio/
-/build/libDEAVisualStudio/libDEA/ipch/
-/build/libDEAVisualStudio/libDEA/libDEA/
-/build/libDEA_XCode/libDEA_XCode.xcodeproj/
-/build/libDEA_XCode/libDEA_XCode.xcodeproj/project.xcworkspace/
-/build/libDEA_XCode/libDEA_XCode.xcodeproj/xcurserdata/
+
+# Visual Studio Project Files
+*.vcxproj
+*.filters
+*.user
+*.sdf
+*.sln
+*.suo
+
+# NetBeans Project Files
+*.xml
+*.mk
+*.bash
+*.properties
 
 # XCode Project Archives
 *.pbxproj
@@ -19,6 +24,7 @@
 *.ko
 *.obj
 *.elf
+#.*.o.d
 
 # Precompiled Headers
 *.gch

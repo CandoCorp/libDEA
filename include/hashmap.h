@@ -19,7 +19,7 @@ extern "C" {
  * @{
  */
 	#define B 100
-	typedef enum {EMPTY,FULL,DELETE} State;
+	typedef enum {EMPTY_STATE,FULL,DELETE} State;
 /**
 * @brief Definicion del tipo de dato 
 */
