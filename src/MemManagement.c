@@ -22,6 +22,26 @@ void init_table();
 
 int find_ref(void *ptr);
 
+inline void *new_malloc(size_t value, int type){
+    void add_ref(void *p, int type);
+    if(value IS 0)
+        return NULL;
+    
+    void *ptr = malloc(value);
+    
+    if(ptr != NULL){
+        add_ref(ptr, type);
+        return ptr;
+    }
+    
+    return NULL;
+}
+
+inline void destroy(void *ptr){
+    void remove_ref (void *ptr);
+    remove_ref(ptr);
+}
+
 int is_ref_Empty(address *a){
     if(strlen(a->addr) IS EMPTY)
         return EMPTY;
