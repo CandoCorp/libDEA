@@ -14,8 +14,9 @@ extern "C" {
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "generic.h"
 
-#include "character.h"
+#include <setjmp.h>
     
 enum _Exception {
     NullPointer = 0,
@@ -23,25 +24,286 @@ enum _Exception {
     IllegalArgument,        
     NegativeArraySize,
     ArrayIndexOutOfBounds,
-    ArithmeticException        
+    ArithmeitcException,
+    NoFileFound, 
+    IllegalAccess,
+    Instantiation,
+    ClassNotFound,
+    ClassNotSupported,
+    IndexOutOfBounds
 };
 
-typedef _Exception Exception;
+typedef enum _Exception Exception;
 
 static int *user_defined_exceptions = NULL;
 
-typedef void *(_gen_method) (void*,...);
+#define TRY 
 
-typedef void (_gen_procedure)(void*,...);
+#define CATCH(Exception_name) Exception_name##:
+
+#define TRY_FUNC(x) switch(x){\
+                        case NullPointer:{\
+                            goto NullPointer;\
+                        }break;\
+                        case ArrayStore:{\
+                            goto ArrayStore;\
+                        }break;\
+                        case IllegalArgument:{\
+                            goto IllegalArgument;\
+                        }break;\
+                        case NegativeArraySize:{\
+                            goto NegativeArraySize;\
+                        }break;\
+                        case ArrayIndexOutOfBounds:{\
+                            goto ArrayIndexOutOfBounds;\
+                        }break;\
+                        case ArithmeticException:{\
+                            goto ArithmeticException;\
+                        }break;\
+                        default:{\
+                            goto Exception;\
+                        }\
+                    }
+
+#define THROW(Exception) goto Exception 
+
+#define THROWS(...) 
+
+/* C syntax hacks.
+
+   Oh, god, I felt like an inventor after writing these.
+   Clearly, code
+
+     for (start (), J = 1; J; end (), J = 0)
+       code ();
+
+   Does this:
+   1) Executes START
+   2) Executes CODE
+   3) Executes END
+   4) ...And terminates.
+
+   It also works if nested (think why yourself.)
+*/
+
+/* Execute START, then block after the macro, and finally END. */
+
+#define __EXC_BLOCK(start, end)              \
+  for (start, __exc_block_pass = 1;          \
+       __exc_block_pass;                     \
+       end, __exc_block_pass = 0)
+
+/* Likewise, but START block is empty. */
+
+#define __EXC_END(end)                       \
+  for (__exc_block_pass = 1;                 \
+       __exc_block_pass;                     \
+       end, __exc_block_pass = 0)
+
+
+
+/* For function name.  GCC includes things which expand to
+   the name of current function's name.  */
+
+#if (!defined (__GNUC__) || __GNUC__ < 2 || \
+     __GNUC_MINOR__ < (defined (__cplusplus) ? 6 : 4))
+   /* Otherwise stick to unknown. */
+#  define __EXC_FUNCTION               (char *) 0
+#else
+#  define __EXC_FUNCTION	       __PRETTY_FUNCTION__
+#endif
+
+
+
+/* The exception value. */
+
+/* You'll want to make local changes to these.  For example, to use
+   your own exception structure. */
+
+/* Exception is by default an int.  Anyway, it can be anything from
+   string to some structure.
+
+   Whatever the implementation you choose, type name should be
+   defined as __EXC_TYPE.  The THROW (and ON) macro accepts as
+   many arguments, s it is given, so your function may use all
+   the power of argument passing.  Define your function's name
+   as __EXC_MAKE. Exceptions are compared in ON macro.  You
+   should define comparing function as __EXC_EQ.
+
+   For example, if you'd like to use strings in place of numbers,
+   use this snippet:
+
+   1) #define __EXC_TYPE         char *
+   2) #define __EXC_EQ(s1, s2)   (strcasecmp (s1, s2) == 0)
+   3) #define __EXC_PRINT(e, stream) \
+	         fprintf (stream, "%s", e)
+
+*/
+
+#ifndef __EXC_TYPE
+#  define __EXC_TYPE               int
+
+/* Include the default __EXC_PRINT. */
+#  define __EXC_TYPE_DEFAULT
+#endif
+
+#ifndef __EXC_MAKE
+#  define __EXC_MAKE(code...)      code
+#endif
+
+#ifndef __EXC_ON
+#  define __EXC_ON                 __EXC_MAKE
+#endif
+
+#ifndef __EXC_EQ
+#  define __EXC_EQ(c1, c2)         ((c1) == (c2))
+#endif
 
 
-inline void Try(Exception e,...){
-    
-}
+/* Optional exception printer.  This is used for debugging purposes
+   only.  Define yourself's one as __EXC_PRINT. Arguments are
+   exception of type __EXC_TYPE and stream to print to. */
 
-inline void Catch(Exception e,void (*catch_method) (void*,...)){
-    
-}
+#if !defined (__EXC_PRINT) && defined (__EXC_TYPE_DEFAULT)
+#  define __EXC_PRINT(e, stream)             \
+     fprintf (stream, "%d", e)
+#endif
+
+
+
+/* All variables are declared volatile to force non-optimization. 
+   They should also be declared as thread-local. */
+
+/* This counter is used by __EXC_BLOCK.  It works well even if nested. */
+extern volatile int __exc_block_pass;
+
+/* Flag to be set by ON? */
+extern volatile int __exc_handled;
+
+/* For indexing every call to TRY. */
+extern volatile unsigned __exc_tries;
+
+/* These identify the thrown exception.  File, function, line and
+   the exception itself. */
+extern char *__exc_file;
+extern char *__exc_function;
+extern unsigned __exc_line;
+extern volatile __EXC_TYPE __exc_code;
+
+/* Stack is actually a linked list of catcher cells. */
+struct __exc_stack
+{
+  unsigned num;
+  jmp_buf j;
+  struct __exc_stack *prev;
+};
+
+/* This is the global stack of catchers. */
+extern struct __exc_stack *__exc_global;
+
+
+
+/* Debugging of exceptions.  Nothing interesting for you.  (Just for me.) 
+   Anyway, it generates many (really) messages telling what is going
+   to happen.  I order to work with it successfully, you should define
+   __EXC_PRINT (see above.)
+*/
+#ifdef __EXC_DEBUG
+#  include <stdarg.h>
+#  ifndef __EXC_STREAM
+/* I often redirect debugging information to a file. */
+#    define __EXC_STREAM                     stdout
+#  endif
+
+/* Prints error message. */
+extern void __exc_debug(char *, ...);
+
+/* For printing __exc_global. */
+extern void __exc_print_global(void);
+
+#else
+#  define __exc_debug(args...)
+#  define __exc_print_global()
+#endif
+
+
+
+/* Prints information about exception.  Called in debug mode, or when
+   no handler is found. */
+extern void __exc_print (FILE *, char *, char *,
+			 unsigned, __EXC_TYPE);
+
+/* Pop exception from stack, putting into J (if nonzero).  If stack is
+   empty, print error message and exit.  Used in EXCEPT. */
+extern void __exc_pop (jmp_buf *);
+
+
+
+/* Push J onto the stack, with RETURNED as value from SETJMP.  Return
+   nonzero, if RETURNED is 0.  If RETURNED is nonzero, returns 0.
+   Used in TRY. */
+extern int __exc_push (jmp_buf *, int);
+
+
+
+/* Throw an exception in FILE at LINE, with code CODE.  Used in THROW. */
+extern __attribute__((noreturn)) void __exc_throw (char *, char *, unsigned, __EXC_TYPE);
+
+/* Throw it in upper level of catcher blocks. */
+extern void __exc_rethrow ();
+
+
+
+/* What a f...  Somewhy I can't get GCC's __attribute__ working here
+   to tell that FILE and LINE are unused in non-debuging mode. */
+
+/* TODO: define __attribute__ (foo) to do nothing if this is not GCC.
+   (Check if GNUC is predefined.) */
+
+extern int __exc_on (char *, char *, unsigned, __EXC_TYPE);
+
+
+
+/* Start catching. */
+
+/* Obviously, there is no way to check if appropriate EXCEPT exists.
+   Its non-exsistence won't do segfault etc.; program will simply do
+   the thing after TRY, without any error handling.  Raising from
+   there works. */
+
+#define try                                  \
+  if (({jmp_buf __exc_j;                     \
+        int __exc_ret;                       \
+        __exc_ret = setjmp (__exc_j);        \
+        __exc_push (&__exc_j, __exc_ret);})) \
+    __EXC_END(__exc_pop (0))
+
+#define throw(code...)                       \
+  __exc_throw (__FILE__, __EXC_FUNCTION,     \
+	       __LINE__, __EXC_MAKE (code))
+
+/* THROW in EXCEPT block won't go into itself, because corresping item
+   from __EXC_GLOBAL was already popped. */
+
+#define except                               \
+  else                                       \
+    __EXC_BLOCK (__exc_handled = 0,          \
+                 ({ if (__exc_handled == 0)  \
+                     __exc_rethrow (); }))
+
+/* EXPECT is an alias for EXCEPT. */
+
+#define expect                         except
+
+/* CATCH is an alias for EXCEPT. */
+
+#define catch                          except
+
+/* Try to handle an exception. */
+
+#define on(code...)                          \
+  if (__exc_on (__FILE__, __EXC_FUNCTION,    \
+		__LINE__, __EXC_ON (code)))
 
 #ifdef	__cplusplus
 }

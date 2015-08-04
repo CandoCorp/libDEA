@@ -12,6 +12,10 @@
 extern "C" {
 #endif
 
+#ifndef ISO646_H
+    #include <iso646.h>
+#endif
+
 // String templates for better understanding of code    
 #define APPEND "a+"
 #define READ "r"
@@ -27,17 +31,28 @@ extern "C" {
 #define IS_LESS_THAT <
 #define IS_GREATER_THAT >
 #define IS_LESS_EQUAL_THAT <=
-#define IS_GREATER_THAT >=
+#define IS_GREATER_EQUAL_THAT >=
     
-typedef enum Estado_Retorno{ 
-	ERROR=-1, EXITO=1 
-}Estado_Retorno;
-
+#define AND &&
+#define OR ||
+#define BIT_AND &
+#define BIT_OR |
+#define NOT !
+#define NOT_EQ !=
+#define XOR ^
+#define XOR_EQ ^=
+#define OR_EQ |=
+#define AND_EQ &=
+#define COMPL ~
+    
+#define elif else if
+        
 typedef enum _CmpState{ LESS=-1, EQUAL, GREATER }CmpState;
 
 enum{ MAX_BUFF = 64000, MIN_BUFF = 20 };
 
 enum{ EMPTY = 0, NOT_EMPTY = 1 };
+
 #ifdef __cplusplus
 }
 #endif

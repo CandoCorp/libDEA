@@ -5,9 +5,14 @@
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="include" displayName="include" projectFiles="true">
+        <itemPath>/Users/kevincando/Documents/libDEA/include/ActiveLanguage.h</itemPath>
         <itemPath>/Users/kevincando/Documents/libDEA/include/Const.h</itemPath>
+        <itemPath>/Users/kevincando/Documents/libDEA/include/Database.h</itemPath>
+        <itemPath>/Users/kevincando/Documents/libDEA/include/DefLang.h</itemPath>
+        <itemPath>/Users/kevincando/Documents/libDEA/include/ErrorHandler.h</itemPath>
         <itemPath>../../include/FrameWork.h</itemPath>
         <itemPath>/Users/kevincando/Documents/libDEA/include/GenFunctions.h</itemPath>
+        <itemPath>/Users/kevincando/Documents/libDEA/include/GenObject.h</itemPath>
         <itemPath>/Users/kevincando/Documents/libDEA/include/MemManagement.h</itemPath>
         <itemPath>/Users/kevincando/Documents/libDEA/include/String.h</itemPath>
         <itemPath>/Users/kevincando/Documents/libDEA/include/StringTokenizer.h</itemPath>
@@ -37,9 +42,13 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="src" displayName="src" projectFiles="true">
+        <itemPath>/Users/kevincando/Documents/libDEA/include/Database.c</itemPath>
         <itemPath>../../src/FrameWork.c</itemPath>
+        <itemPath>/Users/kevincando/Documents/libDEA/src/GenObject.c</itemPath>
+        <itemPath>/Users/kevincando/Documents/libDEA/src/MemManagement.c</itemPath>
         <itemPath>/Users/kevincando/Documents/libDEA/src/character.c</itemPath>
         <itemPath>/Users/kevincando/Documents/libDEA/src/double.c</itemPath>
+        <itemPath>/Users/kevincando/Documents/libDEA/include/exceptions.c</itemPath>
         <itemPath>/Users/kevincando/Documents/libDEA/src/float.c</itemPath>
         <itemPath>../../src/generic.c</itemPath>
         <itemPath>../../src/graph.c</itemPath>
@@ -54,7 +63,6 @@
         <itemPath>../../src/stack.c</itemPath>
         <itemPath>../../src/tree.c</itemPath>
       </logicalFolder>
-      <itemPath>/Users/kevincando/Documents/libDEA/include/exceptions.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -160,12 +168,42 @@
       </item>
       <item path="../../src/tree.c" ex="false" tool="0" flavor2="0">
       </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/ActiveLanguage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="/Users/kevincando/Documents/libDEA/include/Const.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/Database.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/Database.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/DefLang.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/ErrorHandler.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="/Users/kevincando/Documents/libDEA/include/GenFunctions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/GenObject.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -216,6 +254,16 @@
             flavor2="0">
       </item>
       <item path="/Users/kevincando/Documents/libDEA/include/tests/Mem_managment_test.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/src/GenObject.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/src/MemManagement.c"
             ex="false"
             tool="0"
             flavor2="0">
@@ -327,12 +375,42 @@
       </item>
       <item path="../../src/tree.c" ex="false" tool="0" flavor2="0">
       </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/ActiveLanguage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="/Users/kevincando/Documents/libDEA/include/Const.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/Database.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/Database.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/DefLang.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/ErrorHandler.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="/Users/kevincando/Documents/libDEA/include/GenFunctions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/include/GenObject.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -383,6 +461,16 @@
             flavor2="0">
       </item>
       <item path="/Users/kevincando/Documents/libDEA/include/tests/Mem_managment_test.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/src/GenObject.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/Users/kevincando/Documents/libDEA/src/MemManagement.c"
             ex="false"
             tool="0"
             flavor2="0">

@@ -21,7 +21,7 @@
 *
 * @date 03/28/2015
 */
-#ifndef     GENERIC_H
+#ifndef GENERIC_H
 #define	GENERIC_H
 
 #ifdef	__cplusplus
@@ -29,9 +29,9 @@ extern "C" {
 #endif
     
 #include <stdio.h>   
-#include "FrameWork.h"
 #include "Const.h"
-
+#include "ErrorHandler.h"
+    
 /** @defgroup hs TDA Generic
  * Estas definiciones y funciones componenen el TDA Generic
  * @{
@@ -62,7 +62,7 @@ typedef CmpState (*cmpfn)(Generic, Generic);
 */
 typedef void (*printfn) (Generic);
 
-typedef char* (*sprintfn) (const char *format,...);
+typedef char* (*sprintfn) (char const *buffer, Generic);
 
 typedef Generic (*getkeyfn) (Generic);
 
@@ -70,30 +70,9 @@ typedef int (*writefn)(FILE *pf, Generic g);
 
 typedef Generic (*readSeekfn)(FILE *pf, fpos_t *g);
 
-#ifndef BUFFER_STRING_FILE
-    #define BUFFER_STRING_FILE "tmp.data" 
-#endif
+typedef void (*Gen_method) (Generic data, ...);
 
-typedef struct GenericClass{ 
-    Generic data;
-    int(*equals)(Generic data);
-    int (*compareTo)(Generic data,cmpfn fn);
-    char *(*toString)(const char *format);
-}GenericClass;
-
-int equals(Generic a, Generic b);
-
-int compareTo(Generic a, Generic b, cmpfn fn);
-
-char *toString(const char* format, ...);
-
-int StringWriteToFile(FILE *pf, Generic string);
-
-Generic StringReadFromFile(FILE *pf);
-
-Generic StringSeekReadFromFile(FILE *pf, fpos_t *pos);
-
-int Fseek(FILE *pf, readSeekfn leerLinea, Generic id, cmpfn comp);
+typedef void *(*Gen_function) (Generic data,...);
 
 #ifdef	__cplusplus
 }
