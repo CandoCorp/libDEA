@@ -48,8 +48,7 @@ inline void *new_calloc(size_t numElem, size_t size, int type){
     if(numElem IS 0 OR size IS 0)
         return NULL;
     
-    void *ptr = NULL;
-    //void *ptr = CALLOC(numElem,size);
+    void *ptr = calloc(numElem,size);
     
     if(ptr IS_NOT NULL){
         add_ref(ptr,type);

@@ -10,6 +10,10 @@
 */
 
 //#define INT_SIZE_STRING ((CHAR_BIT * sizeof(int) - 1) / 3 + 2)
+GenObject IntegerProto = {
+    .toString = integerToString(Integer g);
+    .init ;
+}
 
 Integer integerNew( int value ){
     Integer g = NEW(int);

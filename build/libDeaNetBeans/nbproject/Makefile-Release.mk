@@ -46,8 +46,23 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1445274692/quebrado.o \
 	${OBJECTDIR}/_ext/1445274692/queue.o \
 	${OBJECTDIR}/_ext/1445274692/stack.o \
-	${OBJECTDIR}/_ext/1445274692/tree.o
+	${OBJECTDIR}/_ext/1445274692/tree.o \
+	${OBJECTDIR}/_ext/1479848513/Database.o \
+	${OBJECTDIR}/_ext/1479848513/ErrorHandler.o \
+	${OBJECTDIR}/_ext/1479848513/GenObject.o \
+	${OBJECTDIR}/_ext/1479848513/MemManagement.o \
+	${OBJECTDIR}/_ext/1479848513/character.o \
+	${OBJECTDIR}/_ext/1479848513/double.o \
+	${OBJECTDIR}/_ext/1479848513/exceptions.o \
+	${OBJECTDIR}/_ext/1479848513/float.o \
+	${OBJECTDIR}/_ext/1479848513/integer.o
 
+# Test Directory
+TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
+
+# Test Files
+TESTFILES= \
+	${TESTDIR}/TestFiles/f1
 
 # C Compiler Flags
 CFLAGS=
@@ -135,8 +150,348 @@ ${OBJECTDIR}/_ext/1445274692/tree.o: ../../src/tree.c
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1445274692/tree.o ../../src/tree.c
 
+${OBJECTDIR}/_ext/1479848513/Database.o: /home/kevin/libDEA/src/Database.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1479848513
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1479848513/Database.o /home/kevin/libDEA/src/Database.c
+
+${OBJECTDIR}/_ext/1479848513/ErrorHandler.o: /home/kevin/libDEA/src/ErrorHandler.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1479848513
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1479848513/ErrorHandler.o /home/kevin/libDEA/src/ErrorHandler.c
+
+${OBJECTDIR}/_ext/1479848513/GenObject.o: /home/kevin/libDEA/src/GenObject.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1479848513
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1479848513/GenObject.o /home/kevin/libDEA/src/GenObject.c
+
+${OBJECTDIR}/_ext/1479848513/MemManagement.o: /home/kevin/libDEA/src/MemManagement.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1479848513
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1479848513/MemManagement.o /home/kevin/libDEA/src/MemManagement.c
+
+${OBJECTDIR}/_ext/1479848513/character.o: /home/kevin/libDEA/src/character.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1479848513
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1479848513/character.o /home/kevin/libDEA/src/character.c
+
+${OBJECTDIR}/_ext/1479848513/double.o: /home/kevin/libDEA/src/double.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1479848513
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1479848513/double.o /home/kevin/libDEA/src/double.c
+
+${OBJECTDIR}/_ext/1479848513/exceptions.o: /home/kevin/libDEA/src/exceptions.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1479848513
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1479848513/exceptions.o /home/kevin/libDEA/src/exceptions.c
+
+${OBJECTDIR}/_ext/1479848513/float.o: /home/kevin/libDEA/src/float.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1479848513
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1479848513/float.o /home/kevin/libDEA/src/float.c
+
+${OBJECTDIR}/_ext/1479848513/integer.o: /home/kevin/libDEA/src/integer.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1479848513
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1479848513/integer.o /home/kevin/libDEA/src/integer.c
+
 # Subprojects
 .build-subprojects:
+
+# Build Test Targets
+.build-tests-conf: .build-conf ${TESTFILES}
+${TESTDIR}/TestFiles/f1: ${TESTDIR}/_ext/1577270788/Mem_managment_test.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.c}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} 
+
+
+${TESTDIR}/_ext/1577270788/Mem_managment_test.o: /Users/kevincando/Documents/libDEA/include/tests/Mem_managment_test.c 
+	${MKDIR} -p ${TESTDIR}/_ext/1577270788
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/1577270788/Mem_managment_test.o /Users/kevincando/Documents/libDEA/include/tests/Mem_managment_test.c
+
+
+${OBJECTDIR}/_ext/1445274692/FrameWork_nomain.o: ${OBJECTDIR}/_ext/1445274692/FrameWork.o ../../src/FrameWork.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1445274692
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1445274692/FrameWork.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1445274692/FrameWork_nomain.o ../../src/FrameWork.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1445274692/FrameWork.o ${OBJECTDIR}/_ext/1445274692/FrameWork_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1445274692/generic_nomain.o: ${OBJECTDIR}/_ext/1445274692/generic.o ../../src/generic.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1445274692
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1445274692/generic.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1445274692/generic_nomain.o ../../src/generic.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1445274692/generic.o ${OBJECTDIR}/_ext/1445274692/generic_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1445274692/graph_nomain.o: ${OBJECTDIR}/_ext/1445274692/graph.o ../../src/graph.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1445274692
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1445274692/graph.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1445274692/graph_nomain.o ../../src/graph.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1445274692/graph.o ${OBJECTDIR}/_ext/1445274692/graph_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1445274692/hashmap_nomain.o: ${OBJECTDIR}/_ext/1445274692/hashmap.o ../../src/hashmap.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1445274692
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1445274692/hashmap.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1445274692/hashmap_nomain.o ../../src/hashmap.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1445274692/hashmap.o ${OBJECTDIR}/_ext/1445274692/hashmap_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1445274692/heap_nomain.o: ${OBJECTDIR}/_ext/1445274692/heap.o ../../src/heap.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1445274692
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1445274692/heap.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1445274692/heap_nomain.o ../../src/heap.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1445274692/heap.o ${OBJECTDIR}/_ext/1445274692/heap_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1445274692/list_nomain.o: ${OBJECTDIR}/_ext/1445274692/list.o ../../src/list.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1445274692
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1445274692/list.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1445274692/list_nomain.o ../../src/list.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1445274692/list.o ${OBJECTDIR}/_ext/1445274692/list_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1445274692/nodelist_nomain.o: ${OBJECTDIR}/_ext/1445274692/nodelist.o ../../src/nodelist.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1445274692
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1445274692/nodelist.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1445274692/nodelist_nomain.o ../../src/nodelist.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1445274692/nodelist.o ${OBJECTDIR}/_ext/1445274692/nodelist_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1445274692/nodetree_nomain.o: ${OBJECTDIR}/_ext/1445274692/nodetree.o ../../src/nodetree.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1445274692
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1445274692/nodetree.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1445274692/nodetree_nomain.o ../../src/nodetree.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1445274692/nodetree.o ${OBJECTDIR}/_ext/1445274692/nodetree_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1445274692/quebrado_nomain.o: ${OBJECTDIR}/_ext/1445274692/quebrado.o ../../src/quebrado.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1445274692
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1445274692/quebrado.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1445274692/quebrado_nomain.o ../../src/quebrado.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1445274692/quebrado.o ${OBJECTDIR}/_ext/1445274692/quebrado_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1445274692/queue_nomain.o: ${OBJECTDIR}/_ext/1445274692/queue.o ../../src/queue.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1445274692
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1445274692/queue.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1445274692/queue_nomain.o ../../src/queue.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1445274692/queue.o ${OBJECTDIR}/_ext/1445274692/queue_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1445274692/stack_nomain.o: ${OBJECTDIR}/_ext/1445274692/stack.o ../../src/stack.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1445274692
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1445274692/stack.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1445274692/stack_nomain.o ../../src/stack.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1445274692/stack.o ${OBJECTDIR}/_ext/1445274692/stack_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1445274692/tree_nomain.o: ${OBJECTDIR}/_ext/1445274692/tree.o ../../src/tree.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1445274692
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1445274692/tree.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1445274692/tree_nomain.o ../../src/tree.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1445274692/tree.o ${OBJECTDIR}/_ext/1445274692/tree_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1479848513/Database_nomain.o: ${OBJECTDIR}/_ext/1479848513/Database.o /home/kevin/libDEA/src/Database.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1479848513
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1479848513/Database.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1479848513/Database_nomain.o /home/kevin/libDEA/src/Database.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1479848513/Database.o ${OBJECTDIR}/_ext/1479848513/Database_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1479848513/ErrorHandler_nomain.o: ${OBJECTDIR}/_ext/1479848513/ErrorHandler.o /home/kevin/libDEA/src/ErrorHandler.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1479848513
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1479848513/ErrorHandler.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1479848513/ErrorHandler_nomain.o /home/kevin/libDEA/src/ErrorHandler.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1479848513/ErrorHandler.o ${OBJECTDIR}/_ext/1479848513/ErrorHandler_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1479848513/GenObject_nomain.o: ${OBJECTDIR}/_ext/1479848513/GenObject.o /home/kevin/libDEA/src/GenObject.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1479848513
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1479848513/GenObject.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1479848513/GenObject_nomain.o /home/kevin/libDEA/src/GenObject.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1479848513/GenObject.o ${OBJECTDIR}/_ext/1479848513/GenObject_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1479848513/MemManagement_nomain.o: ${OBJECTDIR}/_ext/1479848513/MemManagement.o /home/kevin/libDEA/src/MemManagement.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1479848513
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1479848513/MemManagement.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1479848513/MemManagement_nomain.o /home/kevin/libDEA/src/MemManagement.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1479848513/MemManagement.o ${OBJECTDIR}/_ext/1479848513/MemManagement_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1479848513/character_nomain.o: ${OBJECTDIR}/_ext/1479848513/character.o /home/kevin/libDEA/src/character.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1479848513
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1479848513/character.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1479848513/character_nomain.o /home/kevin/libDEA/src/character.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1479848513/character.o ${OBJECTDIR}/_ext/1479848513/character_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1479848513/double_nomain.o: ${OBJECTDIR}/_ext/1479848513/double.o /home/kevin/libDEA/src/double.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1479848513
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1479848513/double.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1479848513/double_nomain.o /home/kevin/libDEA/src/double.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1479848513/double.o ${OBJECTDIR}/_ext/1479848513/double_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1479848513/exceptions_nomain.o: ${OBJECTDIR}/_ext/1479848513/exceptions.o /home/kevin/libDEA/src/exceptions.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1479848513
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1479848513/exceptions.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1479848513/exceptions_nomain.o /home/kevin/libDEA/src/exceptions.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1479848513/exceptions.o ${OBJECTDIR}/_ext/1479848513/exceptions_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1479848513/float_nomain.o: ${OBJECTDIR}/_ext/1479848513/float.o /home/kevin/libDEA/src/float.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1479848513
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1479848513/float.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1479848513/float_nomain.o /home/kevin/libDEA/src/float.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1479848513/float.o ${OBJECTDIR}/_ext/1479848513/float_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1479848513/integer_nomain.o: ${OBJECTDIR}/_ext/1479848513/integer.o /home/kevin/libDEA/src/integer.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1479848513
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1479848513/integer.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1479848513/integer_nomain.o /home/kevin/libDEA/src/integer.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1479848513/integer.o ${OBJECTDIR}/_ext/1479848513/integer_nomain.o;\
+	fi
+
+# Run Test Targets
+.test-conf:
+	@if [ "${TEST}" = "" ]; \
+	then  \
+	    ${TESTDIR}/TestFiles/f1 || true; \
+	else  \
+	    ./${TEST} || true; \
+	fi
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}

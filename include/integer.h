@@ -13,9 +13,10 @@
 extern "C" {
 #endif
     
-#include "generic.h"
+#include "GenFunctions.h"
+#include "GenObject.h"
     
-typedef Generic Integer;
+typedef GenObject Integer;
 
 
 /**

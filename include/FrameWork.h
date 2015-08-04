@@ -11,8 +11,6 @@ extern "C" {
 #include <stdbool.h>
 #include <complex.h>
     
-
-    
 #define SELECT(s, v1, v2)   ((s) ? (v1) : (v2))
 #define IN ,
 #define FOR_EACH(ini, cond, increment) (for(ini;cond;increment))
@@ -26,10 +24,9 @@ extern "C" {
 #define INT_CONVERT_TO_STRING(int) (ItoStr(int,10))
 
 // Functions to simplify the memory allocation
-#define STRING_NEW_MAX() (STRING_CAST(malloc(sizeof(char)*MAX_BUFF)))
-#define STRING_NEW_MIN() (STRING_CAST(malloc(sizeof(char)*MIN_BUFF)))
-#define TRY {
-    
+#define STRING_NEW_MAX() (STRING_CAST(malloc(sizeof(char)*100)))
+#define STRING_NEW_MIN() (STRING_CAST(malloc(sizeof(char)*10)))
+
 
 
 

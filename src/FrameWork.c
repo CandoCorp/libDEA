@@ -1,6 +1,7 @@
 #include "FrameWork.h"
 #include <string.h>
 
+/**\
 int StringWriteToFile(FILE *pf,Generic string){
 	if(pf!=NULL||string!=NULL){
 		fprintf(pf,"[");
@@ -41,7 +42,7 @@ Generic StringSeekReadFromFile(FILE *pf,fpos_t *pos){
 	return lee;
 }
 
-/*
+
 int ListCmp(List *L1,List *L2){
 	if(L1==L2||sizeof(L1)==sizeof(L2))	return IGUALES;
 	if(sizeof(L1)>=sizeof(L2))	return MAYOR;
