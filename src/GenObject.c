@@ -16,28 +16,54 @@
 * @date 03/28/2015
 */
 
-int equals(Generic self, Generic b){
-    if(self == b)
+int equals(GenObject self, GenObject that){
+    if(self == that)
         return 0;
     return 1;
 }
 
 int compareTo(Generic self, Generic b){
-    
+    return 1;
 }
 
-char *toString(Generic self, const char* format){
-    
+char *toString(GenObject self, const char* format){
+    return NULL;
 }
 
-int destroy(Generic self){
+int GenObject_destroy(Generic self){
+    GenObject *obj = self;
     
+    if(obj){
+        DESTROY(obj);
+    }
 }
 
 int init(Generic self){
     return 1;
 }
 
+void *GenObject_new(size_t size,GenObject proto){
+    
+    if(!proto.init) proto.init = init;
+    if(!proto.equals) proto.equals = equals;
+    if(!proto.compareTo) proto.compareTo = compareTo;
+    if(!proto.toString) proto.toString = toString;
+    if(!proto.destroy) proto.destroy = destroy;
+    
+    GenObject *this = new_calloc(1,size,1);
+    *this = proto;
+    
+    if(!this->init(this)){
+        this->destroy(this);
+        return NULL;
+    }else{
+        return this;
+    }
+}
+
+
+
+/**
 int StringWriteToFile(FILE *pf, Generic string){
     if(pf!=NULL||string!=NULL){
 		fprintf(pf,"[");
@@ -107,3 +133,4 @@ int compareWithOrderType(Generic g, Generic h, cmpfn cmp, int type){
         printf("a");
         
 }
+*/

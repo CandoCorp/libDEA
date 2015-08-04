@@ -13,6 +13,7 @@ extern "C" {
 #endif
 
 #include "generic.h"
+#include "MemManagement.h"
     
 #ifndef BUFFER_STRING_FILE
     #define BUFFER_STRING_FILE "tmp.data" 
@@ -20,24 +21,25 @@ extern "C" {
 
 typedef struct __GenericClass__{ 
     Generic data;
-    int(*equals)(Generic self,Generic data);
-    int (*compareTo)(Generic self,Generic data,cmpfn fn);
+    int dataType;
+    int(*equals)(GenObject self,GenObject data);
+    int (*compareTo)(Generic self,Generic data);
     char *(*toString)(Generic self, const char *format);
     int (*destroy)(Generic self);
     int (*init)(Generic self);
 }GenObject;
 
-int equals(Generic self, Generic b);
+int equals(GenObject self, GenObject that);
 
-int compareTo(Generic self, Generic b, cmpfn fn);
+int compareTo(Generic self, Generic b);
 
-char *toString(Generic self, const char* format);
+char *toString(GenObject self, const char* format);
 
-int destroy(Generic self);
+int GenObject_destroy(Generic self);
 
-int init(Generic self);
+int init(GenObject self);
 
-
+void *GenObject_new(size_t size,GenObject proto);
 
 int StringWriteToFile(FILE *pf, Generic string);
 

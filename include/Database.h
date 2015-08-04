@@ -30,7 +30,7 @@ struct __Address {
     char email[MAX_DATA];
 };
 
-typedef void* Address;
+typedef Generic Address;
 
 typedef struct __Database{
     
