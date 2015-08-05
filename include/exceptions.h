@@ -14,79 +14,33 @@ extern "C" {
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "generic.h"
+#include <string.h>
+//#include "generic.h"
 
 #include <setjmp.h>
     
-enum _Exception {
+enum __Exception {
     NullPointer = 0,
     ArrayStore,
     IllegalArgument,        
     NegativeArraySize,
     ArrayIndexOutOfBounds,
-    ArithmeitcException,
+    ArithmeticException,
     NoFileFound, 
     IllegalAccess,
     Instantiation,
     ClassNotFound,
     ClassNotSupported,
-    IndexOutOfBounds
+    IndexOutOfBounds,
+    LastException
 };
 
-typedef enum _Exception Exception;
 
-static int *user_defined_exceptions = NULL;
+typedef enum __Exception Exception;
 
-#define TRY 
+extern struct __UserExceptionList *UserExceptions;
 
-#define CATCH(Exception_name) Exception_name##:
 
-#define TRY_FUNC(x) switch(x){\
-                        case NullPointer:{\
-                            goto NullPointer;\
-                        }break;\
-                        case ArrayStore:{\
-                            goto ArrayStore;\
-                        }break;\
-                        case IllegalArgument:{\
-                            goto IllegalArgument;\
-                        }break;\
-                        case NegativeArraySize:{\
-                            goto NegativeArraySize;\
-                        }break;\
-                        case ArrayIndexOutOfBounds:{\
-                            goto ArrayIndexOutOfBounds;\
-                        }break;\
-                        case ArithmeticException:{\
-                            goto ArithmeticException;\
-                        }break;\
-                        default:{\
-                            goto Exception;\
-                        }\
-                    }
-
-#define THROW(Exception) goto Exception 
-
-#define THROWS(...) 
-
-/* C syntax hacks.
-
-   Oh, god, I felt like an inventor after writing these.
-   Clearly, code
-
-     for (start (), J = 1; J; end (), J = 0)
-       code ();
-
-   Does this:
-   1) Executes START
-   2) Executes CODE
-   3) Executes END
-   4) ...And terminates.
-
-   It also works if nested (think why yourself.)
-*/
-
-/* Execute START, then block after the macro, and finally END. */
 
 #define __EXC_BLOCK(start, end)              \
   for (start, __exc_block_pass = 1;          \
@@ -100,7 +54,6 @@ static int *user_defined_exceptions = NULL;
        __exc_block_pass;                     \
        end, __exc_block_pass = 0)
 
-
 
 /* For function name.  GCC includes things which expand to
    the name of current function's name.  */
@@ -141,7 +94,7 @@ static int *user_defined_exceptions = NULL;
 */
 
 #ifndef __EXC_TYPE
-#  define __EXC_TYPE               int
+#  define __EXC_TYPE               char * 
 
 /* Include the default __EXC_PRINT. */
 #  define __EXC_TYPE_DEFAULT
@@ -156,7 +109,7 @@ static int *user_defined_exceptions = NULL;
 #endif
 
 #ifndef __EXC_EQ
-#  define __EXC_EQ(c1, c2)         ((c1) == (c2))
+#  define __EXC_EQ(c1, c2)         (strcmp((c1),(c2)) == 0)
 #endif
 
 
@@ -166,10 +119,8 @@ static int *user_defined_exceptions = NULL;
 
 #if !defined (__EXC_PRINT) && defined (__EXC_TYPE_DEFAULT)
 #  define __EXC_PRINT(e, stream)             \
-     fprintf (stream, "%d", e)
+     fprintf (stream, "%s", e)
 #endif
-
-
 
 /* All variables are declared volatile to force non-optimization. 
    They should also be declared as thread-local. */
@@ -188,20 +139,13 @@ extern volatile unsigned __exc_tries;
 extern char *__exc_file;
 extern char *__exc_function;
 extern unsigned __exc_line;
-extern volatile __EXC_TYPE __exc_code;
-
-/* Stack is actually a linked list of catcher cells. */
-struct __exc_stack
-{
-  unsigned num;
-  jmp_buf j;
-  struct __exc_stack *prev;
-};
+extern __EXC_TYPE __exc_code;
 
 /* This is the global stack of catchers. */
 extern struct __exc_stack *__exc_global;
 
 
+#define __EXC_DEBUG 1
 
 /* Debugging of exceptions.  Nothing interesting for you.  (Just for me.) 
    Anyway, it generates many (really) messages telling what is going
@@ -280,7 +224,7 @@ extern int __exc_on (char *, char *, unsigned, __EXC_TYPE);
 
 #define throw(code...)                       \
   __exc_throw (__FILE__, __EXC_FUNCTION,     \
-	       __LINE__, __EXC_MAKE (code))
+	       __LINE__, (#code))
 
 /* THROW in EXCEPT block won't go into itself, because corresping item
    from __EXC_GLOBAL was already popped. */
@@ -297,14 +241,22 @@ extern int __exc_on (char *, char *, unsigned, __EXC_TYPE);
 
 /* CATCH is an alias for EXCEPT. */
 
-#define catch                          except
+#define catch      except 
 
 /* Try to handle an exception. */
 
 #define on(code...)                          \
   if (__exc_on (__FILE__, __EXC_FUNCTION,    \
-		__LINE__, __EXC_ON (code)))
+		__LINE__, (#code)))
 
+extern inline const char *exceptionString(Exception code);
+extern inline Exception exceptionCode(const char string[]);
+extern inline void addException(const char ExceptionName[]);
+extern inline int findException(const char ExceptionName[], struct __UserExceptionList *node);
+extern inline void removeException(const char ExceptionName[]);
+extern inline int ExceptionMatchingCodeUserList(const char string[]);
+extern inline int ExceptionMatchingToCode(const char string[]);
+            
 #ifdef	__cplusplus
 }
 #endif

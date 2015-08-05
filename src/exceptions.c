@@ -1,9 +1,25 @@
 #include "exceptions.h"
 
-
-/* Variable declarations at first. */
-  
-/* This counter is used by __EXC_BLOCK.  It works well even if nested. */
+typedef struct __UserDefException{
+    int code;
+    char name[30];
+}UserDefException;
+
+typedef struct __UserExceptionList{
+    UserDefException Exception;
+    struct __UserExceptionList *next;
+}UserExceptionList;
+
+UserExceptionList *UserExceptions;
+
+const char *tempstrings[] = {     "NullPointer","ArrayStore","IllegalArgument",
+                                "NegativeArraySize","ArrayIndexOutOfBounds","ArithmeticException",
+                                "NoFileFound","IllegalAccess","Instantiation",
+                                "ClassNotFound","ClassNotSupported","IndexOutOfBounds"
+                                };
+
+volatile int lastcodeUsed = LastException;
+
 volatile int __exc_block_pass;
 
 /* Flag to be set by ON? */
@@ -17,7 +33,15 @@ volatile unsigned __exc_tries;
 char *__exc_file;
 char *__exc_function;
 unsigned __exc_line;
-volatile __EXC_TYPE __exc_code;
+__EXC_TYPE __exc_code;
+
+/* Stack is actually a linked list of catcher cells. */
+struct __exc_stack
+{
+  unsigned num;
+  jmp_buf j;
+  struct __exc_stack *prev;
+};
 
 /* This is the global stack of catchers. */
 struct __exc_stack *__exc_global;
@@ -189,6 +213,8 @@ __exc_throw (char *file, char *function, unsigned line, __EXC_TYPE code)
   __exc_print (__EXC_STREAM, file, function, line, code);
 #endif
 
+    addException(code);
+  
   __exc_file = file;
   __exc_function = function;
   __exc_line = line;
@@ -258,14 +284,14 @@ __exc_on (__EXC_NDEBUG_UN(char *file),
       __exc_debug ("Exception already handled in this level, skip");
       return 0;
     }
-  
-  if (__EXC_EQ (code, __exc_code))
-    {
-      __exc_debug ("This handler FITS");
+    if(findException(code,NULL) != 0)    
+        if (__EXC_EQ (code, __exc_code))
+            {
+              __exc_debug ("This handler FITS");
 
-      __exc_handled = 1;
-      return 1;
-    }
+              __exc_handled = 1;
+              return 1;
+            }
 
   __exc_debug ("This handler DOESN'T FIT");
 
@@ -273,3 +299,161 @@ __exc_on (__EXC_NDEBUG_UN(char *file),
   return 0;
 }
 
+
+inline const char *exceptionString(Exception code){
+    switch(code){      
+        case NullPointer:{
+            return tempstrings[0];
+        }break;
+        case ArrayStore:{
+            return tempstrings[1];
+        }break;
+        case IllegalArgument:{
+            return tempstrings[2];
+        }break;
+        case NegativeArraySize:{
+            return tempstrings[3];
+        }break;
+        case ArrayIndexOutOfBounds:{
+            return tempstrings[4];
+        }break;
+        case ArithmeticException:{
+            return tempstrings[5];
+        }break;
+        case  NoFileFound:{
+            return tempstrings[6];
+        }break; 
+        case IllegalAccess:{
+            return tempstrings[7];
+        }break;
+        case Instantiation:{
+            return tempstrings[8];
+        }break;
+        case ClassNotFound:{
+            return tempstrings[9];
+        }break;
+        case ClassNotSupported:{
+            return tempstrings[10];
+        }break;
+        case IndexOutOfBounds:{
+            return tempstrings[11];
+        }break;
+        default:{
+            __exc_debug("Exception Not Found!..");
+        }
+    }
+    
+    return NULL;
+}
+
+inline void addException(const char ExceptionName[]){
+    UserExceptionList *temp = malloc(sizeof(UserExceptionList));
+    
+    if(findException(ExceptionName, NULL) == 0){
+        temp->next = UserExceptions;
+        temp->Exception.code = lastcodeUsed;
+        strcpy(temp->Exception.name,ExceptionName);
+        UserExceptions = temp;
+        ++lastcodeUsed;
+        __exc_debug("Exception added to the system\n");
+    }
+    else
+        __exc_debug ("Exception already defined in the system\n");
+    
+}
+
+inline int findException(const char ExceptionName[], struct __UserExceptionList *node){
+    if(UserExceptions == NULL)
+        return 0;
+    
+    int i = 1;
+    
+    if(ExceptionMatchingToCode(ExceptionName) == -1){
+        for(UserExceptionList *it = UserExceptions; it != NULL; it = it->next, i++)
+            if(strcmp(ExceptionName,it->Exception.name) == 0){
+                if(node != NULL)
+                    node = it;
+                __exc_debug ("Exception found in the system add by the user\n");
+                return i;
+            }
+    }
+    else{
+        __exc_debug ("Exception found in the default system\n");
+        return 1;
+    }
+    
+    __exc_debug ("Exception not found\n");
+    return 0;
+}
+
+inline void removeException(const char ExceptionName[]){
+    UserExceptionList *node = NULL, *it = NULL;
+    int position = findException(ExceptionName,node);
+    
+    it = UserExceptions;
+    if(position != 0){
+        for(int i = 0; i < (position - 1); i++, it = it->next){
+            if(it->next == node){
+                break;
+            }
+        }
+    
+        it->next = node->next;
+        node->next = NULL;
+        free(node);
+    }
+    
+}
+
+inline int ExceptionMatchingToCode(const char string[]){
+    if(strcmp(string,tempstrings[0]) == 0)
+        return NullPointer;
+    
+    if(strcmp(string,tempstrings[1]) == 0)
+        return ArrayStore;
+    
+    if(strcmp(string,tempstrings[2]) == 0)
+        return IllegalArgument;
+    
+    if(strcmp(string,tempstrings[3]) == 0)
+        return NegativeArraySize;
+    
+    if(strcmp(string,tempstrings[4]) == 0)
+        return ArrayIndexOutOfBounds;
+    
+    if(strcmp(string,tempstrings[5]) == 0)
+        return ArithmeticException;
+    
+    if(strcmp(string,tempstrings[6]) == 0)
+        return NoFileFound;
+    
+    if(strcmp(string,tempstrings[7]) == 0)
+        return IllegalAccess;
+    
+    if(strcmp(string,tempstrings[8]) == 0)
+        return Instantiation;
+    
+    if(strcmp(string,tempstrings[9]) == 0)
+        return ClassNotFound;
+    
+    if(strcmp(string,tempstrings[10]) == 0)
+        return ClassNotSupported;
+    
+    if(strcmp(string,tempstrings[11]) == 0)
+        return IndexOutOfBounds;
+    
+    return -1;
+}
+
+inline int ExceptionMatchingCodeUserList(const char string[]){
+    UserExceptionList *node = NULL;
+    int value = 0;
+    
+    for(UserExceptionList *it = UserExceptions; it != NULL; it = it->next, value++)
+        if(strcmp(string,it->Exception.name) == 0){
+            __exc_debug ("Exception %s was found %d in the system add by the user\n",string,value + lastcodeUsed);
+            return value;
+    }
+    
+    return 0;
+}
