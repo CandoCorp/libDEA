@@ -28,9 +28,14 @@
 extern "C" {
 #endif
     
-#include <stdio.h>   
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <complex.h>
 #include "Const.h"
 #include "ErrorHandler.h"
+#include "MemHandlers.h"
     
 /** @defgroup hs TDA Generic
  * Estas definiciones y funciones componenen el TDA Generic

@@ -5,6 +5,7 @@ typedef char Word[MAX_WORD_SIZE];
 
 struct _address{
     int id;
+    int type;
     Word addr;
 };
 
@@ -40,6 +41,22 @@ inline void *new_malloc(size_t value, int type){
 inline void destroy(void *ptr){
     void remove_ref (void *ptr);
     remove_ref(ptr);
+}
+
+inline void *new_calloc(size_t numElem, size_t size, int type){
+    void add_ref(void *p,int type);
+    
+    if(numElem IS 0 OR size IS 0)
+        return NULL;
+    
+    void *ptr = calloc(numElem,size);
+    
+    if(ptr IS_NOT NULL){
+        add_ref(ptr,type);
+        return ptr;
+    }
+        
+    return NULL;
 }
 
 int is_ref_Empty(address *a){
@@ -95,7 +112,7 @@ void add_ref(void *p, int type){
 }
 
 int find_ref(void *ptr){
-    int pos = -1;
+    int pos = -2;
     char buffer[MAX_WORD_SIZE] = "";
     
     if(ptr IS_NOT NULL){
@@ -105,9 +122,13 @@ int find_ref(void *ptr){
             char *temp;
             temp = (*ref_table_act)[i].addr;
             
-            if(strcmp(temp,buffer) IS EQUAL)
+            if(strcmp(temp,buffer) IS EQUAL){
                 pos = i;
+                return pos;
+            }
         }
+        
+        return -1;
     }
     
     return pos;
@@ -116,9 +137,14 @@ int find_ref(void *ptr){
 void remove_ref (void *ptr){
     int count = find_ref(ptr);
     
-    if(count IS -1 ){
-        printf("The object can't be referenced because it wasn't stablish with new method or it's a null pointer\n");
+    if(count IS -2 ){
+        printf("The object can't be referenced because it's a null pointer\n");
         return ;
+    }
+    
+    if(count IS -1){
+        printf("The object can't be referenced because it wasn't stablish with new method\n");
+        return;
     }
     
     address *a = &ref_table[count];
