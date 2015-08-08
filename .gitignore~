@@ -24,7 +24,7 @@
 *.ko
 *.obj
 *.elf
-*.o.d
+#.*.o.d
 
 # Precompiled Headers
 *.gch
@@ -52,7 +52,6 @@
 
 # Debug files
 *.dSYM/
-
 /build/libDeaNetBeans/dist/
 /demo/Mem_test/build/
 /demo/Mem_test/dist/
