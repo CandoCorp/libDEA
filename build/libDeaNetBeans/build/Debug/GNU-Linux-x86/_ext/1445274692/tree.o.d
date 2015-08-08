@@ -1,6 +1,8 @@
 build/Debug/GNU-Linux-x86/_ext/1445274692/tree.o: ../../src/tree.c \
  ../../include/tree.h ../../include/nodetree.h ../../include/generic.h \
- ../../include/Const.h ../../include/ErrorHandler.h
+ ../../include/Const.h ../../include/ErrorHandler.h \
+ ../../include/debugSys.h ../../include/Exec.h \
+ ../../include/MemHandlers.h
 
 ../../include/tree.h:
 
@@ -11,3 +13,9 @@ build/Debug/GNU-Linux-x86/_ext/1445274692/tree.o: ../../src/tree.c \
 ../../include/Const.h:
 
 ../../include/ErrorHandler.h:
+
+../../include/debugSys.h:
+
+../../include/Exec.h:
+
+../../include/MemHandlers.h:

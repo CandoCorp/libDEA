@@ -13,7 +13,6 @@
 extern "C" {
 #endif
     
-#include "GenFunctions.h"
 #include "GenObject.h"
     
 typedef GenObject Integer;
@@ -30,7 +29,7 @@ typedef GenObject Integer;
 Integer integerNew( int value );
 
 
-Integer integerNew( char *value );
+//Integer integerNew( char *value );
 
 /**
 * integerCompare permite comparar dos Generic con sus valores enteros,

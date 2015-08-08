@@ -52,3 +52,6 @@
 
 # Debug files
 *.dSYM/
+/build/libDeaNetBeans/dist/
+/demo/Mem_test/build/
+/demo/Mem_test/dist/

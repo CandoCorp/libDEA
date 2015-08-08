@@ -26,7 +26,7 @@ typedef Generic Double;
 * @date 03/26/2015
 */
 Double doubleNew( double value );
-Double doubleNew( char *value );
+//Double doubleNew( char *value );
 
 /**
 * doubleCompare permite comparar dos Generic con sus valores double,

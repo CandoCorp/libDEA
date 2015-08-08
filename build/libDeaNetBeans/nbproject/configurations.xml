@@ -11,6 +11,7 @@
         <itemPath>/home/kevin/libDEA/include/Database.h</itemPath>
         <itemPath>/home/kevin/libDEA/include/DefLang.h</itemPath>
         <itemPath>/home/kevin/libDEA/include/ErrorHandler.h</itemPath>
+        <itemPath>/home/kevin/libDEA/include/Exec.h</itemPath>
         <itemPath>../../include/FrameWork.h</itemPath>
         <itemPath>/home/kevin/libDEA/include/GenFunctions.h</itemPath>
         <itemPath>/home/kevin/libDEA/include/GenObject.h</itemPath>
@@ -19,6 +20,7 @@
         <itemPath>/home/kevin/libDEA/include/String.h</itemPath>
         <itemPath>/home/kevin/libDEA/include/StringTokenizer.h</itemPath>
         <itemPath>/home/kevin/libDEA/include/character.h</itemPath>
+        <itemPath>/home/kevin/libDEA/include/debugSys.h</itemPath>
         <itemPath>/home/kevin/libDEA/include/double.h</itemPath>
         <itemPath>/home/kevin/libDEA/include/exceptions.h</itemPath>
         <itemPath>/home/kevin/libDEA/include/float.h</itemPath>
@@ -44,12 +46,14 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="src" displayName="src" projectFiles="true">
+        <itemPath>/home/kevin/libDEA/src/DataTypes.c</itemPath>
         <itemPath>/home/kevin/libDEA/src/Database.c</itemPath>
         <itemPath>/home/kevin/libDEA/src/ErrorHandler.c</itemPath>
         <itemPath>../../src/FrameWork.c</itemPath>
         <itemPath>/home/kevin/libDEA/src/GenObject.c</itemPath>
         <itemPath>/home/kevin/libDEA/src/MemManagement.c</itemPath>
         <itemPath>/home/kevin/libDEA/src/character.c</itemPath>
+        <itemPath>/home/kevin/libDEA/src/debugSys.c</itemPath>
         <itemPath>/home/kevin/libDEA/src/double.c</itemPath>
         <itemPath>/home/kevin/libDEA/src/exceptions.c</itemPath>
         <itemPath>/home/kevin/libDEA/src/float.c</itemPath>
@@ -113,7 +117,7 @@
       <compileType>
         <cTool>
           <developmentMode>5</developmentMode>
-          <architecture>1</architecture>
+          <architecture>2</architecture>
           <standard>3</standard>
           <incDir>
             <pElem>../../include</pElem>
@@ -203,6 +207,8 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="/home/kevin/libDEA/include/Exec.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="/home/kevin/libDEA/include/GenFunctions.h"
             ex="false"
             tool="3"
@@ -238,6 +244,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="/home/kevin/libDEA/include/debugSys.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="/home/kevin/libDEA/include/double.h"
             ex="false"
             tool="3"
@@ -255,6 +266,8 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="/home/kevin/libDEA/src/DataTypes.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="/home/kevin/libDEA/src/Database.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="/home/kevin/libDEA/src/ErrorHandler.c"
@@ -270,6 +283,8 @@
             flavor2="0">
       </item>
       <item path="/home/kevin/libDEA/src/character.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="/home/kevin/libDEA/src/debugSys.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="/home/kevin/libDEA/src/double.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -401,6 +416,8 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="/home/kevin/libDEA/include/Exec.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="/home/kevin/libDEA/include/GenFunctions.h"
             ex="false"
             tool="3"
@@ -436,6 +453,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="/home/kevin/libDEA/include/debugSys.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="/home/kevin/libDEA/include/double.h"
             ex="false"
             tool="3"
@@ -453,6 +475,8 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="/home/kevin/libDEA/src/DataTypes.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="/home/kevin/libDEA/src/Database.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="/home/kevin/libDEA/src/ErrorHandler.c"
@@ -468,6 +492,8 @@
             flavor2="0">
       </item>
       <item path="/home/kevin/libDEA/src/character.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="/home/kevin/libDEA/src/debugSys.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="/home/kevin/libDEA/src/double.c" ex="false" tool="0" flavor2="0">
       </item>

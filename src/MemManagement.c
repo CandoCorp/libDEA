@@ -1,11 +1,13 @@
 #include "MemManagement.h"
-#include "string.h"
+#include <string.h>
+#include "ErrorHandler.h"
+#include "DataTypes.h"
+#include "Const.h"
 
 typedef char Word[MAX_WORD_SIZE];
 
 struct _address{
     int id;
-    int type;
     Word addr;
 };
 
@@ -23,39 +25,45 @@ void init_table();
 
 int find_ref(void *ptr);
 
-inline void *new_malloc(size_t value, int type){
-    void add_ref(void *p, int type);
+inline void *new_malloc(size_t value, char *type){
+    void add_ref(void *p, char *type);
     if(value IS 0)
         return NULL;
     
     void *ptr = malloc(value);
+    
+    check_mem(ptr);
     
     if(ptr != NULL){
         add_ref(ptr, type);
         return ptr;
     }
     
-    return NULL;
+    error:
+        return NULL;
 }
 
-inline void destroy(void *ptr){
-    void remove_ref (void *ptr);
-    remove_ref(ptr);
+inline void Delete(void *ptr,char *objName){
+    void remove_ref (void *ptr,char *objName);
+    remove_ref(ptr,objName);
 }
 
-inline void *new_calloc(size_t numElem, size_t size, int type){
-    void add_ref(void *p,int type);
+inline void *new_calloc(size_t numElem, size_t size, char *type){
+    void add_ref(void *p,char *type);
     
     if(numElem IS 0 OR size IS 0)
         return NULL;
     
     void *ptr = calloc(numElem,size);
     
+    check_mem(ptr);
+    
     if(ptr IS_NOT NULL){
         add_ref(ptr,type);
         return ptr;
     }
-        
+    
+error:    
     return NULL;
 }
 
@@ -80,13 +88,14 @@ void init_table(){
     }
 }
 
-void add_ref(void *p, int type){
+void add_ref(void *p, char *type){
     static int counter;
     static char buffer[MAX_WORD_SIZE] = "";
     
-    if(p IS NULL)
+    if(p IS NULL){
+        log_err("The object created wasn't allocated");
         return ;
-    
+    }
     snprintf(buffer,sizeof(buffer),"%p",p);
     
     if(counter IS MAX_SIZE_REF_ALLOW_BLOCK){
@@ -96,12 +105,15 @@ void add_ref(void *p, int type){
     }
     
     do{
-        if(counter IS MAX_SIZE_REF_ALLOW_BLOCK)
+        if(counter IS MAX_SIZE_REF_ALLOW_BLOCK){
+            debug("The number of references has exceeded the maximum per page");
+            debug("Searching for free spaces in current page");
             counter = 0;
-        
+        }
         if(is_ref_Empty(&((*ref_table_act)[counter])) IS EMPTY){
+            debug("Found empty reference in current page in ");
             strcpy((*ref_table_act)[counter].addr,buffer);
-            (*ref_table_act)[counter].id = type;
+            (*ref_table_act)[counter].id = dataTypeCode(type);
             break;
         }else{
             ++counter;
@@ -124,35 +136,38 @@ int find_ref(void *ptr){
             
             if(strcmp(temp,buffer) IS EQUAL){
                 pos = i;
+                debug("Reference found in position %d",pos);
                 return pos;
             }
         }
         
+        debug("No reference found");
         return -1;
     }
     
+    debug("Null reference");
     return pos;
 }
 
-void remove_ref (void *ptr){
+void remove_ref (void *ptr,char *objName){
     int count = find_ref(ptr);
     
+    debug("The position of the reference is %d",count);
     if(count IS -2 ){
-        printf("The object can't be referenced because it's a null pointer\n");
+        log_err("%s can't be referenced because it's a null pointer",objName);
         return ;
     }
     
     if(count IS -1){
-        printf("The object can't be referenced because it wasn't stablish with new method\n");
+        log_err("%s can't be referenced because it wasn't stablish with new method",objName);
         return;
     }
     
     address *a = &ref_table[count];
-    printf("The object of type %d in the %s location has been removed\n",a->id,a->addr);
+    debug("The object %s of type %d in the %s location has been removed\n",objName,a->id,a->addr);
     init_ref(a);
     a->id = 0;
     
     free(ptr);
     ptr = NULL;
 }
-

@@ -10,17 +10,15 @@ typedef struct __UserExceptionList{
     struct __UserExceptionList *next;
 }UserExceptionList;
 
-UserExceptionList *UserExceptions;
+static UserExceptionList *__UserExceptions;
 
-const char *tempstrings[] = {     "NullPointer","ArrayStore","IllegalArgument",
+static const char *tempstrings[] = {     "NullPointer","ArrayStore","IllegalArgument",
                                 "NegativeArraySize","ArrayIndexOutOfBounds","ArithmeticException",
                                 "NoFileFound","IllegalAccess","Instantiation",
                                 "ClassNotFound","ClassNotSupported","IndexOutOfBounds"
                                 };
 
-volatile int lastcodeUsed = LastException;
-
-volatile int __exc_block_pass;
+static volatile int lastcodeUsed = __LastException;
 
 /* Flag to be set by ON? */
 volatile int __exc_handled;
@@ -30,10 +28,10 @@ volatile unsigned __exc_tries;
 
 /* These identify the thrown exception.  File, function, line and
    the exception itself. */
-char *__exc_file;
-char *__exc_function;
-unsigned __exc_line;
-__EXC_TYPE __exc_code;
+static char *__exc_file;
+static char *__exc_function;
+static unsigned __exc_line;
+static __EXC_TYPE __exc_code;
 
 /* Stack is actually a linked list of catcher cells. */
 struct __exc_stack
@@ -44,124 +42,79 @@ struct __exc_stack
 };
 
 /* This is the global stack of catchers. */
-struct __exc_stack *__exc_global;
-
-
+static struct __exc_stack *__exc_global;
 
 #ifdef __EXC_DEBUG
+    void __exc_print_global(void);
 
-/* Prints error message. */
-void
-__exc_debug (char *fmt, ...)
-{
-  va_list ap;
-
-  fprintf (__EXC_STREAM, "__EXC: ");
-  va_start (ap, fmt);
-  vfprintf (__EXC_STREAM, fmt, ap);
-  va_end (ap);
-  fprintf (__EXC_STREAM, "\n");
-}
-
-
-
-/* For printing __exc_global. */
-void
-__exc_print_global ()
-{
-  struct __exc_stack *level = __exc_global;
-  unsigned items;
-
-  if (level == NULL)
+    /* For printing __exc_global. */
+    void
+    __exc_print_global ()
     {
-      fprintf (__EXC_STREAM, "Stack empty\n");
-      return;
+      struct __exc_stack *level = __exc_global;
+      unsigned items;
+
+      if (level == NULL)
+        {
+          fprintf (__EXC_STREAM, "Stack empty\n");
+          return;
+        }
+
+      fprintf (__EXC_STREAM, "Current stack (from bottom to top):\n");
+      for (items = 0; level; level = level->prev)
+        {
+          fprintf (__EXC_STREAM, "%c ", items == 0 ? '[' : ' ');
+
+          /* FIXME: does printing jmp_buf literally (as we now address and
+             its size) good?  No, unless human understands it.  One
+             can't unless he chooses one popular C library and study the
+             implementation carefully;) */
+          fprintf (__EXC_STREAM, "%u", level->num);
+          /* TODO: newline every four or so items.  Use tab stops. */
+          fprintf (__EXC_STREAM, " %c\n", level->prev ? ' ' : ']');  
+          items++;
+        }
+
+      fprintf (__EXC_STREAM, "Totally %u items.\n", items);
     }
-
-  fprintf (__EXC_STREAM, "Current stack (from bottom to top):\n");
-  for (items = 0; level; level = level->prev)
-    {
-      fprintf (__EXC_STREAM, "%c ", items == 0 ? '[' : ' ');
-
-      /* FIXME: does printing jmp_buf literally (as we now address and
-	 its size) good?  No, unless human understands it.  One
-	 can't unless he chooses one popular C library and study the
-	 implementation carefully;) */
-      fprintf (__EXC_STREAM, "%u", level->num);
-      /* TODO: newline every four or so items.  Use tab stops. */
-      fprintf (__EXC_STREAM, " %c\n", level->prev ? ' ' : ']');  
-      items++;
-    }
-
-  fprintf (__EXC_STREAM, "Totally %u items.\n", items);
-}
-
+#else
+    #define __exc_print_global()
 #endif
-
-
-
-/* Prints information about exception.  Called in debug mode, or when
-   no handler is found. */
-
-void
-__exc_print (FILE *stream, char *file, char *function, unsigned line,
-	     __EXC_TYPE code)
-{
-  fprintf (stream, "Exception in file \"%s\", at line %u",
-	   file, line);
-  if (function)
-    {
-      fprintf (stream, ", in function \"%s\"", function);
-    }
-  fprintf (stream, ".");
-
-#ifdef __EXC_PRINT
-  fprintf (stream, " Exception: ");
-  __EXC_PRINT (code, stream);
-#endif
-  fprintf (stream, "\n");
-}
-
-
 
 /* Pop exception from stack, putting into J (if nonzero).  If stack is
    empty, print error message and exit.  Used in EXCEPT. */
 void
-__exc_pop (jmp_buf *j)
-{
-  struct __exc_stack *stored = __exc_global;
+__exc_pop (jmp_buf *j){
+    struct __exc_stack *stored = __exc_global;
 
-  __exc_debug ("POP () to %p", j);
+    __exc_debug ("POP () to %p", j);
 
-  if (stored == NULL)
+    if (stored == NULL)
     {
-      __exc_debug ("Unhandled exception.");
+        __exc_debug ("Unhandled exception.");
 
-      fprintf (stderr, "Unhandled exception:\n");
-      __exc_print (stderr, __exc_file, __exc_function,
-		   __exc_line, __exc_code);
+        fprintf (stderr, "Unhandled exception:\n");
+        __exc_print (stderr, __exc_file, __exc_function,
+                     __exc_line, __exc_code);
 
-      exit (3);
+        exit (3);
     }
 
-  __exc_global = stored->prev;
+    __exc_global = stored->prev;
 
-  if (j)
-    {
+    if (j){
       /* This assumes that JMP_BUF is a structure etc. and can be
 	 copied rawely.  This is true in GLIBC, as I know. */
       memcpy (j, &stored->j, sizeof (jmp_buf));
     }
 
-  __exc_debug ("Popped");
-  __exc_print_global ();
+    __exc_debug ("Popped");
+    __exc_print_global ();
 
-  /* While with MALLOC, free.  When using obstacks it is better not to
-     free and hold up. */
-  free (stored);
+    /* While with MALLOC, free.  When using obstacks it is better not to
+       free and hold up. */
+    free (stored);
 }
-
-
 
 /* Push J onto the stack, with RETURNED as value from SETJMP.  Return
    nonzero, if RETURNED is 0.  If RETURNED is nonzero, returns 0.
@@ -170,133 +123,155 @@ __exc_pop (jmp_buf *j)
 int
 __exc_push (jmp_buf *j, int returned)
 {
-  struct __exc_stack *new;
+    struct __exc_stack *new;
 
-  __exc_debug ("PUSH (), %p, %d", j, returned);
+    __exc_debug ("PUSH (), %p, %d", j, returned);
 
-  /* SETJMP returns 0 first time, nonzero from __EXC_THROW.
-     Returning false-like value here (0) will enter the
-     else branch (that is, EXCEPT.) */
-  if (returned != 0)
-    {
-      __exc_debug ("Returning from THROW");
-      return 0;
+    /* SETJMP returns 0 first time, nonzero from __EXC_THROW.
+       Returning false-like value here (0) will enter the
+       else branch (that is, EXCEPT.) */
+    if (returned != 0){
+        __exc_debug ("Returning from THROW");
+        return 0;
     }
 
-  /* Since this didn't come from THROW, fine to increase counter. */
-  ++__exc_tries;
-  __exc_debug ("This is PUSH () number %u", __exc_tries);
+    /* Since this didn't come from THROW, fine to increase counter. */
+    ++__exc_tries;
+    __exc_debug ("This is PUSH () number %u", __exc_tries);
 
-  /* Using memcpy here is the best alternative. */
-  new = malloc (sizeof (struct __exc_stack));
-  memcpy (&new->j, j, sizeof (jmp_buf));
-  new->num = __exc_tries;
-  new->prev = __exc_global;
-  __exc_global = new;
+    /* Using memcpy here is the best alternative. */
+    new = malloc (sizeof (struct __exc_stack));
+    check_mem(new);
+    memcpy (&new->j, j, sizeof (jmp_buf));
+    new->num = __exc_tries;
+    new->prev = __exc_global;
+    __exc_global = new;
 
-  __exc_print_global ();
+    __exc_print_global ();
+    return 1;
 
-  return 1;
+    error:
+            return -1;
 }
-
-
 
 /* Throw an exception in FILE at LINE, with code CODE.  Used in THROW. */
 
 void
 __exc_throw (char *file, char *function, unsigned line, __EXC_TYPE code)
 {
-  jmp_buf j;
+    jmp_buf j;
 
-  __exc_debug ("THROW ()");
-#if defined __EXC_DEBUG
-  __exc_print (__EXC_STREAM, file, function, line, code);
-#endif
+    __exc_debug ("THROW ()");
+
+    #if defined __EXC_DEBUG
+        __exc_print (__EXC_STREAM, file, function, line, code);
+    #endif
+
+    int res = findException(code);
+    
+    if(res == -3){
+        __exc_file = file;
+        __exc_function = function;
+        __exc_line = line;
+        __exc_code = code;
+
+        /* Pop for jumping. */
+        __exc_pop (&j);
+
+        __exc_debug ("Jumping to the handler");
+
+        /* LONGJUMP to J with nonzero value. */
+        longjmp (j, 1);
+    }else if(res == 0){
+        log_err("%s\n\t%s","The exception wasn't found by the system, you can use:","throw_new to add it to the system");
+    }
+}
+
+void
+__exc_throw_new (char *file, char *function, unsigned line, __EXC_TYPE code)
+{
+    jmp_buf j;
+
+    __exc_debug ("THROW ()");
+
+    #if defined __EXC_DEBUG
+        __exc_print (__EXC_STREAM, file, function, line, code);
+    #endif
 
     addException(code);
-  
-  __exc_file = file;
-  __exc_function = function;
-  __exc_line = line;
-  __exc_code = code;
 
-  /* Pop for jumping. */
-  __exc_pop (&j);
-  
-  __exc_debug ("Jumping to the handler");
+    __exc_file = file;
+    __exc_function = function;
+    __exc_line = line;
+    __exc_code = code;
 
-  /* LONGJUMP to J with nonzero value. */
-  longjmp (j, 1);
+    /* Pop for jumping. */
+    __exc_pop (&j);
+
+    __exc_debug ("Jumping to the handler");
+
+    /* LONGJUMP to J with nonzero value. */
+    longjmp (j, 1);
 }
 
 /* Throw it in upper level of catcher blocks. */
 
 void
-__exc_rethrow ()
-{
-  jmp_buf j;
+__exc_rethrow (){
+    jmp_buf j;
 
-  __exc_debug ("RETHROW ()");
-#ifdef __EXC_DEBUG
-  __exc_print (__EXC_STREAM, __exc_file, __exc_function,
-	       __exc_line, __exc_code);
-#endif
+    __exc_debug ("RETHROW ()");
+    #ifdef __EXC_DEBUG
+        __exc_print(__EXC_STREAM, __exc_file, __exc_function,
+                    __exc_line, __exc_code);
+    #endif
 
-  __exc_pop (&j);
-  longjmp (j, 1);
+    __exc_pop (&j);
+    longjmp (j, 1);
 }
 
 
 
 #ifdef __EXC_DEBUG
-#  define __EXC_NDEBUG_UN(decl)         decl
+    #define __EXC_NDEBUG_UN(decl)         decl
 #else
-#  define __EXC_NDEBUG_UN(decl)         decl __attribute__((unused))
+    #define __EXC_NDEBUG_UN(decl)         decl __attribute__((unused))
 #endif
 
 int
 __exc_on (__EXC_NDEBUG_UN(char *file),
 	  __EXC_NDEBUG_UN(char *function),
 	  __EXC_NDEBUG_UN(unsigned line),
-	  __EXC_TYPE code)
-{
-  /* It is impossible to jump to the end of EXCEPT block, nor it is
-     possible to mix ELSE with IF, so use before-defined __EXC_HANDLED
-     flag. 
-
-     Actually, use of
-      on (...) ...;
-      else on (...) ...;
-
-     Is possible, but don't force the *user* to care about it. */
-
-  __exc_debug ("ON ()");
-  __exc_debug ("Trying to handle in file \"%s\", at line %u", file, line);
+	  __EXC_TYPE code){
+    
+    __exc_debug ("ON ()");
+    __exc_debug ("Trying to handle in file \"%s\", at line %u", file, line);
 #ifdef __EXC_DEBUG
-  if (function)
-    {
-      __exc_debug ("In function \"%s\".", function);
-    }
+    if (function)
+      {
+        __exc_debug ("In function \"%s\".", function);
+      }
 #endif
 
-  if (__exc_handled == 1)
-    {
+    if (__exc_handled == 1){
       __exc_debug ("Exception already handled in this level, skip");
       return 0;
     }
-    if(findException(code,NULL) != 0)    
-        if (__EXC_EQ (code, __exc_code))
-            {
-              __exc_debug ("This handler FITS");
+    int pos = findException(code);
+    if(pos != 0)    
+        if (__EXC_EQ (code, __exc_code)){
+            
+            __exc_debug ("This handler FITS");
 
-              __exc_handled = 1;
-              return 1;
-            }
+            removeException(code,pos);
+            __exc_handled = 1;
+            return 1;
+        }
 
-  __exc_debug ("This handler DOESN'T FIT");
+    __exc_debug ("This handler DOESN'T FIT");
 
-  /* Not matched. */
-  return 0;
+    /* Not matched. */
+    return 0;
 }
 
 
@@ -349,63 +324,90 @@ inline const char *exceptionString(Exception code){
 inline void addException(const char ExceptionName[]){
     UserExceptionList *temp = malloc(sizeof(UserExceptionList));
     
-    if(findException(ExceptionName, NULL) == 0){
-        temp->next = UserExceptions;
-        temp->Exception.code = lastcodeUsed;
-        strcpy(temp->Exception.name,ExceptionName);
-        UserExceptions = temp;
-        ++lastcodeUsed;
-        __exc_debug("Exception added to the system\n");
+    check_mem(temp);
+    switch(findException(ExceptionName)){
+        case -2:{
+            __exc_debug("First exception being added to the system by the user");
+            temp->next = __UserExceptions;
+            temp->Exception.code = lastcodeUsed;
+            strcpy(temp->Exception.name,ExceptionName);
+            __UserExceptions = temp;
+            ++lastcodeUsed;
+            __exc_debug("Exception added to the system");
+        }break;
+        case -1:{
+            __exc_debug("Bad Exception name");
+        }break;
+        case 0:{
+            temp->next = NULL;
+            temp->Exception.code = lastcodeUsed;
+            strcpy(temp->Exception.name,ExceptionName);
+            __UserExceptions->next = temp;
+            ++lastcodeUsed;
+            __exc_debug("Exception added to the system");
+        }break;
+        default:{
+            __exc_debug ("Exception already defined in the system");
+        }
     }
-    else
-        __exc_debug ("Exception already defined in the system\n");
     
+    error:{
+        return ;
+    }
 }
 
-inline int findException(const char ExceptionName[], struct __UserExceptionList *node){
-    if(UserExceptions == NULL)
-        return 0;
+inline int findException(const char ExceptionName[]){
+    if(ExceptionName == NULL)
+        return -1;
     
-    int i = 1;
+    if(__UserExceptions == NULL)
+        return -2;
     
-    if(ExceptionMatchingToCode(ExceptionName) == -1){
-        for(UserExceptionList *it = UserExceptions; it != NULL; it = it->next, i++)
-            if(strcmp(ExceptionName,it->Exception.name) == 0){
-                if(node != NULL)
-                    node = it;
-                __exc_debug ("Exception found in the system add by the user\n");
-                return i;
-            }
+    if(ExceptionMatchingDefault(ExceptionName) == -1){
+        int value = ExceptionMatchingCodeUserList(ExceptionName);
+        if(value != 0)
+            return value;
     }
     else{
-        __exc_debug ("Exception found in the default system\n");
-        return 1;
+        __exc_debug ("Exception found in the default system");
+        return -3;
     }
     
-    __exc_debug ("Exception not found\n");
+    __exc_debug ("Exception not found");
     return 0;
 }
 
-inline void removeException(const char ExceptionName[]){
+inline void removeException(const char ExceptionName[], int position){
     UserExceptionList *node = NULL, *it = NULL;
-    int position = findException(ExceptionName,node);
     
-    it = UserExceptions;
+    it = __UserExceptions;
+    
+    if(position < 0)
+        return ;
+    
     if(position != 0){
-        for(int i = 0; i < (position - 1); i++, it = it->next){
-            if(it->next == node){
-                break;
+        int i = 0;
+        while(i < position){
+            i++;
+            it = it->next;
+        }
+        __exc_debug("%s",it->Exception.name);
+        if(it != NULL){
+            node = it->next;
+            __exc_debug("%s",node->Exception.name);
+            if(node->next != NULL){
+                it->next = node->next;
+                __exc_debug("%s",it->next->Exception.name);
+                node->next = NULL;
+                free(node);
+            }else{
+                free(node);
             }
         }
-    
-        it->next = node->next;
-        node->next = NULL;
-        free(node);
     }
-    
 }
 
-inline int ExceptionMatchingToCode(const char string[]){
+inline int ExceptionMatchingDefault(const char string[]){
     if(strcmp(string,tempstrings[0]) == 0)
         return NullPointer;
     
@@ -446,14 +448,13 @@ inline int ExceptionMatchingToCode(const char string[]){
 }
 
 inline int ExceptionMatchingCodeUserList(const char string[]){
-    UserExceptionList *node = NULL;
     int value = 0;
     
-    for(UserExceptionList *it = UserExceptions; it != NULL; it = it->next, value++)
+    for(UserExceptionList *it = __UserExceptions; it != NULL; it = it->next, value++)
         if(strcmp(string,it->Exception.name) == 0){
-            __exc_debug ("Exception %s was found %d in the system add by the user\n",string,value + lastcodeUsed);
+            __exc_debug ("Exception %s was found %d in the system add by the user",string,value + __LastException);
             return value;
-    }
+        }
     
     return 0;
 }

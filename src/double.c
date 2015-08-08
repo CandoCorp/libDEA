@@ -1,4 +1,3 @@
-
 #include "double.h"
 
 /**
@@ -11,14 +10,14 @@
 
 
 Double doubleNew( double value ){
-    Double g = NEW(double);
+    Double g ;
     *(double *) g = value;
     return g;
 }
 //Double doubleNew( char *value )
 
 int doubleCompare( Double x, Double y ){
-    return compareTo( x, y, cmpDouble );
+    return 1;
 }
 
 float doubleFloatValue( Double g ){
@@ -46,11 +45,11 @@ char * doubleToString( Double g ){
 }
 
 int doubleCompMax( Double a, Double b ){
-    return compareTo( a, b, cmpMax );
+    return 1;
 }
 
 int doubleCompMin( Double a, Double b ){
-    return compareTo( a, b, cmpMin );
+    return 1;
 }
 
 void doublePrint( Double *g ){
@@ -64,8 +63,6 @@ int doubleValueOfMax( Double a, Double b ){
 int doubleValueOfMin( Double a, Double b ){
     
 }
-
-
 
 int cmpDouble( Generic a, Generic b ){
     return ( doubleGet(a) == doubleGet(b) ) ? 0 : ( doubleGet(a) > doubleGet(b) ) ? 1 : -1;

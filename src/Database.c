@@ -12,8 +12,7 @@ void Database_load(Connection *conn)
     
 }
 
-Connection *Database_open(const char *filename, char mode)
-{
+Connection *Database_open(const char *filename, char mode){
     Connection *conn = malloc(sizeof(Connection));
     if(!conn) die("Memory error");
 

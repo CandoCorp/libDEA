@@ -47,11 +47,13 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1445274692/queue.o \
 	${OBJECTDIR}/_ext/1445274692/stack.o \
 	${OBJECTDIR}/_ext/1445274692/tree.o \
+	${OBJECTDIR}/_ext/1479848513/DataTypes.o \
 	${OBJECTDIR}/_ext/1479848513/Database.o \
 	${OBJECTDIR}/_ext/1479848513/ErrorHandler.o \
 	${OBJECTDIR}/_ext/1479848513/GenObject.o \
 	${OBJECTDIR}/_ext/1479848513/MemManagement.o \
 	${OBJECTDIR}/_ext/1479848513/character.o \
+	${OBJECTDIR}/_ext/1479848513/debugSys.o \
 	${OBJECTDIR}/_ext/1479848513/double.o \
 	${OBJECTDIR}/_ext/1479848513/exceptions.o \
 	${OBJECTDIR}/_ext/1479848513/float.o \
@@ -65,7 +67,7 @@ TESTFILES= \
 	${TESTDIR}/TestFiles/f1
 
 # C Compiler Flags
-CFLAGS=-m32
+CFLAGS=-m64
 
 # CC Compiler Flags
 CCFLAGS=
@@ -150,6 +152,11 @@ ${OBJECTDIR}/_ext/1445274692/tree.o: ../../src/tree.c
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -w -I../../include -std=c99 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1445274692/tree.o ../../src/tree.c
 
+${OBJECTDIR}/_ext/1479848513/DataTypes.o: /home/kevin/libDEA/src/DataTypes.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1479848513
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -w -I../../include -std=c99 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1479848513/DataTypes.o /home/kevin/libDEA/src/DataTypes.c
+
 ${OBJECTDIR}/_ext/1479848513/Database.o: /home/kevin/libDEA/src/Database.c 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1479848513
 	${RM} "$@.d"
@@ -174,6 +181,11 @@ ${OBJECTDIR}/_ext/1479848513/character.o: /home/kevin/libDEA/src/character.c
 	${MKDIR} -p ${OBJECTDIR}/_ext/1479848513
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -w -I../../include -std=c99 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1479848513/character.o /home/kevin/libDEA/src/character.c
+
+${OBJECTDIR}/_ext/1479848513/debugSys.o: /home/kevin/libDEA/src/debugSys.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1479848513
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -w -I../../include -std=c99 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1479848513/debugSys.o /home/kevin/libDEA/src/debugSys.c
 
 ${OBJECTDIR}/_ext/1479848513/double.o: /home/kevin/libDEA/src/double.c 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1479848513
@@ -367,6 +379,19 @@ ${OBJECTDIR}/_ext/1445274692/tree_nomain.o: ${OBJECTDIR}/_ext/1445274692/tree.o 
 	    ${CP} ${OBJECTDIR}/_ext/1445274692/tree.o ${OBJECTDIR}/_ext/1445274692/tree_nomain.o;\
 	fi
 
+${OBJECTDIR}/_ext/1479848513/DataTypes_nomain.o: ${OBJECTDIR}/_ext/1479848513/DataTypes.o /home/kevin/libDEA/src/DataTypes.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1479848513
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1479848513/DataTypes.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -w -I../../include -std=c99 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1479848513/DataTypes_nomain.o /home/kevin/libDEA/src/DataTypes.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1479848513/DataTypes.o ${OBJECTDIR}/_ext/1479848513/DataTypes_nomain.o;\
+	fi
+
 ${OBJECTDIR}/_ext/1479848513/Database_nomain.o: ${OBJECTDIR}/_ext/1479848513/Database.o /home/kevin/libDEA/src/Database.c 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1479848513
 	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1479848513/Database.o`; \
@@ -430,6 +455,19 @@ ${OBJECTDIR}/_ext/1479848513/character_nomain.o: ${OBJECTDIR}/_ext/1479848513/ch
 	    $(COMPILE.c) -O2 -w -I../../include -std=c99 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1479848513/character_nomain.o /home/kevin/libDEA/src/character.c;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/1479848513/character.o ${OBJECTDIR}/_ext/1479848513/character_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1479848513/debugSys_nomain.o: ${OBJECTDIR}/_ext/1479848513/debugSys.o /home/kevin/libDEA/src/debugSys.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1479848513
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1479848513/debugSys.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -w -I../../include -std=c99 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1479848513/debugSys_nomain.o /home/kevin/libDEA/src/debugSys.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1479848513/debugSys.o ${OBJECTDIR}/_ext/1479848513/debugSys_nomain.o;\
 	fi
 
 ${OBJECTDIR}/_ext/1479848513/double_nomain.o: ${OBJECTDIR}/_ext/1479848513/double.o /home/kevin/libDEA/src/double.c 

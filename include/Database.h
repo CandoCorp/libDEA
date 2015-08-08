@@ -33,12 +33,11 @@ struct __Address {
 typedef Generic Address;
 
 typedef struct __Database{
-    
     Address rows[MAX_ROWS];
 }Database;
 
 typedef struct __Connection {
-    FILE *file;
+    FILE **file;
     Database *db;
 }Connection;
 

@@ -10,13 +10,13 @@
 */
 
 Character charNew( char value ){
-    Character g = NEW(char);
+    Character g ;
     *(char *)g = value;
     return g;
 }
 
 int characterCompare( Character x, Character y ){
-    return compareTo( x, y, cmpChar );
+    return 1;
 /*
     if(charGet(a) == charGet(b)) return 0;
     else if(charGet(a) > charGet(b)) return 1;
@@ -48,6 +48,6 @@ char * characterToString( Character g ){
     return buf;
 }
 
-void characterPrint(Generic *g){
+void characterPrint(Character g){
     printf("%c", characterGet(g));
 }

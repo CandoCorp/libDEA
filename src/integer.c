@@ -1,4 +1,3 @@
-
 #include "integer.h"
 
 /**
@@ -10,20 +9,17 @@
 */
 
 //#define INT_SIZE_STRING ((CHAR_BIT * sizeof(int) - 1) / 3 + 2)
-GenObject IntegerProto = {
-    .toString = integerToString(Integer g);
-    .init ;
-}
+
 
 Integer integerNew( int value ){
-    Integer g = NEW(int);
+    Integer g;
     *(int *) g = value;
     return g;
 }
 //Generic integerNew( char *value );
 
 int integerCompare( Integer x, Integer y ){
-    return compareTo( x, y, cmpInt );
+    return 1;
 /*
     if(integerGet(x) == integerGet(y)) return 0;
     else if(integerGet(x) > integerGet(y)) return 1;
@@ -52,7 +48,7 @@ void integerSet( Integer g, int value ){
     *(int *)g = value;
 }
 
-char * integerToString( Generic g ){
+char * integerToString( Integer g ){
     char  buf[BUFSIZ]; //Falta definir el verdadero tamaño del char
     int check;
     int num = integerGet(g);
@@ -63,11 +59,11 @@ char * integerToString( Generic g ){
 }
 
 int integerCmpMax( Integer x, Integer y ){
-    return compareTo( x, y, cmpMax );
+    return 1;
 }
 
 int integerCmpMin( Generic x, Generic y ){
-    return compareTo( x, y, cmpMin );
+    return 1;
 }
 
 int integerValueOfMax( Integer a, Integer b ){

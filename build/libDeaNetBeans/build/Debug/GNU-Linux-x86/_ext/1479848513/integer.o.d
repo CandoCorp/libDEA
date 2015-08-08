@@ -1,14 +1,12 @@
-build/Debug/GNU-Linux-x86/_ext/1445274692/queue.o: ../../src/queue.c \
- ../../include/queue.h ../../include/list.h ../../include/nodelist.h \
- ../../include/generic.h ../../include/Const.h \
+build/Debug/GNU-Linux-x86/_ext/1479848513/integer.o: \
+ /home/kevin/libDEA/src/integer.c ../../include/integer.h \
+ ../../include/GenObject.h ../../include/generic.h ../../include/Const.h \
  ../../include/ErrorHandler.h ../../include/debugSys.h \
  ../../include/Exec.h ../../include/MemHandlers.h
 
-../../include/queue.h:
+../../include/integer.h:
 
-../../include/list.h:
-
-../../include/nodelist.h:
+../../include/GenObject.h:
 
 ../../include/generic.h:
 

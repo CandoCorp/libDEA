@@ -1,5 +1,6 @@
 #include "GenObject.h"
-#include <stdlib.h>
+#include "MemManagement.h"
+#include "hashmap.h"
 
 /**
 * @file generic.c
@@ -17,7 +18,7 @@
 */
 
 int equals(GenObject self, GenObject that){
-    if(self == that)
+    if(self->data IS that->data)
         return 0;
     return 1;
 }
@@ -30,28 +31,29 @@ char *toString(GenObject self, const char* format){
     return NULL;
 }
 
-int GenObject_destroy(Generic self){
-    GenObject *obj = self;
+int GenObject_destroy(GenObject self){
+    GenObject obj = self;
     
     if(obj){
-        DESTROY(obj);
+        DELETE(obj->data);
+        DELETE(obj);
     }
 }
 
-int init(Generic self){
+int GenObject_init(GenObject self){
     return 1;
 }
 
 void *GenObject_new(size_t size,GenObject proto){
     
-    if(!proto.init) proto.init = init;
-    if(!proto.equals) proto.equals = equals;
-    if(!proto.compareTo) proto.compareTo = compareTo;
-    if(!proto.toString) proto.toString = toString;
-    if(!proto.destroy) proto.destroy = destroy;
+    if(!proto->init) proto->init = GenObject_init;
+    if(!proto->equals) proto->equals = equals;
+    if(!proto->compareTo) proto->compareTo = compareTo;
+    if(!proto->toString) proto->toString = toString;
+    if(!proto->destroy) proto->destroy = GenObject_destroy;
     
-    GenObject *this = new_calloc(1,size,1);
-    *this = proto;
+    GenObject this = new_calloc(1,size,proto->dataType);
+    *this = *proto;
     
     if(!this->init(this)){
         this->destroy(this);

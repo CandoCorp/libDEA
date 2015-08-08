@@ -1,14 +1,10 @@
-build/Debug/GNU-Linux-x86/_ext/1445274692/queue.o: ../../src/queue.c \
- ../../include/queue.h ../../include/list.h ../../include/nodelist.h \
+build/Debug/GNU-Linux-x86/_ext/1479848513/double.o: \
+ /home/kevin/libDEA/src/double.c ../../include/double.h \
  ../../include/generic.h ../../include/Const.h \
  ../../include/ErrorHandler.h ../../include/debugSys.h \
  ../../include/Exec.h ../../include/MemHandlers.h
 
-../../include/queue.h:
-
-../../include/list.h:
-
-../../include/nodelist.h:
+../../include/double.h:
 
 ../../include/generic.h:
 

@@ -12,27 +12,23 @@
 extern "C" {
 #endif
 
-#ifndef CONST_H
-    #include "Const.h"
-#endif
-
-#include <stdlib.h>
 #include <stdio.h>
 
+#include "debugSys.h"
+    
 enum { MAX_SIZE_REF_ALLOW_BLOCK = 1000, MAX_WORD_SIZE = 15 };
 
-#define NEW(type) ((type*)new_malloc(sizeof(type),atoi(#type)))
-#define DESTROY(x) (destroy(x))
+#define NEW(type) ((type*)new_malloc(sizeof(type),#type))
+#define DELETE(x) (Delete(x,#x))
 
-#define NEW_ARRAY(type,num_elem) (new_malloc(sizeof(type)*num_elem))
-#define NEW_FLEX(type,num_elem,etype) ((type*)new_malloc(sizeof(type) + (num_elem) * sizeof(etype))
+#define NEW_ARRAY(type,num_elem) (new_malloc(sizeof(type)*num_elem,#type))
+#define NEW_FLEX(type,num_elem,etype) ((type*)new_malloc(sizeof(type) + (num_elem) * sizeof(etype)),#type)
 
-extern inline void *new_malloc(size_t value, int type);
+extern inline void *new_malloc(size_t value, char *type);
 
-extern inline void destroy(void *ptr);
+extern inline void Delete(void *ptr,char *objName);
 
-extern inline void *new_calloc(size_t numElem, size_t size, int type);
-
+extern inline void *new_calloc(size_t numElem, size_t size, char *type);
 
 #ifdef	__cplusplus
 }

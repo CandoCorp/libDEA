@@ -26,8 +26,8 @@ typedef Generic Float;
 * @date 03/26/2015
 */
 Float floatNew( float value );
-Float floatNew( double *value );
-Float floatNew( char *value );
+//Float floatNew( double *value );
+//Float floatNew( char *value );
 
 /**
 * floatCompare permite comparar dos Generic con sus valores float,

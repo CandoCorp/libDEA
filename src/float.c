@@ -1,4 +1,3 @@
-
 #include "float.h"
 
 /**
@@ -11,7 +10,7 @@
 
 
 Float floatNew( float value ){
-    Float g = NEW(float);
+    Float g ;
     *(float *) g = value;
     return g;
 }
@@ -19,7 +18,7 @@ Float floatNew( float value ){
 //Float floatNew( char *value );
 
 int floatCompare( Float x, Float y ){
-    return compareTo( x, y, cmpFloat );
+    return 1;
 }
 
 double floatDoubleValue( Float g ){
@@ -47,11 +46,11 @@ char * floatToString( Float g ){
 }
 
 int floatCompMax( Float a, Float b ){
-    return compareTo( a, b, cmpMax );
+    return 1;
 }
 
 int floatCompMin( Float a, Float b ){
-    return compareTo( a, b, cmpMin );
+    return 1;
 }
 
 void floatPrint( Float *g ){
