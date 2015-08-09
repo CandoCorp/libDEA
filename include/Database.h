@@ -33,13 +33,19 @@ struct __Address {
 typedef Generic Address;
 
 typedef struct __Database{
-    Address rows[MAX_ROWS];
+    Address *rows;
+    int max_rows;
 }Database;
 
 typedef struct __Connection {
     FILE **file;
     Database *db;
+    int pages_actives;
 }Connection;
+
+static const char *db_file_name = "tmp.db";
+
+Connection const *db_conn;
 
 void Database_load(Connection *conn);
 Connection *Database_open(const char *filename, char mode);

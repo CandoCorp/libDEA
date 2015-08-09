@@ -13,12 +13,16 @@ void Database_load(Connection *conn)
 }
 
 Connection *Database_open(const char *filename, char mode){
+    static int num_pages;
+    
     Connection *conn = malloc(sizeof(Connection));
-    if(!conn) die("Memory error");
-
+    
     conn->db = malloc(sizeof(Database));
-    if(!conn->db) die("Memory error");
-
+    
+    conn->file = malloc(sizeof(FILE));
+    
+    conn->db->rows = malloc(sizeof(Address)*conn->db->max_rows);
+    
     if(mode == 'c') {
         conn->file = fopen(filename, "w");
     } else {
