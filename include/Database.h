@@ -14,8 +14,10 @@ extern "C" {
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <string.h>
 #include "generic.h"
+#include "DataTypes.h"
 #include <err.h>
     
 //#define MAX_DATA 512
@@ -35,17 +37,19 @@ typedef Generic Address;
 typedef struct __Database{
     Address *rows;
     int max_rows;
+    bool full;
 }Database;
 
 typedef struct __Connection {
     FILE **file;
     Database *db;
     int pages_actives;
+    int active_page;
 }Connection;
 
 static const char *db_file_name = "tmp.db";
 
-Connection const *db_conn;
+Connection *const db_conn;
 
 void Database_load(Connection *conn);
 Connection *Database_open(const char *filename, char mode);

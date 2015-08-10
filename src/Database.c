@@ -12,27 +12,31 @@ void Database_load(Connection *conn)
     
 }
 
-Connection *Database_open(const char *filename, char mode){
-    static int num_pages;
+Connection *Database_open(const char *filename, char mode, int max_rows){
+    static int num_pages = 1;
     
-    Connection *conn = malloc(sizeof(Connection));
+    Connection *conn = MALLOC(Connection);
     
-    conn->db = malloc(sizeof(Database));
-    
-    conn->file = malloc(sizeof(FILE));
-    
-    conn->db->rows = malloc(sizeof(Address)*conn->db->max_rows);
-    
-    if(mode == 'c') {
-        conn->file = fopen(filename, "w");
-    } else {
-        conn->file = fopen(filename, "r+");
+    if(conn){
+        conn->db = CALLOC(1,Database);
 
-        if(conn->file) {
-            Database_load(conn);
+        conn->db->rows = max_rows;
+        conn->db->rows = CALLOC(max_rows,Address);
+
+        conn->file = CALLOC(1,FILE);
+
+        if(mode == 'c') {
+            conn->file[num_pages] = fopen(filename, "w");
+        } else {
+            conn->file[num_pages] = fopen(filename, "r+");
+
+            if(conn->file) {
+                Database_load(conn);
+            }
         }
-    }
-
+    }else
+        die("Memory error\n");
+    
     if(!conn->file) die("Failed to open the file");
 
     return conn;
