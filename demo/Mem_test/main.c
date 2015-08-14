@@ -15,15 +15,20 @@ int main(int argc, char** argv) {
     char str1[] = "This is a string for testing proposes";
     char *str2,*str3, **strStr;
     
-    //debug_on();
+    debug_on();
+    
+    set_default_error_stream("log.txt");
+    set_default_print_stream("stdout.txt");
+    set_default_information_stream("inf.txt");
+    set_default_warning_stream("warn.txt");
+    
+    debug_off();
     
     strStr = NEW_ARRAY(char*,1024);
     str2 = NEW(char);
     
     DELETE(str2);
     DELETE(str1);
-    
-    printf("%d\n",(int)sizeof(int*));
     
     for(int i = 3; i < 1000; i++){    
         strStr[i] = NEW(char);
@@ -40,6 +45,7 @@ int main(int argc, char** argv) {
     str3 = NEW(char);
     DELETE(str3);
     debug_off();
+    
     return (EXIT_SUCCESS);
 }
 

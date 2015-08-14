@@ -117,7 +117,7 @@ extern __attribute__ ((noreturn)) int __exc_on (char *, char *, unsigned, __EXC_
 /* Try to handle an exception. */
 
 #define on(code)                          \
-  if (__exc_on (__FILE__, __EXC_FUNCTION,    \
+  if (__exc_on (__FILE__, __func__,    \
 		__LINE__, (#code)))
 
 extern inline const char *exceptionString(Exception code);

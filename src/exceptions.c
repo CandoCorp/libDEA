@@ -1,4 +1,5 @@
 #include "exceptions.h"
+#include <stdio.h>
 
 typedef struct __UserDefException{
     int code;
@@ -87,11 +88,11 @@ void
 __exc_pop (jmp_buf *j){
     struct __exc_stack *stored = __exc_global;
 
-    __exc_debug ("POP () to %p", j);
+    debug ("POP () to %p", j);
 
     if (stored == NULL)
     {
-        __exc_debug ("Unhandled exception.");
+        debug ("Unhandled exception.");
 
         fprintf (stderr, "Unhandled exception:\n");
         __exc_print (stderr, __exc_file, __exc_function,
@@ -108,7 +109,7 @@ __exc_pop (jmp_buf *j){
       memcpy (j, &stored->j, sizeof (jmp_buf));
     }
 
-    __exc_debug ("Popped");
+    debug ("Popped");
     __exc_print_global ();
 
     /* While with MALLOC, free.  When using obstacks it is better not to
@@ -125,19 +126,19 @@ __exc_push (jmp_buf *j, int returned)
 {
     struct __exc_stack *new;
 
-    __exc_debug ("PUSH (), %p, %d", j, returned);
+    debug ("PUSH (), %p, %d", j, returned);
 
     /* SETJMP returns 0 first time, nonzero from __EXC_THROW.
        Returning false-like value here (0) will enter the
        else branch (that is, EXCEPT.) */
     if (returned != 0){
-        __exc_debug ("Returning from THROW");
+        debug ("Returning from THROW");
         return 0;
     }
 
     /* Since this didn't come from THROW, fine to increase counter. */
     ++__exc_tries;
-    __exc_debug ("This is PUSH () number %u", __exc_tries);
+    debug ("This is PUSH () number %u", __exc_tries);
 
     /* Using memcpy here is the best alternative. */
     new = malloc (sizeof (struct __exc_stack));
@@ -161,7 +162,7 @@ __exc_throw (char *file, char *function, unsigned line, __EXC_TYPE code)
 {
     jmp_buf j;
 
-    __exc_debug ("THROW ()");
+    debug ("THROW ()");
 
     #if defined __EXC_DEBUG
         __exc_print (__EXC_STREAM, file, function, line, code);
@@ -178,7 +179,7 @@ __exc_throw (char *file, char *function, unsigned line, __EXC_TYPE code)
         /* Pop for jumping. */
         __exc_pop (&j);
 
-        __exc_debug ("Jumping to the handler");
+        debug ("Jumping to the handler");
 
         /* LONGJUMP to J with nonzero value. */
         longjmp (j, 1);
@@ -192,7 +193,7 @@ __exc_throw_new (char *file, char *function, unsigned line, __EXC_TYPE code)
 {
     jmp_buf j;
 
-    __exc_debug ("THROW ()");
+    debug ("THROW ()");
 
     #if defined __EXC_DEBUG
         __exc_print (__EXC_STREAM, file, function, line, code);
@@ -208,7 +209,7 @@ __exc_throw_new (char *file, char *function, unsigned line, __EXC_TYPE code)
     /* Pop for jumping. */
     __exc_pop (&j);
 
-    __exc_debug ("Jumping to the handler");
+    debug ("Jumping to the handler");
 
     /* LONGJUMP to J with nonzero value. */
     longjmp (j, 1);
@@ -220,7 +221,7 @@ void
 __exc_rethrow (){
     jmp_buf j;
 
-    __exc_debug ("RETHROW ()");
+    debug ("RETHROW ()");
     #ifdef __EXC_DEBUG
         __exc_print(__EXC_STREAM, __exc_file, __exc_function,
                     __exc_line, __exc_code);
@@ -244,31 +245,31 @@ __exc_on (__EXC_NDEBUG_UN(char *file),
 	  __EXC_NDEBUG_UN(unsigned line),
 	  __EXC_TYPE code){
     
-    __exc_debug ("ON ()");
-    __exc_debug ("Trying to handle in file \"%s\", at line %u", file, line);
+    debug ("ON ()");
+    debug ("Trying to handle in file \"%s\", at line %u", file, line);
 #ifdef __EXC_DEBUG
     if (function)
       {
-        __exc_debug ("In function \"%s\".", function);
+        debug ("In function \"%s\".", function);
       }
 #endif
 
     if (__exc_handled == 1){
-      __exc_debug ("Exception already handled in this level, skip");
+      debug ("Exception already handled in this level, skip");
       return 0;
     }
     int pos = findException(code);
     if(pos != 0)    
         if (__EXC_EQ (code, __exc_code)){
             
-            __exc_debug ("This handler FITS");
+            debug ("This handler FITS");
 
             removeException(code,pos);
             __exc_handled = 1;
             return 1;
         }
 
-    __exc_debug ("This handler DOESN'T FIT");
+    debug ("This handler DOESN'T FIT");
 
     /* Not matched. */
     return 0;
@@ -314,7 +315,7 @@ inline const char *exceptionString(Exception code){
             return tempstrings[11];
         }break;
         default:{
-            __exc_debug("Exception Not Found!..");
+            debug("Exception Not Found!..");
         }
     }
     
@@ -327,16 +328,16 @@ inline void addException(const char ExceptionName[]){
     check_mem(temp);
     switch(findException(ExceptionName)){
         case -2:{
-            __exc_debug("First exception being added to the system by the user");
+            debug("First exception being added to the system by the user");
             temp->next = __UserExceptions;
             temp->Exception.code = lastcodeUsed;
             strcpy(temp->Exception.name,ExceptionName);
             __UserExceptions = temp;
             ++lastcodeUsed;
-            __exc_debug("Exception added to the system");
+            debug("Exception added to the system");
         }break;
         case -1:{
-            __exc_debug("Bad Exception name");
+            debug("Bad Exception name");
         }break;
         case 0:{
             temp->next = NULL;
@@ -344,10 +345,10 @@ inline void addException(const char ExceptionName[]){
             strcpy(temp->Exception.name,ExceptionName);
             __UserExceptions->next = temp;
             ++lastcodeUsed;
-            __exc_debug("Exception added to the system");
+            debug("Exception added to the system");
         }break;
         default:{
-            __exc_debug ("Exception already defined in the system");
+            debug ("Exception already defined in the system");
         }
     }
     
@@ -369,11 +370,11 @@ inline int findException(const char ExceptionName[]){
             return value;
     }
     else{
-        __exc_debug ("Exception found in the default system");
+        debug ("Exception found in the default system");
         return -3;
     }
     
-    __exc_debug ("Exception not found");
+    debug ("Exception not found");
     return 0;
 }
 
@@ -391,13 +392,13 @@ inline void removeException(const char ExceptionName[], int position){
             i++;
             it = it->next;
         }
-        __exc_debug("%s",it->Exception.name);
+        debug("%s",it->Exception.name);
         if(it != NULL){
             node = it->next;
-            __exc_debug("%s",node->Exception.name);
+            debug("%s",node->Exception.name);
             if(node->next != NULL){
                 it->next = node->next;
-                __exc_debug("%s",it->next->Exception.name);
+                debug("%s",it->next->Exception.name);
                 node->next = NULL;
                 free(node);
             }else{
@@ -452,7 +453,7 @@ inline int ExceptionMatchingCodeUserList(const char string[]){
     
     for(UserExceptionList *it = __UserExceptions; it != NULL; it = it->next, value++)
         if(strcmp(string,it->Exception.name) == 0){
-            __exc_debug ("Exception %s was found %d in the system add by the user",string,value + __LastException);
+            debug ("Exception %s was found %d in the system add by the user",string,value + __LastException);
             return value;
         }
     

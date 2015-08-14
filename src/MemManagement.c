@@ -1,8 +1,10 @@
 #include "MemManagement.h"
 #include <string.h>
+#include <stdlib.h>
 #include "ErrorHandler.h"
 #include "DataTypes.h"
 #include "Const.h"
+#include "MemHandlers.h"
 
 typedef char Word[MAX_WORD_SIZE];
 
@@ -19,16 +21,18 @@ static Table ref_table;
 
 Table *ref_table_act = &ref_table;
 
+void add_ref(void *p, char *type);
 int is_ref_Empty(address *a);
 void init_ref(address *a);
 void init_table();
 
 int find_ref(void *ptr);
 
-inline void *new_malloc(size_t value, char *type){
-    void add_ref(void *p, char *type);
-    if(value IS 0)
+ void *new_malloc(size_t value, char *type){
+    if(value IS 0){
         return NULL;
+        debug("You can't assign a malloc of 0 bytes");
+    }
     
     void *ptr = malloc(value);
     
@@ -43,17 +47,20 @@ inline void *new_malloc(size_t value, char *type){
         return NULL;
 }
 
-inline void Delete(void *ptr,char *objName){
+void Delete(void *ptr,char *objName){
     void remove_ref (void *ptr,char *objName);
     remove_ref(ptr,objName);
 }
 
-inline void *new_calloc(size_t numElem, size_t size, char *type){
-    void add_ref(void *p,char *type);
-    
-    if(numElem IS 0 OR size IS 0)
+ void *new_calloc(size_t numElem, size_t size, char *type){
+    if(numElem IS_LESS_EQUAL_THAT 0){
+        debug("You can't assign 0 or a negative value to the elements of the pointer");
         return NULL;
-    
+    }
+    if(size IS_LESS_EQUAL_THAT 0){
+        debug("You can't assign 0 or a negative value to the pointer");
+        return NULL;
+    }
     void *ptr = calloc(numElem,size);
     
     check_mem(ptr);
@@ -65,6 +72,35 @@ inline void *new_calloc(size_t numElem, size_t size, char *type){
     
 error:    
     return NULL;
+}
+
+ void *new_realloc(void *ptr, size_t numElem,size_t size,char *type){
+    if(ptr IS NULL){
+        debug("The pointer in %p was a null pointer",ptr);
+        return NULL;
+    }
+    
+    if(numElem IS_LESS_EQUAL_THAT 0){
+        debug("You can't assign 0 or a negative value to the elements of the pointer");
+        return NULL;
+    }
+    
+    if(size IS_LESS_EQUAL_THAT 0){
+        debug("You can't assign 0 or a negative value to the pointer");
+        return NULL;
+    }
+    
+    void *ptr2 = realloc(ptr,numElem * size);
+    
+    check_mem(ptr2);
+    
+    if(ptr2 IS_NOT NULL){
+        add_ref(ptr2,type);
+        return ptr2;
+    }
+    
+    error:
+        return NULL;
 }
 
 int is_ref_Empty(address *a){
@@ -164,7 +200,7 @@ void remove_ref (void *ptr,char *objName){
     }
     
     address *a = &ref_table[count];
-    debug("The object %s of type %d in the %s location has been removed\n",objName,a->id,a->addr);
+    debug("The object %s of type %d in the %s location has been removed",objName,a->id,a->addr);
     init_ref(a);
     a->id = 0;
     

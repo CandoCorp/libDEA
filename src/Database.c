@@ -1,5 +1,5 @@
 #include "Database.h"
-
+#include "ErrorHandler.h"
 
 void Address_print(struct Address *addr)
 {
@@ -13,37 +13,37 @@ void Database_load(Connection *conn)
 }
 
 Connection *Database_open(const char *filename, char mode, int max_rows){
-    static int num_pages = 1;
-    
     Connection *conn = MALLOC(Connection);
+    
+    check_mem(conn);
     
     if(conn){
         conn->db = CALLOC(1,Database);
-
+        
+        check_mem(conn->db);
+        
         conn->db->rows = max_rows;
         conn->db->rows = CALLOC(max_rows,Address);
 
-        conn->file = CALLOC(1,FILE);
-
         if(mode == 'c') {
-            conn->file[num_pages] = fopen(filename, "w");
+            conn->file = fopen(filename, "w");
         } else {
-            conn->file[num_pages] = fopen(filename, "r+");
-
-            if(conn->file) {
+            conn->file = fopen(filename, "a+");
+            if(conn->file)
                 Database_load(conn);
-            }
         }
     }else
-        die("Memory error\n");
+        die("Failed to open the file");
     
     if(!conn->file) die("Failed to open the file");
-
+    
     return conn;
+    
+    error:
+        die("Memory error\n");
 }
 
-void Database_close(Connection *conn)
-{
+void Database_close(Connection *conn){
     if(conn) {
         if(conn->file) fclose(conn->file);
         if(conn->db) free(conn->db);
@@ -62,16 +62,10 @@ void Database_write(Connection *conn)
     if(rc == -1) die("Cannot flush database.");
 }
 
-void Database_create(Connection *conn)
-{
-    int i = 0;
-
-    for(i = 0; i < MAX_ROWS; i++) {
-        // make a prototype to initialize it
-        //struct Address addr = {.id = i, .set = 0};
-        // then just assign it
-        //conn->db->rows[i] = addr;
-    }
+void Database_create(int max_rows){
+    if(!db_conn)
+        db_conn = Database_open(db_file_name,'c',max_rows);
+    
 }
 
 void Database_set(Connection *conn, int id, const char *name, const char *email)

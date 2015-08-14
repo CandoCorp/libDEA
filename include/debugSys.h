@@ -12,43 +12,62 @@
 extern "C" {
 #endif
 
-#include <stdio.h>
 #include <errno.h>
-#include <assert.h>
-#include <err.h>
 #include "Exec.h"
-        
-#ifndef __EXC_STREAM
 
-    #define __EXC_STREAM        stdout
-    #define __EXC_ERROR         stderr 
-
-#endif
-
-extern volatile int debug_flag;
-
-#define clean_errno() (errno == 0 ? "None" : strerror(errno))
-
-#define log_err(M, ...) fprintf(__EXC_ERROR, "[ERROR] (%s:%d: errno: %s) " M "\n", __FILE__, __LINE__, clean_errno(), ##__VA_ARGS__)
-
-#define log_warn(M, ...) fprintf(__EXC_ERROR, "[WARN] (%s:%d: errno: %s) " M "\n", __FILE__, __LINE__, clean_errno(), ##__VA_ARGS__)
-
-#define log_info(M, ...) fprintf(__EXC_ERROR, "[INFO] (%s:%d) " M "\n", __FILE__, __LINE__, ##__VA_ARGS__)
-
-
-#define debug_on() __debug_on()
-#define debug_off() __debug_off()
-
-#define debug(M,...) {if(debug_flag) __debug(M,##__VA_ARGS__); else __debug_empty(M,##__VA_ARGS__);}
+enum { __ERROR_MSG = 0, __WARN_MSG, __INFO_MSG };
 
 void __debug_on();
 void __debug_off();
 
-void __exc_debug(const char *, ...);
+void __exc_debug (unsigned line,const char *actualFunction,const char *fmt, ...);
 void __exc_error();
 
-#define __debug(M, ...) __exc_debug(M, ##__VA_ARGS__)
+int __set_default_log_stream(const char fileName[],int switchStream);
+int __set_default_print_stream(const char fileName[]);
+
+const char *__get_default_error_stream();
+const char *__get_default_info_stream();
+const char *__get_default_warn_stream();
+const char *__get_default_print_stream();
+
+void __log_msg(int , unsigned , const char* , const char* , const char* , ...);
+
+#define clean_errno() (errno == 0 ? "None" : strerror(errno))
+
+#define log_err(M, ...) (__log_msg(__ERROR_MSG,__LINE__,__func__,__FILE__, M, ##__VA_ARGS__))
+
+#define log_warn(M, ...) (__log_msg(__WARN_MSG,__LINE__,__func__,__FILE__, M, ##__VA_ARGS__))
+
+#define log_info(M, ...) (__log_msg(__INFO_MSG,__LINE__,__func__,__FILE__, M, ##__VA_ARGS__))
+
+#define debug_on() (__debug_on())
+    
+#define debug_off() (__debug_off())
+
+#define __debug(M, ...) (__exc_debug(__LINE__,__func__,M, ##__VA_ARGS__))
+
 #define __debug_empty(M, ...) 
+
+#define debug(M,...) {if(get_debug_flag()) __debug(M,##__VA_ARGS__); else __debug_empty(M,##__VA_ARGS__);}
+
+#define set_default_error_stream(filename) (__set_default_log_stream(filename,__ERROR_MSG))
+
+#define set_default_warning_stream(filename) (__set_default_log_stream(filename,__WARN_MSG))
+
+#define set_default_information_stream(filename) (__set_default_log_stream(filename,__INFO_MSG))
+
+#define set_default_print_stream(filename) (__set_default_print_stream(filename))
+
+#define get_default_error_stream() (__get_default_error_stream())
+
+#define get_default_info_stream() (__get_default_info_stream())
+
+#define get_default_warn_stream() (__get_default_warn_stream())
+
+#define get_default_print_stream() (__get_default_print_stream())
+
+#define get_debug_flag() (__get_debug_flag())
 
 #ifdef	__cplusplus
 }

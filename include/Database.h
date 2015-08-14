@@ -41,7 +41,7 @@ typedef struct __Database{
 }Database;
 
 typedef struct __Connection {
-    FILE **file;
+    FILE *file;
     Database *db;
     int pages_actives;
     int active_page;
@@ -49,13 +49,13 @@ typedef struct __Connection {
 
 static const char *db_file_name = "tmp.db";
 
-Connection *const db_conn;
+static Connection *db_conn = NULL;
 
 void Database_load(Connection *conn);
-Connection *Database_open(const char *filename, char mode);
+Connection *Database_open(const char *filename, char mode, int max_rows);
 void Database_close(Connection *conn);
 void Database_write(Connection *conn);
-void Database_create(Connection *conn);
+void Database_create(int max_rows);
 void Database_set(Connection *conn, int id, const char *name, const char *email);
 void Database_get(Connection *conn, int id);
 void Database_delete(Connection *conn, int id);
