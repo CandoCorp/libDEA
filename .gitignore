@@ -20,6 +20,9 @@
 # XCode Project Archives
 /build/libDEA_XCode/*.pbxproj
 
+# Eclipse Project Files
+/build/libDeaEclipse/.metadata/**
+
 # Demo Files
 /demo/**
 
