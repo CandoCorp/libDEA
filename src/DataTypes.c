@@ -35,7 +35,7 @@ inline int dataTypeCode(const char name[]){
     if(strcmp(name,"double") IS EQUAL)
         return DOUBLE;
     if(strcmp(name,"long") IS EQUAL)
-        return LONG;
+        return 0;
     if(strcmp(name,"string") IS EQUAL)
         return STRING;
     if(strcmp(name,"complex") IS EQUAL)

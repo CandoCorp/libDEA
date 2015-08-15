@@ -13,17 +13,27 @@
  */
 int main(int argc, char** argv) {
     char str1[] = "This is a string for testing proposes";
-    char *str2,*str3, **strStr;
+    char str3[20], **strStr;
     
     debug_on();
     
     set_default_error_stream("log.txt");
-    set_default_print_stream("stdout.txt");
+    set_default_debug_print_stream("stdout.txt");
     set_default_information_stream("inf.txt");
     set_default_warning_stream("warn.txt");
     
     debug_off();
     
+    char *const str2 = NEW_ARRAY(char,20);
+    
+    printf("%d\n",(int)(sizeof(str3)/sizeof(str3[0])));
+    printf("%d\n",(int)(sizeof(*str2)));
+    printf("%d\n",(int)(sizeof(str2[2])));
+    
+    for(int i = 0; i<(sizeof(str1)/sizeof(str1[0]));i++)
+        printf("%c",i[str1]);
+    
+    /**
     strStr = NEW_ARRAY(char*,1024);
     str2 = NEW(char);
     
@@ -45,7 +55,7 @@ int main(int argc, char** argv) {
     str3 = NEW(char);
     DELETE(str3);
     debug_off();
-    
+    */
     return (EXIT_SUCCESS);
 }
 

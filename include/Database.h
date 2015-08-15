@@ -25,37 +25,33 @@ extern "C" {
 
 enum{ MAX_DATA = 512, MAX_ROWS = 100 };
 
-struct __Address {
-    int id;
-    int set;
-    char name[MAX_DATA];
-    char email[MAX_DATA];
-};
-
 typedef Generic Address;
 
 typedef struct __Database{
     Address *rows;
-    int max_rows;
+    unsigned int max_rows;
     bool full;
 }Database;
 
-typedef struct __Connection {
+typedef struct __Connection Connection;
+
+struct __Connection {
     FILE *file;
     Database *db;
-    int pages_actives;
-    int active_page;
-}Connection;
+    int (*Database_load)(Connection *self);
+    int (*Database_write) (Connection *self);
+    bool binary;
+};
 
 static const char *db_file_name = "tmp.db";
 
 static Connection *db_conn = NULL;
 
 void Database_load(Connection *conn);
-Connection *Database_open(const char *filename, char mode, int max_rows);
+Connection *Database_open(Connection con ,const char *filename, char mode,unsigned int max_rows,int *error_code);
 void Database_close(Connection *conn);
 void Database_write(Connection *conn);
-void Database_create(int max_rows);
+int Database_create(unsigned int max_rows);
 void Database_set(Connection *conn, int id, const char *name, const char *email);
 void Database_get(Connection *conn, int id);
 void Database_delete(Connection *conn, int id);

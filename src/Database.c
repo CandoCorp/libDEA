@@ -12,35 +12,67 @@ void Database_load(Connection *conn)
     
 }
 
-Connection *Database_open(const char *filename, char mode, int max_rows){
-    Connection *conn = MALLOC(Connection);
+Connection *Database_open(Connection con ,const char *filename, char mode,unsigned int max_rows,int *error_code){
+    if(!con.Database_load) goto error_methods;
+    if(!con.Database_write) goto error_methods;
     
+    Connection *conn = CALLOC(1,Connection);
     check_mem(conn);
     
-    if(conn){
-        conn->db = CALLOC(1,Database);
-        
-        check_mem(conn->db);
-        
-        conn->db->rows = max_rows;
-        conn->db->rows = CALLOC(max_rows,Address);
+    *conn = con;
+    
+    conn->db = CALLOC(1,Database);
 
+    check_mem(conn->db);
+
+    conn->db->max_rows = max_rows;
+    conn->db->rows = CALLOC(max_rows,Address);
+
+    check_mem(conn->db->rows);
+    
+    if(conn->binary == true){
+        if(mode == 'c') {
+            conn->file = fopen(filename, "wb");
+            if(!conn->file) goto error_file;
+            debug("The file has been created");
+        } else {
+            conn->file = fopen(filename, "ab+");
+            if(!conn->file) goto error_file;
+            debug("The file has been opened");
+            Database_load(conn);
+        }
+    }else{
         if(mode == 'c') {
             conn->file = fopen(filename, "w");
+            if(!conn->file) goto error_file;
+            debug("The file has been created");
         } else {
             conn->file = fopen(filename, "a+");
-            if(conn->file)
-                Database_load(conn);
+            if(!conn->file) goto error_file;
+            debug("The file has been opened");
+            Database_load(conn);
         }
-    }else
-        die("Failed to open the file");
-    
-    if(!conn->file) die("Failed to open the file");
+    }
+    if(!conn->file) goto error_file;
     
     return conn;
     
-    error:
-        die("Memory error\n");
+    error:{
+        if(error_code != NULL)
+            *error_code = -1;
+        
+        return NULL;
+    }
+    error_file:{
+        if(error_code != NULL)
+            *error_code = -2;
+        return NULL;
+    }
+    error_methods:{
+        if(error_code != NULL)
+            *error_code = -3;
+        return NULL;
+    }
 }
 
 void Database_close(Connection *conn){
@@ -48,6 +80,8 @@ void Database_close(Connection *conn){
         if(conn->file) fclose(conn->file);
         if(conn->db) free(conn->db);
         free(conn);
+        conn = NULL;
+        
     }
 }
 
@@ -62,10 +96,16 @@ void Database_write(Connection *conn)
     if(rc == -1) die("Cannot flush database.");
 }
 
-void Database_create(int max_rows){
+int Database_create(unsigned int max_rows){
+    if(max_rows <= 0){
+        debug("You can't assign max rows of negative value");
+        return -1;
+    }
+        
     if(!db_conn)
-        db_conn = Database_open(db_file_name,'c',max_rows);
+//        db_conn = Database_open(db_conn,db_file_name,'c',max_rows,NULL);
     
+    ;
 }
 
 void Database_set(Connection *conn, int id, const char *name, const char *email)

@@ -24,12 +24,12 @@ void __exc_debug (unsigned line,const char *actualFunction,const char *fmt, ...)
 void __exc_error();
 
 int __set_default_log_stream(const char fileName[],int switchStream);
-int __set_default_print_stream(const char fileName[]);
+int __set_default_debug_print_stream(const char fileName[]);
 
 const char *__get_default_error_stream();
 const char *__get_default_info_stream();
 const char *__get_default_warn_stream();
-const char *__get_default_print_stream();
+const char *__get_default_debug_print_stream();
 
 void __log_msg(int , unsigned , const char* , const char* , const char* , ...);
 
@@ -57,7 +57,7 @@ void __log_msg(int , unsigned , const char* , const char* , const char* , ...);
 
 #define set_default_information_stream(filename) (__set_default_log_stream(filename,__INFO_MSG))
 
-#define set_default_print_stream(filename) (__set_default_print_stream(filename))
+#define set_default_debug_print_stream(filename) (__set_default_debug_print_stream(filename))
 
 #define get_default_error_stream() (__get_default_error_stream())
 
@@ -65,7 +65,7 @@ void __log_msg(int , unsigned , const char* , const char* , const char* , ...);
 
 #define get_default_warn_stream() (__get_default_warn_stream())
 
-#define get_default_print_stream() (__get_default_print_stream())
+#define get_default_debug_print_stream() (__get_default_debug_print_stream())
 
 #define get_debug_flag() (__get_debug_flag())
 

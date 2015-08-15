@@ -16,12 +16,21 @@ extern "C" {
 #endif
 
 static enum __DataTypes{
-    INT = 0,
-    BOOL,
+    BOOL = 0,
     CHAR,
+    UNSIGNED_CHAR,
+    SIGNED_CHAR,
+    UNSIGNED_SHORT_INT,
+    SHORT_INT,
+    INT,
+    UNSIGNED_INT,
+    LONG_INT,
+    UNSIGNED_LONG_INT,
+    LONG_LONG_INT,
+    UNSIGNED_LONG_LONG_INT,
     FLOAT,
     DOUBLE,
-    LONG,
+    LONG_DOUBLE,
     STRING,
     COMPLEX,
     FRACTION,
@@ -30,8 +39,10 @@ static enum __DataTypes{
 
 typedef enum __DataTypes DataTypes;
 
-static char *DataTypesNames[] = {"int","bool","char","float"
-                                "double","long","string","complex",
+static char *DataTypesNames[] = {"bool","char","unsigned char","signed char",
+                                "unsigned short int","short int""int","unsigned int",
+                                "long int","unsigned long int","long long int","unsigned long long int",
+                                "float","double","long double","string","complex",
                                 "fraction"};
 
 extern inline int dataTypeCode(const char name[]);

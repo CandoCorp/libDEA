@@ -80,18 +80,18 @@ int __set_default_log_stream(const char fileName[],int switchStream){
     FILE *pf;
     FILE *fileStream;
     
-    time_t current_time = time(NULL);
+    //time_t current_time = time(NULL);
     
     if( fileName == NULL ){
         debug("The fileName was Null");
         return -1;
     }
-    
+    /**
     if(current_time == ((time_t)-1)){
         debug("The current time couldn't be calculated");
         return -2;
     }
-    
+    */
     int len = strlen(fileName);
             
     switch(switchStream){
@@ -134,18 +134,19 @@ int __set_default_log_stream(const char fileName[],int switchStream){
             goto error;
         
         debug("The file %s was created successfully",fileName);
-        
+        /**
         char *str_time = ctime(&current_time);
         
         if(str_time == NULL)
             goto error_time;
         else{
-            str_time[strlen(str_time)-1] = '\0';
-            fprintf(pf,"[----------------------- Log started on :%s -----------------------]\n",str_time);
-            fileStream = pf;
-            strncpy(file_name_error,fileName,len);
-            return 0;
-        }
+            
+        str_time[strlen(str_time)-1] = '\0';
+         */
+        fprintf(pf,"[----------------------- Log started on: %s at %s -----------------------]\n",__DATE__,__TIME__);
+        fileStream = pf;
+        strncpy(file_name_error,fileName,len);
+        return 0;
     }else{
         
         fclose(pf);
@@ -155,17 +156,19 @@ int __set_default_log_stream(const char fileName[],int switchStream){
         
         debug("The file %s was opened successfully",fileName);
         
+        /**
         char *str_time = ctime(&current_time);
         
         if(str_time == NULL)
             goto error_time;
         else{
-            str_time[strlen(str_time)-1] = '\0';
-            fprintf(pf,"[----------------------- Log started on :%s -----------------------]\n",str_time);
-            fileStream = pf;
-            strncpy(file_name_error,fileName,len);
-            return 0;
-        }
+         
+        str_time[strlen(str_time)-1] = '\0';
+        */
+        fprintf(pf,"[----------------------- Log started on: %s at %s -----------------------]\n",__DATE__,__TIME__);
+        fileStream = pf;
+        strncpy(file_name_error,fileName,len);
+        return 0;
     }
     error:{
         debug("The file couldn't be opened");
@@ -197,21 +200,21 @@ int __set_default_log_stream(const char fileName[],int switchStream){
     }
 }
 
-int __set_default_print_stream(const char fileName[]){
+int __set_default_debug_print_stream(const char fileName[]){
     FILE *pf;
     
-    time_t current_time = time(NULL);
+    //time_t current_time = time(NULL);
     
     if( fileName == NULL ){
         debug("The fileName was Null");
         return -1;
     }
-    
+    /**
     if(current_time == ((time_t)-1)){
         debug("The current time couldn't be calculated");
         return -2;
     }
-    
+    */
     int len = strlen(fileName);
     
     if( len >= FILENAME_MAX){
@@ -232,19 +235,18 @@ int __set_default_print_stream(const char fileName[]){
             goto error;
         
         debug("The file %s was created successfully",fileName);
-        
+        /**
         char *str_time = ctime(&current_time);
         
         if(str_time == NULL)
             goto error_time;
         else{
             str_time[strlen(str_time)-1] = '\0';
-            fprintf(pf,"[----------------------- Debug started on :%s -----------------------]\n",str_time);
-            defstream = pf;
-            strncpy(file_name_error,fileName,len+1);
-            return 0;
-        }
-        fclose(pf);
+            */
+        fprintf(pf,"[----------------------- Debug started on: %s at %s -----------------------]\n",__DATE__,__TIME__);
+        defstream = pf;
+        strncpy(file_name_error,fileName,len+1);
+        return 0;
     }else{
         fclose(pf);
         pf = fopen(fileName,"a+");
@@ -253,19 +255,18 @@ int __set_default_print_stream(const char fileName[]){
             goto error;
         
         debug("The file %s was opened successfully",fileName);
-        
+        /**
         char *str_time = ctime(&current_time);
         
         if(str_time == NULL)
             goto error_time;
         else{
             str_time[strlen(str_time)-1] = '\0';
-            fprintf(pf,"[----------------------- Debug started on :%s -----------------------]\n",str_time);
-            defstream = pf;
-            strncpy(file_name_error,fileName,len);
-            return 0;
-        }
-        fclose(pf);
+           */
+        fprintf(pf,"[----------------------- Debug started on: %s at %s -----------------------]\n",__DATE__,__TIME__);
+        defstream = pf;
+        strncpy(file_name_error,fileName,len);
+        return 0;
     }
     error:{
         debug("The file couldn't be opened");
@@ -300,7 +301,7 @@ const char *__get_default_warn_stream(){
     return file_name_warn;
 }
 
-const char *__get_default_print_stream(){
+const char *__get_default_debug_print_stream(){
     return file_name_stream;
 }
 
