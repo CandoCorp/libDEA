@@ -3,6 +3,7 @@
 # Visual Studio Project Files
 /build/libDEAVisualStudio/libDEA/libDEA/**
 /build/libDEAVisualStudio/libDEA/ipch/**
+/build/libDEAVisualStudio/libDEA/Debug/**
 /build/libDEAVisualStudio/libDEA/*.sdf
 /build/libDEAVisualStudio/libDEA/*.sln
 /build/libDEAVisualStudio/libDEA/*.suo
