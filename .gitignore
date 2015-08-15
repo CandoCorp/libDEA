@@ -20,7 +20,7 @@
 /build/libDeaNetBeans/dist/Debug/**
 
 # XCode Project Archives
-/build/libDEA_XCode/*.pbxproj
+/build/libDEA_XCode/*.xcodeproj
 
 # Eclipse Project Files
 /build/libDeaEclipse/.metadata/**
@@ -61,6 +61,9 @@
 
 # Debug files
 *.dSYM/
+
+#OS_X files
+*.DS_Store
 
 /build/libDeaNetBeans/dist/**
 /build/libDeaNetBeans/nbproject/**
