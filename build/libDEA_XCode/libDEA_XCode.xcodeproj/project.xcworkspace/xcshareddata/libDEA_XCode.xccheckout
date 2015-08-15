@@ -5,23 +5,23 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>3A590658-8F1F-49B2-9FCC-18AAA1B48CAB</string>
+	<string>32E24496-355E-45A6-B461-5B9AD25A0A0F</string>
 	<key>IDESourceControlProjectName</key>
-	<string>libDEA_XCode</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>D58393B63600BC5D9D31F56B1F4BB6F8ED2F85EA</key>
-		<string>https://github.com/WhiteFoxDevelopment/libDEA.git</string>
+		<string>https://scando%2540fiec.espol.edu.ec@github.com/WhiteFoxDevelopment/libDEA.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>build/libDEA_XCode/libDEA_XCode.xcodeproj</string>
+	<string>build/libDEA_XCode/libDEA_XCode.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>D58393B63600BC5D9D31F56B1F4BB6F8ED2F85EA</key>
 		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/WhiteFoxDevelopment/libDEA.git</string>
+	<string>https://scando%2540fiec.espol.edu.ec@github.com/WhiteFoxDevelopment/libDEA.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

@@ -7,13 +7,11 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		A44646891B7EFAB8008E7EAE /* liblibDEA_XCode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibDEA_XCode.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		A44646901B7EFAC9008E7EAE /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; name = include; path = ../../include; sourceTree = "<group>"; };
-		A44646911B7EFAD5008E7EAE /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = ../../src; sourceTree = "<group>"; };
+		A446466C1B7EE16F008E7EAE /* liblibDEA.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibDEA.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A44646861B7EFAB8008E7EAE /* Frameworks */ = {
+		A44646691B7EE16F008E7EAE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -23,19 +21,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A44646801B7EFAB8008E7EAE = {
+		A44646631B7EE16F008E7EAE = {
 			isa = PBXGroup;
 			children = (
-				A44646911B7EFAD5008E7EAE /* src */,
-				A44646901B7EFAC9008E7EAE /* include */,
-				A446468A1B7EFAB8008E7EAE /* Products */,
+				A446466D1B7EE16F008E7EAE /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		A446468A1B7EFAB8008E7EAE /* Products */ = {
+		A446466D1B7EE16F008E7EAE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A44646891B7EFAB8008E7EAE /* liblibDEA_XCode.a */,
+				A446466C1B7EE16F008E7EAE /* liblibDEA.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -43,7 +39,7 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		A44646871B7EFAB8008E7EAE /* Headers */ = {
+		A446466A1B7EE16F008E7EAE /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -53,56 +49,56 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		A44646881B7EFAB8008E7EAE /* libDEA_XCode */ = {
+		A446466B1B7EE16F008E7EAE /* libDEA */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A446468D1B7EFAB8008E7EAE /* Build configuration list for PBXNativeTarget "libDEA_XCode" */;
+			buildConfigurationList = A44646701B7EE16F008E7EAE /* Build configuration list for PBXNativeTarget "libDEA" */;
 			buildPhases = (
-				A44646851B7EFAB8008E7EAE /* Sources */,
-				A44646861B7EFAB8008E7EAE /* Frameworks */,
-				A44646871B7EFAB8008E7EAE /* Headers */,
+				A44646681B7EE16F008E7EAE /* Sources */,
+				A44646691B7EE16F008E7EAE /* Frameworks */,
+				A446466A1B7EE16F008E7EAE /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = libDEA_XCode;
-			productName = libDEA_XCode;
-			productReference = A44646891B7EFAB8008E7EAE /* liblibDEA_XCode.a */;
+			name = libDEA;
+			productName = libDEA;
+			productReference = A446466C1B7EE16F008E7EAE /* liblibDEA.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A44646811B7EFAB8008E7EAE /* Project object */ = {
+		A44646641B7EE16F008E7EAE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = WhiteFox;
 				TargetAttributes = {
-					A44646881B7EFAB8008E7EAE = {
+					A446466B1B7EE16F008E7EAE = {
 						CreatedOnToolsVersion = 6.4;
 					};
 				};
 			};
-			buildConfigurationList = A44646841B7EFAB8008E7EAE /* Build configuration list for PBXProject "libDEA_XCode" */;
+			buildConfigurationList = A44646671B7EE16F008E7EAE /* Build configuration list for PBXProject "libDEA" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = A44646801B7EFAB8008E7EAE;
-			productRefGroup = A446468A1B7EFAB8008E7EAE /* Products */;
+			mainGroup = A44646631B7EE16F008E7EAE;
+			productRefGroup = A446466D1B7EE16F008E7EAE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A44646881B7EFAB8008E7EAE /* libDEA_XCode */,
+				A446466B1B7EE16F008E7EAE /* libDEA */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A44646851B7EFAB8008E7EAE /* Sources */ = {
+		A44646681B7EE16F008E7EAE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -112,7 +108,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		A446468B1B7EFAB8008E7EAE /* Debug */ = {
+		A446466E1B7EE16F008E7EAE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -154,7 +150,7 @@
 			};
 			name = Debug;
 		};
-		A446468C1B7EFAB8008E7EAE /* Release */ = {
+		A446466F1B7EE16F008E7EAE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -189,26 +185,18 @@
 			};
 			name = Release;
 		};
-		A446468E1B7EFAB8008E7EAE /* Debug */ = {
+		A44646711B7EE16F008E7EAE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				EXECUTABLE_PREFIX = lib;
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_INPUT_FILETYPE = sourcecode.c.c;
-				GCC_SHORT_ENUMS = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		A446468F1B7EFAB8008E7EAE /* Release */ = {
+		A44646721B7EE16F008E7EAE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				EXECUTABLE_PREFIX = lib;
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_INPUT_FILETYPE = sourcecode.c.c;
-				GCC_SHORT_ENUMS = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -216,24 +204,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A44646841B7EFAB8008E7EAE /* Build configuration list for PBXProject "libDEA_XCode" */ = {
+		A44646671B7EE16F008E7EAE /* Build configuration list for PBXProject "libDEA" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A446468B1B7EFAB8008E7EAE /* Debug */,
-				A446468C1B7EFAB8008E7EAE /* Release */,
+				A446466E1B7EE16F008E7EAE /* Debug */,
+				A446466F1B7EE16F008E7EAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A446468D1B7EFAB8008E7EAE /* Build configuration list for PBXNativeTarget "libDEA_XCode" */ = {
+		A44646701B7EE16F008E7EAE /* Build configuration list for PBXNativeTarget "libDEA" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A446468E1B7EFAB8008E7EAE /* Debug */,
-				A446468F1B7EFAB8008E7EAE /* Release */,
+				A44646711B7EE16F008E7EAE /* Debug */,
+				A44646721B7EE16F008E7EAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = A44646811B7EFAB8008E7EAE /* Project object */;
+	rootObject = A44646641B7EE16F008E7EAE /* Project object */;
 }

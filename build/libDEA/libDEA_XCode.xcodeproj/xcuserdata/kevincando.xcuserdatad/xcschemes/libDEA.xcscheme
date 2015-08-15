@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A44646881B7EFAB8008E7EAE"
-               BuildableName = "liblibDEA_XCode.a"
-               BlueprintName = "libDEA_XCode"
-               ReferencedContainer = "container:libDEA_XCode.xcodeproj">
+               BlueprintIdentifier = "A446466B1B7EE16F008E7EAE"
+               BuildableName = "liblibDEA.a"
+               BlueprintName = "libDEA"
+               ReferencedContainer = "container:libDEA.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -42,10 +42,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A44646881B7EFAB8008E7EAE"
-            BuildableName = "liblibDEA_XCode.a"
-            BlueprintName = "libDEA_XCode"
-            ReferencedContainer = "container:libDEA_XCode.xcodeproj">
+            BlueprintIdentifier = "A446466B1B7EE16F008E7EAE"
+            BuildableName = "liblibDEA.a"
+            BlueprintName = "libDEA"
+            ReferencedContainer = "container:libDEA.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -60,10 +60,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A44646881B7EFAB8008E7EAE"
-            BuildableName = "liblibDEA_XCode.a"
-            BlueprintName = "libDEA_XCode"
-            ReferencedContainer = "container:libDEA_XCode.xcodeproj">
+            BlueprintIdentifier = "A446466B1B7EE16F008E7EAE"
+            BuildableName = "liblibDEA.a"
+            BlueprintName = "libDEA"
+            ReferencedContainer = "container:libDEA.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

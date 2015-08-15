@@ -28,7 +28,7 @@ void init_table();
 
 int find_ref(void *ptr);
 
- void *new_malloc(size_t value, char *type){
+ void *__new_malloc(size_t value, char *type){
     if(value IS 0){
         return NULL;
         debug("You can't assign a malloc of 0 bytes");
@@ -47,12 +47,12 @@ int find_ref(void *ptr);
         return NULL;
 }
 
-void Delete(void *ptr,char *objName){
+void __delete(void *ptr,char *objName){
     void remove_ref (void *ptr,char *objName);
     remove_ref(ptr,objName);
 }
 
- void *new_calloc(size_t numElem, size_t size, char *type){
+ void *__new_calloc(size_t numElem, size_t size, char *type){
     if(numElem IS_LESS_EQUAL_THAT 0){
         debug("You can't assign 0 or a negative value to the elements of the pointer");
         return NULL;
@@ -74,7 +74,7 @@ error:
     return NULL;
 }
 
- void *new_realloc(void *ptr, size_t numElem,size_t size,char *type){
+ void *__new_realloc(void *ptr, size_t numElem,size_t size,char *type){
     if(ptr IS NULL){
         debug("The pointer in %p was a null pointer",ptr);
         return NULL;
