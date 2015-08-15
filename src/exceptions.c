@@ -233,7 +233,7 @@ __exc_rethrow (){
 
 
 
-#ifdef __EXC_DEBUG
+#ifdef _WIN32
     #define __EXC_NDEBUG_UN(decl)         decl
 #else
     #define __EXC_NDEBUG_UN(decl)         decl __attribute__((unused))

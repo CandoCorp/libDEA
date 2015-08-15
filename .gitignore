@@ -7,6 +7,7 @@
 /build/libDEAVisualStudio/libDEA/*.sdf
 /build/libDEAVisualStudio/libDEA/*.sln
 /build/libDEAVisualStudio/libDEA/*.suo
+/build/libDEAVisualStudio/libDEA/**
 
 # NetBeans Project Files
 /build/libDeaNetBeans/build/Debug/**

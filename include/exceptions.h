@@ -68,17 +68,26 @@ typedef enum __Exception Exception;
 /* Flag to be set by ON? */
 extern volatile int __exc_handled;
 
+/* Throw it in upper level of catcher blocks. */
+extern void __exc_rethrow();
+
+#ifdef _WIN32
+/* Throw an exception in FILE at LINE, with code CODE.  Used in THROW. */
+extern void __exc_throw (char *, char *, unsigned, __EXC_TYPE);
+
+/* What a f...  Somewhy I can't get GCC's __attribute__ working here
+to tell that FILE and LINE are unused in non-debuging mode. */
+
+extern int __exc_on (char *, char *, unsigned, __EXC_TYPE);
+#else
 /* Throw an exception in FILE at LINE, with code CODE.  Used in THROW. */
 extern __attribute__((noreturn)) void __exc_throw (char *, char *, unsigned, __EXC_TYPE);
-
-/* Throw it in upper level of catcher blocks. */
-extern void __exc_rethrow ();
 
 /* What a f...  Somewhy I can't get GCC's __attribute__ working here
    to tell that FILE and LINE are unused in non-debuging mode. */
 
 extern __attribute__ ((noreturn)) int __exc_on (char *, char *, unsigned, __EXC_TYPE);
-
+#endif
 /* Start catching. */
 
 /* Obviously, there is no way to check if appropriate EXCEPT exists.

@@ -13,6 +13,7 @@ extern "C" {
 #endif
 
 #include "debugSys.h"
+#include <errno.h>
 
 #define check(A, M, ...) if(!(A)) { sentinel(M,##__VA_ARGS__) }
 
@@ -22,10 +23,6 @@ extern "C" {
 
 #define check_debug(A, M, ...) if(!(A)) { debug(M, ##__VA_ARGS__); errno=0; goto error; }
     
-typedef enum { 
-	ERROR=-1, SUCCESS = 0 
-}Return_type;
-
 void die(const char *message);
 
 #ifdef	__cplusplus

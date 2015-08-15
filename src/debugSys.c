@@ -4,7 +4,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
-#include <err.h>
+#include <errno.h>
 #include <time.h>
 #include <stdbool.h>
 
