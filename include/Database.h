@@ -32,15 +32,13 @@ typedef struct __Database{
     bool full;
 }Database;
 
-typedef struct __Connection Connection;
-
-struct __Connection {
+typedef struct __Connection {
     FILE *file;
     Database *db;
-    int (*Database_load)(Connection *self);
-    int (*Database_write) (Connection *self);
+    int (*Database_load)(struct __Connection *self);
+    int (*Database_write) (struct __Connection *self);
     bool binary;
-};
+}Connection;
 
 static const char *db_file_name = "tmp.db";
 

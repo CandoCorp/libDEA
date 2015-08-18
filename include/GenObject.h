@@ -18,17 +18,18 @@ extern "C" {
     #define BUFFER_STRING_FILE "tmp.data" 
 #endif
 
-typedef struct __GenericClass *GenObject;
 
-static struct __GenericClass{ 
+struct __GenericClass{
     Generic data;
     int dataType;
-    int(*equals)(GenObject self, GenObject data);
-    int (*compareTo)(GenObject self,GenObject data);
-    char *(*toString)(GenObject self, const char *format);
-    int (*destroy)(GenObject self);
-    int (*init)(GenObject self);
+	int(*equals)(struct __GenericClass *self, struct __GenericClass *data);
+	int(*compareTo)(struct __GenericClass *self, struct __GenericClass *data);
+	char *(*toString)(struct __GenericClass *self, const char *format);
+	int(*destroy)(struct __GenericClass *self);
+	int(*init)(struct __GenericClass *self);
 };
+
+typedef struct __GenericClass *GenObject;
 
 //typedef struct __GenericClass *GenObject;
 

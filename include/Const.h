@@ -54,7 +54,10 @@ extern "C" {
 	#define COMPL ~
 #endif
 
-
+#ifdef _WIN32
+#define __func__ __FUNCTION__
+#define restrict __restrict
+#endif
 // String templates for better understanding of code    
 #define APPEND "a+"
 #define READ "r"

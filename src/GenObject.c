@@ -63,8 +63,6 @@ void *GenObject_new(size_t size,GenObject proto){
     }
 }
 
-
-
 /**
 int StringWriteToFile(FILE *pf, Generic string){
     if(pf!=NULL||string!=NULL){

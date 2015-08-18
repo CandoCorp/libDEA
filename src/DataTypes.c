@@ -6,7 +6,7 @@
 
 static volatile int counter;
 
-static struct __CustomDataType{
+struct __CustomDataType{
     char *name;
     int id;
     struct __CustomDataType *next;

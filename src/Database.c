@@ -5,8 +5,7 @@ void Address_print(struct Address *addr)
 {
 }
 
-void Database_load(Connection *conn)
-{
+void Database_load(Connection *conn){
     int rc = fread(conn->db, sizeof(Database), 1, conn->file);
     if(rc != 1) die("Failed to load database.");
     
