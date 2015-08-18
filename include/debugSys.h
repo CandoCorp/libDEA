@@ -15,7 +15,11 @@ extern "C" {
 #include <errno.h>
 #include "Exec.h"
 
-enum { __ERROR_MSG = 0, __WARN_MSG, __INFO_MSG };
+#define __ERROR_MSG 0
+#define __WARN_MSG 1
+#define __INFO_MSG 2
+
+    //enum { __ERROR_MSG = 0, __WARN_MSG, __INFO_MSG };
 
 void __debug_on();
 void __debug_off();

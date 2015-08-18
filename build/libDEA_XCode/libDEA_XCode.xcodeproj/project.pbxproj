@@ -6,63 +6,14 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		A41741071AC6AB1800DACD54 /* FrameWork.c in Sources */ = {isa = PBXBuildFile; fileRef = A41740FB1AC6AB1800DACD54 /* FrameWork.c */; };
-		A41741081AC6AB1800DACD54 /* generic.c in Sources */ = {isa = PBXBuildFile; fileRef = A41740FC1AC6AB1800DACD54 /* generic.c */; };
-		A41741091AC6AB1800DACD54 /* graph.c in Sources */ = {isa = PBXBuildFile; fileRef = A41740FD1AC6AB1800DACD54 /* graph.c */; };
-		A417410A1AC6AB1800DACD54 /* hashmap.c in Sources */ = {isa = PBXBuildFile; fileRef = A41740FE1AC6AB1800DACD54 /* hashmap.c */; };
-		A417410B1AC6AB1800DACD54 /* heap.c in Sources */ = {isa = PBXBuildFile; fileRef = A41740FF1AC6AB1800DACD54 /* heap.c */; };
-		A417410C1AC6AB1800DACD54 /* list.c in Sources */ = {isa = PBXBuildFile; fileRef = A41741001AC6AB1800DACD54 /* list.c */; };
-		A417410D1AC6AB1800DACD54 /* nodelist.c in Sources */ = {isa = PBXBuildFile; fileRef = A41741011AC6AB1800DACD54 /* nodelist.c */; };
-		A417410E1AC6AB1800DACD54 /* nodetree.c in Sources */ = {isa = PBXBuildFile; fileRef = A41741021AC6AB1800DACD54 /* nodetree.c */; };
-		A417410F1AC6AB1800DACD54 /* quebrado.c in Sources */ = {isa = PBXBuildFile; fileRef = A41741031AC6AB1800DACD54 /* quebrado.c */; };
-		A41741101AC6AB1800DACD54 /* queue.c in Sources */ = {isa = PBXBuildFile; fileRef = A41741041AC6AB1800DACD54 /* queue.c */; };
-		A41741111AC6AB1800DACD54 /* stack.c in Sources */ = {isa = PBXBuildFile; fileRef = A41741051AC6AB1800DACD54 /* stack.c */; };
-		A41741121AC6AB1800DACD54 /* tree.c in Sources */ = {isa = PBXBuildFile; fileRef = A41741061AC6AB1800DACD54 /* tree.c */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		A41740E11AC6AA8900DACD54 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		A41740E31AC6AA8900DACD54 /* libDEA_XCode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = libDEA_XCode; sourceTree = BUILT_PRODUCTS_DIR; };
-		A41740EE1AC6AB0800DACD54 /* FrameWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameWork.h; sourceTree = "<group>"; };
-		A41740EF1AC6AB0800DACD54 /* generic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = generic.h; sourceTree = "<group>"; };
-		A41740F01AC6AB0800DACD54 /* graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graph.h; sourceTree = "<group>"; };
-		A41740F11AC6AB0800DACD54 /* hashmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hashmap.h; sourceTree = "<group>"; };
-		A41740F21AC6AB0800DACD54 /* heap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = heap.h; sourceTree = "<group>"; };
-		A41740F31AC6AB0800DACD54 /* list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = list.h; sourceTree = "<group>"; };
-		A41740F41AC6AB0800DACD54 /* nodelist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nodelist.h; sourceTree = "<group>"; };
-		A41740F51AC6AB0800DACD54 /* nodetree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nodetree.h; sourceTree = "<group>"; };
-		A41740F61AC6AB0800DACD54 /* quebrado.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = quebrado.h; sourceTree = "<group>"; };
-		A41740F71AC6AB0800DACD54 /* queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = queue.h; sourceTree = "<group>"; };
-		A41740F81AC6AB0800DACD54 /* stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stack.h; sourceTree = "<group>"; };
-		A41740F91AC6AB0800DACD54 /* tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tree.h; sourceTree = "<group>"; };
-		A41740FB1AC6AB1800DACD54 /* FrameWork.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = FrameWork.c; sourceTree = "<group>"; };
-		A41740FC1AC6AB1800DACD54 /* generic.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = generic.c; sourceTree = "<group>"; };
-		A41740FD1AC6AB1800DACD54 /* graph.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = graph.c; sourceTree = "<group>"; };
-		A41740FE1AC6AB1800DACD54 /* hashmap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hashmap.c; sourceTree = "<group>"; };
-		A41740FF1AC6AB1800DACD54 /* heap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = heap.c; sourceTree = "<group>"; };
-		A41741001AC6AB1800DACD54 /* list.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = list.c; sourceTree = "<group>"; };
-		A41741011AC6AB1800DACD54 /* nodelist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = nodelist.c; sourceTree = "<group>"; };
-		A41741021AC6AB1800DACD54 /* nodetree.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = nodetree.c; sourceTree = "<group>"; };
-		A41741031AC6AB1800DACD54 /* quebrado.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = quebrado.c; sourceTree = "<group>"; };
-		A41741041AC6AB1800DACD54 /* queue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = queue.c; sourceTree = "<group>"; };
-		A41741051AC6AB1800DACD54 /* stack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stack.c; sourceTree = "<group>"; };
-		A41741061AC6AB1800DACD54 /* tree.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tree.c; sourceTree = "<group>"; };
+		A44646891B7EFAB8008E7EAE /* liblibDEA_XCode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibDEA_XCode.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A44646901B7EFAC9008E7EAE /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; name = include; path = ../../include; sourceTree = "<group>"; };
+		A44646911B7EFAD5008E7EAE /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = ../../src; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A41740E01AC6AA8900DACD54 /* Frameworks */ = {
+		A44646861B7EFAB8008E7EAE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -72,81 +23,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A41740DA1AC6AA8900DACD54 = {
+		A44646801B7EFAB8008E7EAE = {
 			isa = PBXGroup;
 			children = (
-				A41740E51AC6AA8900DACD54 /* libDEA_XCode */,
-				A41740E41AC6AA8900DACD54 /* Products */,
+				A44646911B7EFAD5008E7EAE /* src */,
+				A44646901B7EFAC9008E7EAE /* include */,
+				A446468A1B7EFAB8008E7EAE /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		A41740E41AC6AA8900DACD54 /* Products */ = {
+		A446468A1B7EFAB8008E7EAE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A41740E31AC6AA8900DACD54 /* libDEA_XCode */,
+				A44646891B7EFAB8008E7EAE /* liblibDEA_XCode.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A41740E51AC6AA8900DACD54 /* libDEA_XCode */ = {
-			isa = PBXGroup;
-			children = (
-				A41740FA1AC6AB1800DACD54 /* src */,
-				A41740ED1AC6AB0800DACD54 /* include */,
-			);
-			path = libDEA_XCode;
-			sourceTree = "<group>";
-		};
-		A41740ED1AC6AB0800DACD54 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				A41740EE1AC6AB0800DACD54 /* FrameWork.h */,
-				A41740EF1AC6AB0800DACD54 /* generic.h */,
-				A41740F01AC6AB0800DACD54 /* graph.h */,
-				A41740F11AC6AB0800DACD54 /* hashmap.h */,
-				A41740F21AC6AB0800DACD54 /* heap.h */,
-				A41740F31AC6AB0800DACD54 /* list.h */,
-				A41740F41AC6AB0800DACD54 /* nodelist.h */,
-				A41740F51AC6AB0800DACD54 /* nodetree.h */,
-				A41740F61AC6AB0800DACD54 /* quebrado.h */,
-				A41740F71AC6AB0800DACD54 /* queue.h */,
-				A41740F81AC6AB0800DACD54 /* stack.h */,
-				A41740F91AC6AB0800DACD54 /* tree.h */,
-			);
-			name = include;
-			path = ../../../include;
-			sourceTree = "<group>";
-		};
-		A41740FA1AC6AB1800DACD54 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				A41740FB1AC6AB1800DACD54 /* FrameWork.c */,
-				A41740FC1AC6AB1800DACD54 /* generic.c */,
-				A41740FD1AC6AB1800DACD54 /* graph.c */,
-				A41740FE1AC6AB1800DACD54 /* hashmap.c */,
-				A41740FF1AC6AB1800DACD54 /* heap.c */,
-				A41741001AC6AB1800DACD54 /* list.c */,
-				A41741011AC6AB1800DACD54 /* nodelist.c */,
-				A41741021AC6AB1800DACD54 /* nodetree.c */,
-				A41741031AC6AB1800DACD54 /* quebrado.c */,
-				A41741041AC6AB1800DACD54 /* queue.c */,
-				A41741051AC6AB1800DACD54 /* stack.c */,
-				A41741061AC6AB1800DACD54 /* tree.c */,
-			);
-			name = src;
-			path = ../../../src;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		A44646871B7EFAB8008E7EAE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		A41740E21AC6AA8900DACD54 /* libDEA_XCode */ = {
+		A44646881B7EFAB8008E7EAE /* libDEA_XCode */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A41740EA1AC6AA8900DACD54 /* Build configuration list for PBXNativeTarget "libDEA_XCode" */;
+			buildConfigurationList = A446468D1B7EFAB8008E7EAE /* Build configuration list for PBXNativeTarget "libDEA_XCode" */;
 			buildPhases = (
-				A41740DF1AC6AA8900DACD54 /* Sources */,
-				A41740E01AC6AA8900DACD54 /* Frameworks */,
-				A41740E11AC6AA8900DACD54 /* CopyFiles */,
+				A44646851B7EFAB8008E7EAE /* Sources */,
+				A44646861B7EFAB8008E7EAE /* Frameworks */,
+				A44646871B7EFAB8008E7EAE /* Headers */,
 			);
 			buildRules = (
 			);
@@ -154,64 +67,52 @@
 			);
 			name = libDEA_XCode;
 			productName = libDEA_XCode;
-			productReference = A41740E31AC6AA8900DACD54 /* libDEA_XCode */;
-			productType = "com.apple.product-type.tool";
+			productReference = A44646891B7EFAB8008E7EAE /* liblibDEA_XCode.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A41740DB1AC6AA8900DACD54 /* Project object */ = {
+		A44646811B7EFAB8008E7EAE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0620;
+				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = WhiteFox;
 				TargetAttributes = {
-					A41740E21AC6AA8900DACD54 = {
-						CreatedOnToolsVersion = 6.2;
+					A44646881B7EFAB8008E7EAE = {
+						CreatedOnToolsVersion = 6.4;
 					};
 				};
 			};
-			buildConfigurationList = A41740DE1AC6AA8900DACD54 /* Build configuration list for PBXProject "libDEA_XCode" */;
+			buildConfigurationList = A44646841B7EFAB8008E7EAE /* Build configuration list for PBXProject "libDEA_XCode" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = A41740DA1AC6AA8900DACD54;
-			productRefGroup = A41740E41AC6AA8900DACD54 /* Products */;
+			mainGroup = A44646801B7EFAB8008E7EAE;
+			productRefGroup = A446468A1B7EFAB8008E7EAE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A41740E21AC6AA8900DACD54 /* libDEA_XCode */,
+				A44646881B7EFAB8008E7EAE /* libDEA_XCode */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A41740DF1AC6AA8900DACD54 /* Sources */ = {
+		A44646851B7EFAB8008E7EAE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A41741121AC6AB1800DACD54 /* tree.c in Sources */,
-				A417410A1AC6AB1800DACD54 /* hashmap.c in Sources */,
-				A417410B1AC6AB1800DACD54 /* heap.c in Sources */,
-				A41741071AC6AB1800DACD54 /* FrameWork.c in Sources */,
-				A41741101AC6AB1800DACD54 /* queue.c in Sources */,
-				A41741081AC6AB1800DACD54 /* generic.c in Sources */,
-				A417410C1AC6AB1800DACD54 /* list.c in Sources */,
-				A41741111AC6AB1800DACD54 /* stack.c in Sources */,
-				A417410E1AC6AB1800DACD54 /* nodetree.c in Sources */,
-				A417410D1AC6AB1800DACD54 /* nodelist.c in Sources */,
-				A41741091AC6AB1800DACD54 /* graph.c in Sources */,
-				A417410F1AC6AB1800DACD54 /* quebrado.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		A41740E81AC6AA8900DACD54 /* Debug */ = {
+		A446468B1B7EFAB8008E7EAE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -229,9 +130,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -251,7 +154,7 @@
 			};
 			name = Debug;
 		};
-		A41740E91AC6AA8900DACD54 /* Release */ = {
+		A446468C1B7EFAB8008E7EAE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -273,6 +176,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -285,16 +189,26 @@
 			};
 			name = Release;
 		};
-		A41740EB1AC6AA8900DACD54 /* Debug */ = {
+		A446468E1B7EFAB8008E7EAE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_INPUT_FILETYPE = sourcecode.c.c;
+				GCC_SHORT_ENUMS = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		A41740EC1AC6AA8900DACD54 /* Release */ = {
+		A446468F1B7EFAB8008E7EAE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_INPUT_FILETYPE = sourcecode.c.c;
+				GCC_SHORT_ENUMS = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -302,24 +216,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A41740DE1AC6AA8900DACD54 /* Build configuration list for PBXProject "libDEA_XCode" */ = {
+		A44646841B7EFAB8008E7EAE /* Build configuration list for PBXProject "libDEA_XCode" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A41740E81AC6AA8900DACD54 /* Debug */,
-				A41740E91AC6AA8900DACD54 /* Release */,
+				A446468B1B7EFAB8008E7EAE /* Debug */,
+				A446468C1B7EFAB8008E7EAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A41740EA1AC6AA8900DACD54 /* Build configuration list for PBXNativeTarget "libDEA_XCode" */ = {
+		A446468D1B7EFAB8008E7EAE /* Build configuration list for PBXNativeTarget "libDEA_XCode" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A41740EB1AC6AA8900DACD54 /* Debug */,
-				A41740EC1AC6AA8900DACD54 /* Release */,
+				A446468E1B7EFAB8008E7EAE /* Debug */,
+				A446468F1B7EFAB8008E7EAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = A41740DB1AC6AA8900DACD54 /* Project object */;
+	rootObject = A44646811B7EFAB8008E7EAE /* Project object */;
 }
