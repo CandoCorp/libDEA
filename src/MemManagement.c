@@ -1,9 +1,7 @@
 #include "MemManagement.h"
 #include <string.h>
 #include <stdlib.h>
-#include "ErrorHandler.h"
 #include "DataTypes.h"
-#include "Const.h"
 #include "MemHandlers.h"
 
 typedef char Word[MAX_WORD_SIZE];
@@ -133,7 +131,7 @@ void add_ref(void *p, char *type){
         return ;
     }
     snprintf(buffer,sizeof(buffer),"%p",p);
-    
+	
     if(counter IS MAX_SIZE_REF_ALLOW_BLOCK){
         static Table new_table;
         ref_table_act = &new_table;
@@ -200,7 +198,7 @@ void remove_ref (void *ptr,char *objName){
     }
     
     address *a = &ref_table[count];
-    debug("The object %s of type %d in the %s location has been removed",objName,a->id,a->addr);
+    debug("The object %s of type %s in the %s location has been removed",objName,dataTypeCodeToString(a->id),a->addr);
     init_ref(a);
     a->id = 0;
     

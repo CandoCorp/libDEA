@@ -12,6 +12,8 @@
 extern "C" {
 #endif
 
+#include "Const.h"
+
 /* This counter is used by __EXC_BLOCK.  It works well even if nested. */
 //static volatile int __exc_block_pass;
 

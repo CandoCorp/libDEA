@@ -8,12 +8,14 @@
 #ifndef DATATYPES_H
 #define	DATATYPES_H
 
-#include "debugSys.h"
+//#include "debugSys.h"
 
 
 #ifdef	__cplusplus
 extern "C" {
 #endif
+	
+#include "Const.h"
 
 static enum __DataTypes{
     BOOL = 0,
@@ -39,13 +41,14 @@ static enum __DataTypes{
 
 typedef enum __DataTypes DataTypes;
 
-static char *DataTypesNames[] = {"bool","char","unsigned char","signed char",
+static const char *const DataTypesNames[] = {"bool","char","unsigned char","signed char",
                                 "unsigned short int","short int""int","unsigned int",
                                 "long int","unsigned long int","long long int","unsigned long long int",
                                 "float","double","long double","string","complex",
                                 "fraction"};
 
-extern inline int dataTypeCode(const char name[]);
+extern inline int dataTypeCode(const char *restrict name);
+const char *restrict dataTypeCodeToString(unsigned int code);
 
 #ifdef	__cplusplus
 }

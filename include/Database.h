@@ -12,22 +12,25 @@
 extern "C" {
 #endif
 
+	/*
+	
+	*
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
 #include "generic.h"
 #include "DataTypes.h"
-    
+    */
 //#define MAX_DATA 512
 //#define MAX_ROWS 100
 
-enum{ MAX_DATA = 512, MAX_ROWS = 100 };
+//enum { MAX_DATA = 512, MAX_ROWS = 100 };
 
-typedef Generic Address;
-
+//typedef Generic Address;
+	/**
 typedef struct __Database{
-    Address *rows;
+    Generic *rows;
     unsigned int max_rows;
     bool full;
 }Database;
@@ -53,7 +56,7 @@ void Database_set(Connection *conn, int id, const char *name, const char *email)
 void Database_get(Connection *conn, int id);
 void Database_delete(Connection *conn, int id);
 void Database_list(Connection *conn);
-
+*/
 #ifdef	__cplusplus
 }
 #endif

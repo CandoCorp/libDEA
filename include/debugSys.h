@@ -24,7 +24,7 @@ extern "C" {
 void __debug_on();
 void __debug_off();
 
-void __exc_debug (unsigned line,const char *actualFunction,const char *fmt, ...);
+void __exc_debug (unsigned line,const char *actualFunction,const char *restrict fmt, ...);
 void __exc_error();
 
 int __set_default_log_stream(const char fileName[],int switchStream);
@@ -35,7 +35,7 @@ const char *__get_default_info_stream();
 const char *__get_default_warn_stream();
 const char *__get_default_debug_print_stream();
 
-void __log_msg(int , unsigned , const char* , const char* , const char* , ...);
+void __log_msg(int, unsigned, const char *restrict, const char *restrict, const char *restrict, ...);
 
 #define clean_errno() (errno == 0 ? "None" : strerror(errno))
 

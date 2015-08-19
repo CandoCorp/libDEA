@@ -4,8 +4,6 @@
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
-#include <errno.h>
-#include <time.h>
 #include <stdbool.h>
 
 FILE *deferr = NULL;
@@ -21,21 +19,20 @@ static char file_name_stream[FILENAME_MAX];
 volatile int debug_flag;
 
 /* Prints error message. */
-void __exc_debug (unsigned line,const char *actualFunction,const char *fmt, ...){
+void __exc_debug (unsigned line,const char *actualFunction,const char *restrict fmt, ...){
     va_list ap;
 
-    volatile bool debug_macro = false;
-    //unsigned line = line;
-    //char *actualFunction = __func__;
+    bool debug_macro = true;
+	//volatile bool same_level = false;
     static char *lastFunction = NULL;
     
     va_start (ap, fmt);
     
-    if(lastFunction == NULL)
+	if(lastFunction == NULL)
         lastFunction = actualFunction;
                 
     if(strcmp(actualFunction,lastFunction) == 0)
-        debug_macro = true;
+        debug_macro = false;
     
     if(!defstream){
         fflush(stdout);
@@ -51,6 +48,7 @@ void __exc_debug (unsigned line,const char *actualFunction,const char *fmt, ...)
         }
         lastFunction = actualFunction;
     }else{
+		fflush(defstream);
         if(debug_macro){
             fprintf (defstream, "[Debug in function: %s]: \n",actualFunction);
             fprintf(defstream,"\t in line %u: \t",line);
@@ -65,7 +63,6 @@ void __exc_debug (unsigned line,const char *actualFunction,const char *fmt, ...)
     }
     
     va_end (ap);
-    
 }
 
 void __debug_on(){
@@ -94,82 +91,62 @@ int __set_default_log_stream(const char fileName[],int switchStream){
     */
     int len = strlen(fileName);
             
+	if (len >= FILENAME_MAX){
+		debug("The name for the file is more long than the permitted");
+		return -3;
+	}
+
+	pf = fopen(fileName, "r");
+
+	if (pf == NULL){
+		pf = fopen(fileName, "w");
+		if (pf == NULL)
+			goto error;
+		debug("The file %s was created successfully", fileName);
+		fprintf(pf, "[----------------------- Log started on: %s at %s -----------------------]\n", __DATE__, __TIME__);
+	}
+	else{
+		fclose(pf);
+		pf = fopen(fileName, "a+");
+		if (pf == NULL)
+			goto error;
+		debug("The file %s was opened successfully", fileName);
+		fprintf(pf, "[----------------------- Log started on: %s at %s -----------------------]\n", __DATE__, __TIME__);
+	}
+
     switch(switchStream){
         case __ERROR_MSG:{
             if(strcmp(file_name_stream,fileName) == 0) goto error_stream_equal;
             if(strcmp(file_name_info,fileName) == 0) goto error_info_equal;
             if(strcmp(file_name_warn,fileName) == 0) goto error_warn_equal;
-            fileStream = deferr;
-            strncpy(file_name_error,fileName,len);
-        }break;
+            deferr = pf;
+			strncpy(file_name_error, fileName, len);
+			return 0;
+			break;
+        }
         case __WARN_MSG:{
             if(strcmp(file_name_stream,fileName) == 0) goto error_stream_equal;
             if(strcmp(file_name_error,fileName) == 0) goto error_error_equal;
             if(strcmp(file_name_info,fileName) == 0) goto error_info_equal;
-            fileStream = defwarn;
+            defwarn = pf;
             strncpy(file_name_warn,fileName,len);
-        }break;
+			return 0;
+			break;
+        }
         case __INFO_MSG:{
             if(strcmp(file_name_stream,fileName) == 0) goto error_stream_equal;
             if(strcmp(file_name_error,fileName) == 0) goto error_error_equal;
             if(strcmp(file_name_warn,fileName) == 0) goto error_warn_equal;
-            fileStream = definfo;
+            definfo = pf;
             strncpy(file_name_info,fileName,len);
-        }break;
+			return 0;
+			break;
+        }
         default:{
             goto error_switch_stream;
         }
     }
     
-    if( len >= FILENAME_MAX){
-        debug("The name for the file is more long than the permitted");
-        return -3;
-    }
-    pf = fopen(fileName,"r");
-    
-    if( pf == NULL ){
-        pf = fopen(fileName,"w");
-        
-        if( pf == NULL )
-            goto error;
-        
-        debug("The file %s was created successfully",fileName);
-        /**
-        char *str_time = ctime(&current_time);
-        
-        if(str_time == NULL)
-            goto error_time;
-        else{
-            
-        str_time[strlen(str_time)-1] = '\0';
-         */
-        fprintf(pf,"[----------------------- Log started on: %s at %s -----------------------]\n",__DATE__,__TIME__);
-        fileStream = pf;
-        strncpy(file_name_error,fileName,len);
-        return 0;
-    }else{
-        
-        fclose(pf);
-        pf = fopen(fileName,"a+");
-        if( pf == NULL )
-            goto error;
-        
-        debug("The file %s was opened successfully",fileName);
-        
-        /**
-        char *str_time = ctime(&current_time);
-        
-        if(str_time == NULL)
-            goto error_time;
-        else{
-         
-        str_time[strlen(str_time)-1] = '\0';
-        */
-        fprintf(pf,"[----------------------- Log started on: %s at %s -----------------------]\n",__DATE__,__TIME__);
-        fileStream = pf;
-        strncpy(file_name_error,fileName,len);
-        return 0;
-    }
     error:{
         debug("The file couldn't be opened");
         return -4;
@@ -305,43 +282,43 @@ const char *__get_default_debug_print_stream(){
     return file_name_stream;
 }
 
-void __log_msg(int op_code,unsigned line,const char function[],const char file[], const char *format, ...){
+void __log_msg(int op_code,unsigned line,const char *restrict function,const char *restrict file, const char *restrict format, ...){
     va_list ap;
     va_start (ap, format);
     fflush(stderr);
     switch(op_code){
         case 0:{
             if(!deferr){
-                fprintf(stderr, "[Error in %s in function %s:%d: ErrNo.: %s]\n\t", file, function, line, clean_errno());
+                fprintf(stderr, "[Error in %s in function %s: %u: ErrNo.: %s]\n\t", file, function, line, clean_errno());
                 vfprintf (stderr, format, ap);
                 fprintf(stderr,"\n");
             }
             else{
-                fprintf(deferr, "[Error in %s in function %s:%d: ErrNo.: %s]\n\t", file, function, line, clean_errno());
+                fprintf(deferr, "[Error in %s in function %s: %u: ErrNo.: %s]\n\t", file, function, line, clean_errno());
                 vfprintf (deferr, format, ap);
                 fprintf(deferr,"\n");
             }
         }break;
         case 1:{
             if(!defwarn){
-                fprintf(stderr, "[Warn in %s in function %s:%d: ErrNo.: %s]\n\t", file, function, line, clean_errno());
+                fprintf(stderr, "[Warn in %s in function %s: %u: ErrNo.: %s]\n\t", file, function, line, clean_errno());
                 vfprintf (stderr, format, ap);
                 fprintf(stderr,"\n");
             }
             else{
-                fprintf(defwarn, "[Warn in %s in function %s:%d: ErrNo.: %s]\n\t", file, function, line, clean_errno());
+                fprintf(defwarn, "[Warn in %s in function %s :%u: ErrNo.: %s]\n\t", file, function, line, clean_errno());
                 vfprintf (defwarn, format, ap);
                 fprintf(defwarn,"\n");
             }
         }break;
         case 2:{
             if(!definfo){
-                fprintf(stderr, "[Info in %s in function %s:%d) ErrNo.: %s]\n\t", file, function, line, clean_errno());
+                fprintf(stderr, "[Info in %s in function %s: %u) ErrNo.: %s]\n\t", file, function, line, clean_errno());
                 vfprintf (stderr, format, ap);
                 fprintf(stderr,"\n");
             }
             else{
-                fprintf(definfo, "[Info in %s in function %s:%d) ErrNo.: %s]\n\t", file, function, line, clean_errno());
+                fprintf(definfo, "[Info in %s in function %s: %u) ErrNo.: %s]\n\t", file, function, line, clean_errno());
                 vfprintf (definfo, format, ap);
                 fprintf(definfo,"\n");
             }

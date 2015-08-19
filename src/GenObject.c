@@ -45,14 +45,14 @@ int GenObject_init(GenObject self){
 }
 
 void *GenObject_new(size_t size,GenObject proto){
-    
+	GenObject this = new_calloc(1, size, proto->dataType);
+
     if(!proto->init) proto->init = GenObject_init;
     if(!proto->equals) proto->equals = equals;
     if(!proto->compareTo) proto->compareTo = compareTo;
     if(!proto->toString) proto->toString = toString;
     if(!proto->destroy) proto->destroy = GenObject_destroy;
     
-    GenObject this = new_calloc(1,size,proto->dataType);
     *this = *proto;
     
     if(!this->init(this)){

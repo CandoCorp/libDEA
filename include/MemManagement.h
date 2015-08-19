@@ -13,7 +13,7 @@ extern "C" {
 #endif
 
 #include <stdio.h>
-#include "debugSys.h"
+#include "ErrorHandler.h"
     
 enum { MAX_SIZE_REF_ALLOW_BLOCK = 1000, MAX_WORD_SIZE = 15 };
 

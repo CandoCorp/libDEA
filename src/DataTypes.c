@@ -1,10 +1,10 @@
 #include "DataTypes.h"
+#include <stdio.h>
 #include "MemHandlers.h"
 #include "ErrorHandler.h"
 #include <string.h>
-#include "Const.h"
 
-static volatile int counter;
+static volatile int counter = 0;
 
 struct __CustomDataType{
     char *name;
@@ -12,13 +12,13 @@ struct __CustomDataType{
     struct __CustomDataType *next;
 };
 
-static struct __CustomDataType *dataTypeList;
+static struct __CustomDataType *dataTypeList = NULL;
 
 static int dataType_free();
 inline int dataType_Add(const char name[]);
 inline int dataTypeCodeCustom(const char name[]);
 
-inline int dataTypeCode(const char name[]){
+inline int dataTypeCode(const char *restrict name){
     
     if(name IS NULL){
         log_err("The name of the data type is null");
@@ -34,14 +34,28 @@ inline int dataTypeCode(const char name[]){
         return FLOAT;
     if(strcmp(name,"double") IS EQUAL)
         return DOUBLE;
-    if(strcmp(name,"long") IS EQUAL)
-        return 0;
     if(strcmp(name,"string") IS EQUAL)
         return STRING;
     if(strcmp(name,"complex") IS EQUAL)
         return COMPLEX;
     if(strcmp(name,"fraction") IS EQUAL)
-        return FRACTION;
+		return FRACTION;
+	if (strcmp(name, "unsigned int") IS EQUAL)
+		return UNSIGNED_INT;
+	if (strcmp(name, "signed char") IS EQUAL)
+		return SIGNED_CHAR;
+	if (strcmp(name, "unsigned char") IS EQUAL)
+		return UNSIGNED_CHAR;
+	if (strcmp(name, "long int") IS EQUAL)
+		return LONG_INT;
+	if (strcmp(name, "long double") IS EQUAL)
+		return LONG_DOUBLE;
+	if (strcmp(name, "unsigned long int") IS EQUAL)
+		return UNSIGNED_LONG_INT;
+	if (strcmp(name, "long long int") IS EQUAL)
+		return LONG_LONG_INT;
+	if (strcmp(name, "unsigned long long int") IS EQUAL)
+		return UNSIGNED_LONG_LONG_INT;
     
     int type = dataType_Add(name); 
     
@@ -59,6 +73,126 @@ inline int dataTypeCode(const char name[]){
             return counter + __LAST_DATA_TYPE;
         }break;
     }
+}
+const char *restrict dataTypeCodeToString(unsigned int code){
+	switch (code){
+		case BOOL:{
+			debug("The data type was of type %s", DataTypesNames[BOOL]);
+			return DataTypesNames[BOOL];
+			break;
+		}
+		case CHAR:{
+			debug("The data type was of type %s", DataTypesNames[CHAR]);
+			return DataTypesNames[CHAR];
+			break;
+		}
+		case UNSIGNED_CHAR:{
+			debug("The data type was of type %s", DataTypesNames[UNSIGNED_CHAR]);
+			return DataTypesNames[UNSIGNED_CHAR];
+			break;
+		}
+		case SIGNED_CHAR:{
+			debug("The data type was of type %s", DataTypesNames[SIGNED_CHAR]);
+			return DataTypesNames[SIGNED_CHAR];
+			break;
+		}
+		case UNSIGNED_SHORT_INT:{
+			debug("The data type was of type %s", DataTypesNames[UNSIGNED_SHORT_INT]);
+			return DataTypesNames[UNSIGNED_SHORT_INT];
+			break;
+		}
+		case SHORT_INT:{
+			debug("The data type was of type %s", DataTypesNames[SHORT_INT]);
+			return DataTypesNames[SHORT_INT];
+			break;
+		}
+		case INT:{
+			debug("The data type was of type %s", DataTypesNames[INT]);
+			return DataTypesNames[INT];
+			break;
+		}
+		case UNSIGNED_INT:{
+			debug("The data type was of type %s", DataTypesNames[UNSIGNED_INT]);
+			return DataTypesNames[UNSIGNED_INT];
+			break;
+		}
+		case LONG_INT:{
+			debug("The data type was of type %s", DataTypesNames[LONG_INT]);
+			return DataTypesNames[LONG_INT];
+			break;
+		}
+		case UNSIGNED_LONG_INT:{
+			debug("The data type was of type %s", DataTypesNames[LONG_INT]);
+			return DataTypesNames[LONG_INT];
+			break;
+		}
+		case LONG_LONG_INT:{
+			debug("The data type was of type %s", DataTypesNames[LONG_LONG_INT]);
+			return DataTypesNames[LONG_LONG_INT];
+			break;
+		}
+		case UNSIGNED_LONG_LONG_INT:{
+			debug("The data type was of type %s", DataTypesNames[UNSIGNED_LONG_LONG_INT]);
+			return DataTypesNames[UNSIGNED_LONG_LONG_INT];
+			break;
+		}
+		case FLOAT:{
+			debug("The data type was of type %s", DataTypesNames[FLOAT]);
+			return DataTypesNames[FLOAT];
+			break;
+		}
+		case DOUBLE:{
+			debug("The data type was of type %s", DataTypesNames[DOUBLE]);
+			return DataTypesNames[DOUBLE];
+			break;
+		}
+		case LONG_DOUBLE:{
+			debug("The data type was of type %s", DataTypesNames[LONG_DOUBLE]);
+			return DataTypesNames[LONG_DOUBLE];
+			break;
+		}
+		case STRING:{
+			debug("The data type was of type %s", DataTypesNames[STRING]);
+			return DataTypesNames[STRING];
+			break;
+		}
+		case COMPLEX:{
+			debug("The data type was of type %s", DataTypesNames[COMPLEX]);
+			return DataTypesNames[COMPLEX];
+			break;
+		}
+		case FRACTION:{
+			debug("The data type was of type %s", DataTypesNames[FRACTION]);
+			return DataTypesNames[FRACTION];
+			break;
+		}
+		default:{
+				debug("The data type was not found in the system");
+				return NULL;
+				break;
+		}
+	}
+}
+
+const char *restrict dataTypeCustomCodeToString(int opCode){
+	struct __CustomDataType *it;
+
+	if (dataTypeList IS NULL){
+		log_err("There are not data types defined by the system");
+		return -2;
+	}
+
+	for (struct __CustomDataType *it = dataTypeList; it != NULL; it = it->next){
+		debug("[Actual Node] : %s", it->name);
+		if (opCode IS it->id){
+			debug("The name of the data type is found");
+			return it->name;
+		}
+		debug("[Next Node] : %p", it->next);
+	}
+
+	log_err("The data type wasn't found in the system");
+	return -1;
 }
 
 int dataTypeCodeCustom(const char name[]){
@@ -115,7 +249,6 @@ int dataType_Add(const char name[]){
                 if(node->next IS NULL){
                     debug("Last node found!");
                     debug("Last node: %s",node->name);
-                    ++counter;
                     char *temp = MALLOC_ARRAY(char,strlen(name)+1);
                     check_mem(temp);
                     strcpy(temp,name);
@@ -124,12 +257,14 @@ int dataType_Add(const char name[]){
                     it->next = NULL;
                     debug("New last node: %s",it->name);
                     node->next = it;
-                    return 0;
+					++counter;
+					return 0;
                 }
                 debug("[Next node]: %p",node);
             }
         }break;
         default:{
+			free(it);
             debug("Already found in the system\n");
         }
     }
@@ -137,7 +272,7 @@ int dataType_Add(const char name[]){
     return 1;
     
     error:
-            return -1;
+			return -1;
 }
 
 static int dataType_free(){

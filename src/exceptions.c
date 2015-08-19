@@ -1,6 +1,6 @@
 #include "exceptions.h"
 #include <stdio.h>
-
+/**
 typedef struct __UserDefException{
     int code;
     char name[30];
@@ -20,21 +20,21 @@ static const char *tempstrings[] = {     "NullPointer","ArrayStore","IllegalArgu
                                 };
 
 static volatile int lastcodeUsed = __LastException;
-
+*/
 /* Flag to be set by ON? */
-volatile int __exc_handled;
+//volatile int __exc_handled;
 
 /* For indexing every call to TRY. */
-volatile unsigned __exc_tries;
+//volatile unsigned __exc_tries;
 
 /* These identify the thrown exception.  File, function, line and
    the exception itself. */
-static char *__exc_file;
-static char *__exc_function;
-static unsigned __exc_line;
-static __EXC_TYPE __exc_code;
+//static char *__exc_file;
+//static char *__exc_function;
+//static unsigned __exc_line;
+//static __EXC_TYPE __exc_code;
 
-/* Stack is actually a linked list of catcher cells. */
+/* Stack is actually a linked list of catcher cells. 
 struct __exc_stack
 {
   unsigned num;
@@ -42,13 +42,13 @@ struct __exc_stack
   struct __exc_stack *prev;
 };
 
-/* This is the global stack of catchers. */
+/* This is the global stack of catchers. 
 static struct __exc_stack *__exc_global;
 
 #ifdef __EXC_DEBUG
     void __exc_print_global(void);
 
-    /* For printing __exc_global. */
+    /* For printing __exc_global. 
     void
     __exc_print_global ()
     {
@@ -69,9 +69,9 @@ static struct __exc_stack *__exc_global;
           /* FIXME: does printing jmp_buf literally (as we now address and
              its size) good?  No, unless human understands it.  One
              can't unless he chooses one popular C library and study the
-             implementation carefully;) */
+             implementation carefully;) 
           fprintf (__EXC_STREAM, "%u", level->num);
-          /* TODO: newline every four or so items.  Use tab stops. */
+          /* TODO: newline every four or so items.  Use tab stops. 
           fprintf (__EXC_STREAM, " %c\n", level->prev ? ' ' : ']');  
           items++;
         }
@@ -81,9 +81,9 @@ static struct __exc_stack *__exc_global;
 #else
     #define __exc_print_global()
 #endif
-
+	*/
 /* Pop exception from stack, putting into J (if nonzero).  If stack is
-   empty, print error message and exit.  Used in EXCEPT. */
+   empty, print error message and exit.  Used in EXCEPT. 
 void
 __exc_pop (jmp_buf *j){
     struct __exc_stack *stored = __exc_global;
@@ -105,7 +105,7 @@ __exc_pop (jmp_buf *j){
 
     if (j){
       /* This assumes that JMP_BUF is a structure etc. and can be
-	 copied rawely.  This is true in GLIBC, as I know. */
+	 copied rawely.  This is true in GLIBC, as I know. 
       memcpy (j, &stored->j, sizeof (jmp_buf));
     }
 
@@ -113,13 +113,13 @@ __exc_pop (jmp_buf *j){
     __exc_print_global ();
 
     /* While with MALLOC, free.  When using obstacks it is better not to
-       free and hold up. */
+       free and hold up. 
     free (stored);
 }
-
+*/
 /* Push J onto the stack, with RETURNED as value from SETJMP.  Return
    nonzero, if RETURNED is 0.  If RETURNED is nonzero, returns 0.
-   Used in TRY. */
+   Used in TRY. 
 
 int
 __exc_push (jmp_buf *j, int returned)
@@ -130,17 +130,17 @@ __exc_push (jmp_buf *j, int returned)
 
     /* SETJMP returns 0 first time, nonzero from __EXC_THROW.
        Returning false-like value here (0) will enter the
-       else branch (that is, EXCEPT.) */
+       else branch (that is, EXCEPT.) 
     if (returned != 0){
         debug ("Returning from THROW");
         return 0;
     }
 
-    /* Since this didn't come from THROW, fine to increase counter. */
+    /* Since this didn't come from THROW, fine to increase counter. 
     ++__exc_tries;
     debug ("This is PUSH () number %u", __exc_tries);
 
-    /* Using memcpy here is the best alternative. */
+    /* Using memcpy here is the best alternative. 
     new = malloc (sizeof (struct __exc_stack));
     check_mem(new);
     memcpy (&new->j, j, sizeof (jmp_buf));
@@ -154,8 +154,8 @@ __exc_push (jmp_buf *j, int returned)
     error:
             return -1;
 }
-
-/* Throw an exception in FILE at LINE, with code CODE.  Used in THROW. */
+*/
+/* Throw an exception in FILE at LINE, with code CODE.  Used in THROW. 
 
 void
 __exc_throw (char *file, char *function, unsigned line, __EXC_TYPE code)
@@ -176,18 +176,19 @@ __exc_throw (char *file, char *function, unsigned line, __EXC_TYPE code)
         __exc_line = line;
         __exc_code = code;
 
-        /* Pop for jumping. */
+        /* Pop for jumping. 
         __exc_pop (&j);
 
         debug ("Jumping to the handler");
 
-        /* LONGJUMP to J with nonzero value. */
+        /* LONGJUMP to J with nonzero value. 
         longjmp (j, 1);
     }else if(res == 0){
         log_err("%s\n\t%s","The exception wasn't found by the system, you can use:","throw_new to add it to the system");
     }
 }
-
+*/
+/**
 void
 __exc_throw_new (char *file, char *function, unsigned line, __EXC_TYPE code)
 {
@@ -206,16 +207,16 @@ __exc_throw_new (char *file, char *function, unsigned line, __EXC_TYPE code)
     __exc_line = line;
     __exc_code = code;
 
-    /* Pop for jumping. */
+    /* Pop for jumping. 
     __exc_pop (&j);
 
     debug ("Jumping to the handler");
 
-    /* LONGJUMP to J with nonzero value. */
+    /* LONGJUMP to J with nonzero value. 
     longjmp (j, 1);
 }
-
-/* Throw it in upper level of catcher blocks. */
+*/
+/* Throw it in upper level of catcher blocks. 
 
 void
 __exc_rethrow (){
@@ -271,11 +272,11 @@ __exc_on (__EXC_NDEBUG_UN(char *file),
 
     debug ("This handler DOESN'T FIT");
 
-    /* Not matched. */
+    /* Not matched. 
     return 0;
 }
-
-
+*/
+/**
 inline const char *exceptionString(Exception code){
     switch(code){      
         case NullPointer:{
@@ -459,3 +460,4 @@ inline int ExceptionMatchingCodeUserList(const char string[]){
     
     return 0;
 }
+*/

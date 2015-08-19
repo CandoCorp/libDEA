@@ -1,6 +1,7 @@
 #include "Database.h"
-#include "ErrorHandler.h"
+//#include "ErrorHandler.h"
 
+/**
 void Address_print(struct Address *addr)
 {
 }
@@ -154,3 +155,4 @@ void Database_list(Connection *conn)
 }
 
 
+*/

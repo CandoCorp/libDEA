@@ -56,8 +56,17 @@ extern "C" {
 
 #ifdef _WIN32
 #define __func__ __FUNCTION__
-#define restrict __restrict
+#define restrict 
+#define snprintf sprintf_s
+#define inline __inline
 #endif
+
+#ifdef __cplusplus
+#define new 
+#define delete
+#define this
+#endif
+
 // String templates for better understanding of code    
 #define APPEND "a+"
 #define READ "r"
