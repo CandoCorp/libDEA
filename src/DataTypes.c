@@ -17,6 +17,7 @@ static struct __CustomDataType *dataTypeList = NULL;
 static int dataType_free();
 inline int dataType_Add(const char name[]);
 inline int dataTypeCodeCustom(const char name[]);
+const char *restrict dataTypeCustomCodeToString(int opCode, int *errCode);
 
 inline int dataTypeCode(const char *restrict name){
     
@@ -167,19 +168,21 @@ const char *restrict dataTypeCodeToString(unsigned int code){
 			break;
 		}
 		default:{
-				debug("The data type was not found in the system");
-				return NULL;
-				break;
+			int errCode;
+			char *dataTypeName = dataTypeCustomCodeToString(code,&errCode);
+			return dataTypeName;
+			break;
 		}
 	}
 }
 
-const char *restrict dataTypeCustomCodeToString(int opCode){
+const char *restrict dataTypeCustomCodeToString(int opCode,int *errCode){
 	struct __CustomDataType *it;
 
 	if (dataTypeList IS NULL){
 		log_err("There are not data types defined by the system");
-		return -2;
+		*errCode = -2;
+		return NULL;
 	}
 
 	for (struct __CustomDataType *it = dataTypeList; it != NULL; it = it->next){
@@ -192,7 +195,8 @@ const char *restrict dataTypeCustomCodeToString(int opCode){
 	}
 
 	log_err("The data type wasn't found in the system");
-	return -1;
+	*errCode = -1;
+	return NULL;
 }
 
 int dataTypeCodeCustom(const char name[]){
@@ -239,7 +243,7 @@ int dataType_Add(const char name[]){
             it->next = dataTypeList;
             dataTypeList = it;
             debug("Iterator node added to the end of the list");
-            ++counter;
+            //++counter;
         }break;
         case -1:{
             int i = 0;

@@ -41,8 +41,8 @@ static enum __DataTypes{
 
 typedef enum __DataTypes DataTypes;
 
-static const char *const DataTypesNames[] = {"bool","char","unsigned char","signed char",
-                                "unsigned short int","short int""int","unsigned int",
+static const char *restrict DataTypesNames[] = {"bool","char","unsigned char","signed char",
+                                "unsigned short int","short int","int","unsigned int",
                                 "long int","unsigned long int","long long int","unsigned long long int",
                                 "float","double","long double","string","complex",
                                 "fraction"};
