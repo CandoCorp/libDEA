@@ -8,9 +8,6 @@
 #ifndef DATATYPES_H
 #define	DATATYPES_H
 
-//#include "debugSys.h"
-
-
 #ifdef	__cplusplus
 extern "C" {
 #endif

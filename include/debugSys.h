@@ -21,6 +21,7 @@ extern "C" {
 
     //enum { __ERROR_MSG = 0, __WARN_MSG, __INFO_MSG };
 
+	/**
 void __debug_on();
 void __debug_off();
 
@@ -36,6 +37,9 @@ const char *__get_default_warn_stream();
 const char *__get_default_debug_print_stream();
 
 void __log_msg(int, unsigned, const char *restrict, const char *restrict, const char *restrict, ...);
+*/
+void __debug_after_levels_start();
+void __debug_after_levels_end();
 
 #define clean_errno() (errno == 0 ? "None" : strerror(errno))
 
@@ -46,7 +50,7 @@ void __log_msg(int, unsigned, const char *restrict, const char *restrict, const 
 #define log_info(M, ...) (__log_msg(__INFO_MSG,__LINE__,__func__,__FILE__, M, ##__VA_ARGS__))
 
 #define debug_on() (__debug_on())
-    
+
 #define debug_off() (__debug_off())
 
 #define __debug(M, ...) (__exc_debug(__LINE__,__func__,M, ##__VA_ARGS__))
@@ -54,6 +58,10 @@ void __log_msg(int, unsigned, const char *restrict, const char *restrict, const 
 #define __debug_empty(M, ...) 
 
 #define debug(M,...) {if(get_debug_flag()) __debug(M,##__VA_ARGS__); else __debug_empty(M,##__VA_ARGS__);}
+
+#define debug_all_levels __EXC_BLOCK(__set_debug_all_levels_on(),__set_debug_all_levels_off())
+
+#define debug_if_all_levels __EXC_BLOCK(__debug_after_levels_start(),__debug_after_levels_end())
 
 #define set_default_error_stream(filename) (__set_default_log_stream(filename,__ERROR_MSG))
 
@@ -72,6 +80,8 @@ void __log_msg(int, unsigned, const char *restrict, const char *restrict, const 
 #define get_default_debug_print_stream() (__get_default_debug_print_stream())
 
 #define get_debug_flag() (__get_debug_flag())
+
+#define get_debug_all_levels_flag() (__get_debug_all_levels_flag())
 
 #ifdef	__cplusplus
 }

@@ -58,9 +58,13 @@ inline int dataTypeCode(const char *restrict name){
 	if (strcmp(name, "unsigned long long int") IS EQUAL)
 		return UNSIGNED_LONG_LONG_INT;
     
-    int type = dataType_Add(name); 
+	int type;
+	
+	debug_if_all_levels{
+		type = dataType_Add(name);
+	}
     
-    switch(type){
+	switch(type){
         case -2:{
             debug("Somehow the name pointer is empty");
             return -2;
@@ -169,7 +173,10 @@ const char *restrict dataTypeCodeToString(unsigned int code){
 		}
 		default:{
 			int errCode;
-			char *dataTypeName = dataTypeCustomCodeToString(code,&errCode);
+			char *dataTypeName;
+			debug_if_all_levels{
+				dataTypeName = dataTypeCustomCodeToString(code, &errCode);
+			}
 			return dataTypeName;
 			break;
 		}
@@ -228,10 +235,13 @@ int dataType_Add(const char name[]){
         log_err("The name pointer was null");
         free(it);
         return -2;
-    }
+	}
+	int pos;
 
-    int pos = dataTypeCodeCustom(name);
-    
+	debug_if_all_levels{
+		pos = dataTypeCodeCustom(name);
+	}
+
     switch(pos){
         case -2:{
             debug("The data type list is empty");

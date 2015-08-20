@@ -36,8 +36,8 @@ int find_ref(void *ptr);
     
     check_mem(ptr);
     
-    if(ptr != NULL){
-        add_ref(ptr, type);
+	if (ptr != NULL){
+		add_ref(ptr, type);
         return ptr;
     }
     
@@ -47,7 +47,7 @@ int find_ref(void *ptr);
 
 void __delete(void *ptr,char *objName){
     void remove_ref (void *ptr,char *objName);
-    remove_ref(ptr,objName);
+	remove_ref(ptr,objName);
 }
 
  void *__new_calloc(size_t numElem, size_t size, char *type){
@@ -64,12 +64,12 @@ void __delete(void *ptr,char *objName){
     check_mem(ptr);
     
     if(ptr IS_NOT NULL){
-        add_ref(ptr,type);
+		add_ref(ptr,type);
         return ptr;
     }
     
-error:    
-    return NULL;
+	error:    
+	    return NULL;
 }
 
  void *__new_realloc(void *ptr, size_t numElem,size_t size,char *type){
@@ -146,8 +146,10 @@ void add_ref(void *p, char *type){
         }
         if(is_ref_Empty(&((*ref_table_act)[counter])) IS EMPTY){
             debug("Found empty reference in current page in ");
-            strcpy((*ref_table_act)[counter].addr,buffer);
-            (*ref_table_act)[counter].id = dataTypeCode(type);
+			strcpy((*ref_table_act)[counter].addr, buffer);
+			debug_if_all_levels{
+				(*ref_table_act)[counter].id = dataTypeCode(type);
+			}
             break;
         }else{
             ++counter;
@@ -184,9 +186,12 @@ int find_ref(void *ptr){
 }
 
 void remove_ref (void *ptr,char *objName){
-    int count = find_ref(ptr);
+	int count;
+	
+	count = find_ref(ptr);
+	
     
-    debug("The position of the reference is %d",count);
+	debug("The position of the reference is %d",count);
     if(count IS -2 ){
         log_err("%s can't be referenced because it's a null pointer",objName);
         return ;

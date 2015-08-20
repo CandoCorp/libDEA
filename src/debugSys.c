@@ -16,8 +16,10 @@ static char file_name_warn[FILENAME_MAX];
 static char file_name_info[FILENAME_MAX];
 static char file_name_stream[FILENAME_MAX];
 
-volatile int debug_flag;
-
+volatile unsigned int debug_flag = 0;
+volatile unsigned int debug_all_levels_flag = 0;
+unsigned int debug_last_flag = 0;
+volatile unsigned int debug_current_level_flag = 0;
 /* Prints error message. */
 void __exc_debug (unsigned line,const char *actualFunction,const char *restrict fmt, ...){
     va_list ap;
@@ -28,11 +30,9 @@ void __exc_debug (unsigned line,const char *actualFunction,const char *restrict 
     
     va_start (ap, fmt);
     
-	if(lastFunction == NULL)
-        lastFunction = actualFunction;
-                
-    if(strcmp(actualFunction,lastFunction) == 0)
-        debug_macro = false;
+	if (lastFunction != NULL)
+		if(strcmp(actualFunction,lastFunction) == 0)
+			debug_macro = false;
     
     if(!defstream){
         fflush(stdout);
@@ -66,11 +66,11 @@ void __exc_debug (unsigned line,const char *actualFunction,const char *restrict 
 }
 
 void __debug_on(){
-    debug_flag = 1;
+    debug_flag = true;
 }
 
 void __debug_off(){
-    debug_flag = 0;
+    debug_flag = false;
 }
 
 int __set_default_log_stream(const char fileName[],int switchStream){
@@ -333,6 +333,33 @@ void __log_msg(int op_code,unsigned line,const char *restrict function,const cha
     va_end (ap);
 }
 
-int __get_debug_flag(){
+unsigned int __get_debug_flag(){
     return debug_flag;
+}
+
+unsigned int __get_debug_all_levels_flag(){
+	return debug_all_levels_flag;
+}
+
+void __set_debug_all_levels_on(){
+	debug_all_levels_flag = true;
+}
+
+void __set_debug_all_levels_off(){
+	debug_all_levels_flag = false;
+}
+
+void __debug_after_levels_start(){
+	debug_last_flag = debug_flag;
+
+	if (debug_all_levels_flag){
+		__debug_on();
+	}
+	else{
+		__debug_off();
+	}
+}
+
+void __debug_after_levels_end(){
+	debug_flag = debug_last_flag;
 }

@@ -14,18 +14,23 @@ extern "C" {
 
 #include "Const.h"
 
-/* This counter is used by __EXC_BLOCK.  It works well even if nested. */
-//static volatile int __exc_block_pass;
+volatile int __exc_block_pass;		\
+	/* This counter is used by __EXC_BLOCK.  It works well even if nested. */
+	//static volatile int __exc_block_pass;
+#define __EXC_START(start)		\
+	for (start, __exc_block_pass = 1;		\
+	__exc_block_pass;		\
+	__exc_block_pass = 0)
 
 #define __EXC_BLOCK(start, end)              \
-  for (start, volatile int __exc_block_pass = 1;          \
+	for (start, __exc_block_pass = 1;          \
        __exc_block_pass;                     \
        end, __exc_block_pass = 0)
 
 /* Likewise, but START block is empty. */
 
 #define __EXC_END(end)                       \
-  for (volatile int __exc_block_pass = 1;                 \
+	for (__exc_block_pass = 1;                 \
        __exc_block_pass;                     \
        end, __exc_block_pass = 0)
 
