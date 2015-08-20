@@ -1,13 +1,10 @@
 
 # Library Files
 # Visual Studio Project Files
-/build/libDEAVisualStudio/libDEA/libDEA/**
+/build/libDEAVisualStudio/libDEA/libDEA/Debug/**
 /build/libDEAVisualStudio/libDEA/ipch/**
 /build/libDEAVisualStudio/libDEA/Debug/**
-/build/libDEAVisualStudio/libDEA/*.sdf
-/build/libDEAVisualStudio/libDEA/*.sln
-/build/libDEAVisualStudio/libDEA/*.suo
-/build/libDEAVisualStudio/libDEA/**
+/build/libDEAVisualStudio/libDEA/*.DS_Store
 
 # NetBeans Project Files
 /build/libDeaNetBeans/build/Debug/**
@@ -26,7 +23,9 @@
 /build/libDeaEclipse/.metadata/**
 
 # Demo Files
-/demo/**
+#/demo/**
+/demo/Visual Studio/MemTests/Debug/**
+/demo/Visual Studio/MemTests/*.txt
 
 # Object files
 *.o
