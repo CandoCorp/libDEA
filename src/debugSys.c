@@ -18,7 +18,7 @@ static char file_name_stream[FILENAME_MAX];
 
 volatile unsigned int debug_flag = 0;
 volatile unsigned int debug_all_levels_flag = 0;
-unsigned int debug_last_flag = 0;
+unsigned int debug_last_flag = -1;
 volatile unsigned int debug_current_level_flag = 0;
 /* Prints error message. */
 void __exc_debug (unsigned line,const char *actualFunction,const char *restrict fmt, ...){
@@ -350,7 +350,8 @@ void __set_debug_all_levels_off(){
 }
 
 void __debug_after_levels_start(){
-	debug_last_flag = debug_flag;
+	if (debug_last_flag == -1)
+		debug_last_flag = debug_flag;
 
 	if (debug_all_levels_flag){
 		__debug_on();
@@ -360,6 +361,10 @@ void __debug_after_levels_start(){
 	}
 }
 
-void __debug_after_levels_end(){
-	debug_flag = debug_last_flag;
+void __debug_after_levels_end(int sub_levels){
+	if (sub_levels == false){
+		if (debug_last_flag != -1)
+			debug_flag = debug_last_flag;
+		debug_last_flag = -1;
+	}
 }

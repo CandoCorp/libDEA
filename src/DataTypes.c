@@ -60,7 +60,7 @@ inline int dataTypeCode(const char *restrict name){
     
 	int type;
 	
-	debug_if_all_levels{
+	debug_if_all_levels(true){
 		type = dataType_Add(name);
 	}
     
@@ -174,7 +174,7 @@ const char *restrict dataTypeCodeToString(unsigned int code){
 		default:{
 			int errCode;
 			char *dataTypeName;
-			debug_if_all_levels{
+			debug_if_all_levels(false){
 				dataTypeName = dataTypeCustomCodeToString(code, &errCode);
 			}
 			return dataTypeName;
@@ -238,7 +238,7 @@ int dataType_Add(const char name[]){
 	}
 	int pos;
 
-	debug_if_all_levels{
+	debug_if_all_levels(true){
 		pos = dataTypeCodeCustom(name);
 	}
 

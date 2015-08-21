@@ -20,7 +20,7 @@ int main(){
 	char str[] = "Test string";
 	bool flag = -2;
 	Empleado empl = { .nombre = "kevin", .id = 1 };
-	//Empleado *emplptr = NEW(Empleado);
+	Empleado *emplptr = NEW(Empleado);
 
 	printf("%d\n",get_debug_flag());
 	
@@ -28,7 +28,8 @@ int main(){
 	DELETE(str);
 	DELETE(int64);
 	DELETE(int_temp);
-	//DELETE(emplptr);
+	debug_all_levels
+		DELETE(emplptr);
 	DELETE(&empl);
 
 	debug_off();

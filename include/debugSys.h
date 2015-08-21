@@ -61,7 +61,7 @@ void __debug_after_levels_end();
 
 #define debug_all_levels __EXC_BLOCK(__set_debug_all_levels_on(),__set_debug_all_levels_off())
 
-#define debug_if_all_levels __EXC_BLOCK(__debug_after_levels_start(),__debug_after_levels_end())
+#define debug_if_all_levels(has_sub_levels) __EXC_BLOCK(__debug_after_levels_start(),__debug_after_levels_end(has_sub_levels))
 
 #define set_default_error_stream(filename) (__set_default_log_stream(filename,__ERROR_MSG))
 

@@ -147,7 +147,7 @@ void add_ref(void *p, char *type){
         if(is_ref_Empty(&((*ref_table_act)[counter])) IS EMPTY){
             debug("Found empty reference in current page in ");
 			strcpy((*ref_table_act)[counter].addr, buffer);
-			debug_if_all_levels{
+			debug_if_all_levels(false){
 				(*ref_table_act)[counter].id = dataTypeCode(type);
 			}
             break;
@@ -188,7 +188,8 @@ int find_ref(void *ptr){
 void remove_ref (void *ptr,char *objName){
 	int count;
 	
-	count = find_ref(ptr);
+	debug_if_all_levels(false)
+		count = find_ref(ptr);
 	
     
 	debug("The position of the reference is %d",count);
@@ -203,7 +204,11 @@ void remove_ref (void *ptr,char *objName){
     }
     
     address *a = &ref_table[count];
-    debug("The object %s of type %s in the %s location has been removed",objName,dataTypeCodeToString(a->id),a->addr);
+	char *type;
+	debug_if_all_levels(false)
+		type = dataTypeCodeToString(a->id);
+
+    debug("The object %s of type %s in the %s location has been removed",objName,type,a->addr);
     init_ref(a);
     a->id = 0;
     
