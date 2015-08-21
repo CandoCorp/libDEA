@@ -24,8 +24,18 @@
 
 # Demo Files
 #/demo/**
+# Visual Studio Demo Files
 /demo/Visual Studio/MemTests/Debug/**
 /demo/Visual Studio/MemTests/*.txt
+
+#Netbeans Demo Files
+/demo/Netbeans/Mem_test/build/Debug/**
+/demo/Netbeans/Mem_test/dist/**
+/demo/Netbeans/Mem_test/*.txt
+/demo/Netbeans/Mem_test/*.dep.inc
+/demo/Netbeans/Mem_test/nbproject/*.xml
+/demo/Netbeans/Mem_test/nbproject/*.bash
+/demo/Netbeans/Mem_test/nbproject/private/**
 
 # Object files
 *.o

@@ -1,11 +1,10 @@
 
 # Library Files
 # Visual Studio Project Files
-/build/libDEAVisualStudio/libDEA/libDEA/**
+/build/libDEAVisualStudio/libDEA/libDEA/Debug/**
 /build/libDEAVisualStudio/libDEA/ipch/**
-/build/libDEAVisualStudio/libDEA/*.sdf
-/build/libDEAVisualStudio/libDEA/*.sln
-/build/libDEAVisualStudio/libDEA/*.suo
+/build/libDEAVisualStudio/libDEA/Debug/**
+/build/libDEAVisualStudio/libDEA/*.DS_Store
 
 # NetBeans Project Files
 /build/libDeaNetBeans/build/Debug/**
@@ -18,13 +17,15 @@
 /build/libDeaNetBeans/dist/Debug/**
 
 # XCode Project Archives
-/build/libDEA_XCode/*.pbxproj
+/build/libDEA_XCode/*.xcodeproj
 
 # Eclipse Project Files
 /build/libDeaEclipse/.metadata/**
 
 # Demo Files
-/demo/**
+#/demo/**
+/demo/Visual Studio/MemTests/Debug/**
+/demo/Visual Studio/MemTests/*.txt
 
 # Object files
 *.o
@@ -59,6 +60,9 @@
 
 # Debug files
 *.dSYM/
+
+#OS_X files
+*.DS_Store
 
 /build/libDeaNetBeans/dist/**
 /build/libDeaNetBeans/nbproject/**
