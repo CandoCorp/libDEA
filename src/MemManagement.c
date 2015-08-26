@@ -3,12 +3,13 @@
 #include <stdlib.h>
 #include "DataTypes.h"
 #include "MemHandlers.h"
+#include <stdbool.h>
 
-typedef char Word[MAX_WORD_SIZE];
+typedef long Word;
 
 struct _address{
-    int id;
     Word addr;
+    int id;
 };
 
 typedef struct _address address; 
@@ -102,7 +103,7 @@ void __delete(void *ptr,char *objName){
 }
 
 int is_ref_Empty(address *a){
-    if(strlen(a->addr) IS EMPTY)
+    if(a->addr IS EMPTY)
         return EMPTY;
     return NOT_EMPTY;
 }
@@ -110,9 +111,9 @@ int is_ref_Empty(address *a){
 void init_ref(address *a){
     if(a IS_NOT NULL)
         return;
-    for(int j = 0; j < MAX_WORD_SIZE; j++)
-        a->addr[j] = '\0';
     
+    a->addr = 0;
+    a->id = 0;
 }
 
 void init_table(){
@@ -146,10 +147,10 @@ void add_ref(void *p, char *type){
         }
         if(is_ref_Empty(&((*ref_table_act)[counter])) IS EMPTY){
             debug("Found empty reference in current page in ");
-			strcpy((*ref_table_act)[counter].addr, buffer);
-			debug_if_all_levels(false){
-				(*ref_table_act)[counter].id = dataTypeCode(type);
-			}
+            (*ref_table_act)[counter].addr = (long)p;
+            debug_if_all_levels(false){
+                    (*ref_table_act)[counter].id = dataTypeCode(type);
+            }
             break;
         }else{
             ++counter;
@@ -164,13 +165,13 @@ int find_ref(void *ptr){
     char buffer[MAX_WORD_SIZE] = "";
     
     if(ptr IS_NOT NULL){
-        snprintf(buffer,sizeof(buffer),"%p",ptr);
-
+        long ptrDir = (long)ptr;
+        
         for(int i = 0; i < MAX_SIZE_REF_ALLOW_BLOCK; i++){
-            char *temp;
+            long temp = 0;
             temp = (*ref_table_act)[i].addr;
             
-            if(strcmp(temp,buffer) IS EQUAL){
+            if(temp IS ptrDir){
                 pos = i;
                 debug("Reference found in position %d",pos);
                 return pos;
@@ -186,13 +187,13 @@ int find_ref(void *ptr){
 }
 
 void remove_ref (void *ptr,char *objName){
-	int count;
-	
-	debug_if_all_levels(false)
-		count = find_ref(ptr);
-	
-    
-	debug("The position of the reference is %d",count);
+    int count;
+
+    debug_if_all_levels(false)
+        count = find_ref(ptr);
+
+    debug("The position of the reference is %d",count);
+
     if(count IS -2 ){
         log_err("%s can't be referenced because it's a null pointer",objName);
         return ;
@@ -204,14 +205,13 @@ void remove_ref (void *ptr,char *objName){
     }
     
     address *a = &ref_table[count];
-	char *type;
-	debug_if_all_levels(false)
-		type = dataTypeCodeToString(a->id);
+    char *type;
+    debug_if_all_levels(false)
+        type = dataTypeCodeToString(a->id);
 
     debug("The object %s of type %s in the %s location has been removed",objName,type,a->addr);
     init_ref(a);
-    a->id = 0;
-    
+
     free(ptr);
     ptr = NULL;
 }
