@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "../../../libDEA/include/MemManagement.h"
+#include "../../../include/MemManagement.h"
 /*
  * 
  */

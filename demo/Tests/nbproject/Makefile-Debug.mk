@@ -17,12 +17,12 @@ RANLIB=ranlib
 CC=gcc
 CCC=g++
 CXX=g++
-FC=gfortran-4.9
+FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-MacOSX
-CND_DLIB_EXT=dylib
+CND_PLATFORM=GNU-Linux-x86
+CND_DLIB_EXT=so
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -52,13 +52,13 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=../../build/libDeaNetBeans/dist/Debug/GNU-MacOSX/liblibdeanetbeans.a
+LDLIBSOPTIONS=../../build/libDeaNetBeans/dist/Debug/GNU-Linux-x86/liblibdeanetbeans.a
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tests: ../../build/libDeaNetBeans/dist/Debug/GNU-MacOSX/liblibdeanetbeans.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tests: ../../build/libDeaNetBeans/dist/Debug/GNU-Linux-x86/liblibdeanetbeans.a
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tests: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
