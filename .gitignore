@@ -36,6 +36,9 @@
 /demo/Netbeans/Mem_test/nbproject/*.xml
 /demo/Netbeans/Mem_test/nbproject/*.bash
 /demo/Netbeans/Mem_test/nbproject/private/**
+/demo/Test/nbproject/*.xml
+/demo/Test/nbproject/*.bash
+/demo/Test/nbproject/private/**
 
 # Object files
 *.o
