@@ -45,7 +45,7 @@ static const char *restrict DataTypesNames[] = {"bool","char","unsigned char","s
                                 "fraction"};
 
 extern inline int dataTypeCode(const char *restrict name);
-const char *restrict dataTypeCodeToString(unsigned int code);
+const char  *restrict dataTypeCodeToString(unsigned int code);
 
 #ifdef	__cplusplus
 }

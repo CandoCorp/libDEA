@@ -3,6 +3,7 @@
 #include "MemHandlers.h"
 #include "ErrorHandler.h"
 #include <string.h>
+#include <stdbool.h>
 
 static volatile int counter = 0;
 
@@ -41,30 +42,30 @@ inline int dataTypeCode(const char *restrict name){
         return COMPLEX;
     if(strcmp(name,"fraction") IS EQUAL)
 		return FRACTION;
-	if (strcmp(name, "unsigned int") IS EQUAL)
-		return UNSIGNED_INT;
-	if (strcmp(name, "signed char") IS EQUAL)
-		return SIGNED_CHAR;
-	if (strcmp(name, "unsigned char") IS EQUAL)
-		return UNSIGNED_CHAR;
-	if (strcmp(name, "long int") IS EQUAL)
-		return LONG_INT;
-	if (strcmp(name, "long double") IS EQUAL)
-		return LONG_DOUBLE;
-	if (strcmp(name, "unsigned long int") IS EQUAL)
-		return UNSIGNED_LONG_INT;
-	if (strcmp(name, "long long int") IS EQUAL)
-		return LONG_LONG_INT;
-	if (strcmp(name, "unsigned long long int") IS EQUAL)
-		return UNSIGNED_LONG_LONG_INT;
-    
-	int type;
-	
-	debug_if_all_levels(true){
-		type = dataType_Add(name);
-	}
-    
-	switch(type){
+    if (strcmp(name, "unsigned int") IS EQUAL)
+            return UNSIGNED_INT;
+    if (strcmp(name, "signed char") IS EQUAL)
+            return SIGNED_CHAR;
+    if (strcmp(name, "unsigned char") IS EQUAL)
+            return UNSIGNED_CHAR;
+    if (strcmp(name, "long int") IS EQUAL)
+            return LONG_INT;
+    if (strcmp(name, "long double") IS EQUAL)
+            return LONG_DOUBLE;
+    if (strcmp(name, "unsigned long int") IS EQUAL)
+            return UNSIGNED_LONG_INT;
+    if (strcmp(name, "long long int") IS EQUAL)
+            return LONG_LONG_INT;
+    if (strcmp(name, "unsigned long long int") IS EQUAL)
+            return UNSIGNED_LONG_LONG_INT;
+
+    int type;
+
+    debug_if_all_levels(true){
+            type = dataType_Add(name);
+    }
+
+    switch(type){
         case -2:{
             debug("Somehow the name pointer is empty");
             return -2;

@@ -61,6 +61,16 @@ extern "C" {
 #define inline __inline
 #endif
 
+#if __STDC_VERSION__ >= 199901L
+  /* "inline" is a keyword */
+  #define restrict
+    
+#else
+#define inline static
+#define restrict
+#endif
+
+    
 #ifdef __cplusplus
 #define new 
 #define delete

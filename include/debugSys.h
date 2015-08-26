@@ -21,7 +21,7 @@ extern "C" {
 
     //enum { __ERROR_MSG = 0, __WARN_MSG, __INFO_MSG };
 
-	/**
+	
 void __debug_on();
 void __debug_off();
 
@@ -37,9 +37,11 @@ const char *__get_default_warn_stream();
 const char *__get_default_debug_print_stream();
 
 void __log_msg(int, unsigned, const char *restrict, const char *restrict, const char *restrict, ...);
-*/
+
+unsigned int __get_debug_flag();
+
 void __debug_after_levels_start();
-void __debug_after_levels_end();
+void __debug_after_levels_end(int sub_levels);
 
 #define clean_errno() (errno == 0 ? "None" : strerror(errno))
 
