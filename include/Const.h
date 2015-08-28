@@ -63,11 +63,11 @@ extern "C" {
 
 #if __STDC_VERSION__ >= 199901L
   /* "inline" is a keyword */
-  #define restrict
+  //#define restrict
     
 #else
-#define inline static
-#define restrict
+//#define inline static
+//#define restrict
 #endif
 
     

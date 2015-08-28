@@ -20,6 +20,7 @@ volatile unsigned int debug_flag = 0;
 volatile unsigned int debug_all_levels_flag = 0;
 unsigned int debug_last_flag = -1;
 volatile unsigned int debug_current_level_flag = 0;
+
 /* Prints error message. */
 void __exc_debug (unsigned line,const char *actualFunction,const char *restrict fmt, ...){
     va_list ap;

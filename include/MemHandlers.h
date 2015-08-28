@@ -12,6 +12,8 @@
 extern "C" {
 #endif
 
+#include <stdio.h>
+    
 #define MALLOC(type) ((type *)malloc(sizeof(type)))
 #define MALLOC_ARRAY(type,num_elem) (type *)malloc((num_elem)*sizeof(type))
     

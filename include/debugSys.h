@@ -21,7 +21,6 @@ extern "C" {
 
     //enum { __ERROR_MSG = 0, __WARN_MSG, __INFO_MSG };
 
-	
 void __debug_on();
 void __debug_off();
 

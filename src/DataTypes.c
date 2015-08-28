@@ -59,7 +59,7 @@ inline int dataTypeCode(const char *restrict name){
     if (strcmp(name, "unsigned long long int") IS EQUAL)
             return UNSIGNED_LONG_LONG_INT;
 
-    int type;
+    int type = 0;
 
     debug_if_all_levels(true){
             type = dataType_Add(name);
@@ -208,8 +208,6 @@ const char *restrict dataTypeCustomCodeToString(int opCode,int *errCode){
 }
 
 int dataTypeCodeCustom(const char name[]){
-    struct __CustomDataType *it;
-    
     if(dataTypeList IS NULL){
         log_err("There are not data types defined by the system");
         return -2; 

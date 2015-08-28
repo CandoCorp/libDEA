@@ -14,7 +14,7 @@ extern "C" {
 	
 #include "Const.h"
 
-static enum __DataTypes{
+enum __DataTypes{
     BOOL = 0,
     CHAR,
     UNSIGNED_CHAR,
@@ -38,7 +38,7 @@ static enum __DataTypes{
 
 typedef enum __DataTypes DataTypes;
 
-static const char *restrict DataTypesNames[] = {"bool","char","unsigned char","signed char",
+char *const restrict DataTypesNames[] = {"bool","char","unsigned char","signed char",
                                 "unsigned short int","short int","int","unsigned int",
                                 "long int","unsigned long int","long long int","unsigned long long int",
                                 "float","double","long double","string","complex",

@@ -24,11 +24,23 @@ int main(int argc, char** argv) {
     
     debug_off();
     
-    char *const str2 = NEW_ARRAY(char,20);
+    const char *const restrict str2 = NEW_ARRAY(char,20);
+    char *restrict str = NEW_ARRAY(char,10);
+    long long unsigned int *ptr = NEW(long long unsigned int);
     
-    printf("%d\n",(int)(sizeof(str3)/sizeof(str3[0])));
-    printf("%d\n",(int)(sizeof(*str2)));
+    printf("%d\n",(int)(sizeof(ptr)));
+    printf("%d\n",(int)(sizeof(str3)));
+    printf("%d\n",(int)(sizeof(str2)));
     printf("%d\n",(int)(sizeof(str2[2])));
+    
+    debug_on();
+    
+    DELETE(str2);
+    DELETE(str);
+    DELETE(ptr);
+    DELETE(str1);
+    DELETE(str3);
+    DELETE(strStr);
     
     for(int i = 0; i<(sizeof(str1)/sizeof(str1[0]));i++)
         printf("%c",i[str1]);
