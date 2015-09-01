@@ -34,53 +34,42 @@ inline int dataTypeCode(const char *restrict name){
     }
 
     switch(type){
+		case -3:{
+			debug("The DataType was alredy defined in the system");
+			return -2;
+		}
         case -2:{
             debug("Somehow the name pointer is empty");
-            return -2;
+            return -3;
         }break;
         case -1:{
             debug("There was an assignation problem of memory");
-            return -3;
+            return -4;
         }break;
         default:{
             debug("The data type was found in the user system in %d position", counter + 0);
-			return counter + 0;
+			return type;
         }break;
     }
 }
 const char *restrict dataTypeCodeToString(unsigned int code){
-	int errCode;
-	char *dataTypeName;
-	debug_if_all_levels(false){
-		dataTypeName = dataTypeCustomCodeToString(code, &errCode);
-	}
-	return dataTypeName;	
-}
-
-const char *restrict dataTypeCustomCodeToString(int opCode,int *errCode){
-	struct __CustomDataType *it;
-
-	if (dataTypeList IS NULL){
-		log_err("There are not data types defined by the system");
-		*errCode = -2;
-		return NULL;
-	}
-
+	char *dataTypeName = NULL;
+	
 	for (struct __CustomDataType *it = dataTypeList; it != NULL; it = it->next){
 		debug("[Actual Node] : %s", it->name);
-		if (opCode IS it->id){
+		if (code IS it->id){
 			debug("The name of the data type is found");
-			return it->name;
+			dataTypeName =  it->name;
 		}
 		debug("[Next Node] : %p", it->next);
 	}
 
 	log_err("The data type wasn't found in the system");
-	*errCode = -1;
-	return NULL;
+	
+	return dataTypeName;	
 }
 
-int dataTypeCodeCustom(const char name[]){
+inline int dataTypeCodeCustom(const char name[]){
     if(dataTypeList IS NULL){
         log_err("There are not data types defined by the system");
         return -2; 
@@ -125,6 +114,7 @@ int dataType_Add(const char name[]){
             it->next = dataTypeList;
             dataTypeList = it;
 			counter++;
+			return it->id;
             debug("Iterator node added to the end of the list");
         }break;
         case -1:{
@@ -138,14 +128,13 @@ int dataType_Add(const char name[]){
                     char *temp = MALLOC_ARRAY(char,strlen(name)+1);
                     check_mem(temp);
                     strcpy(temp,name);
-                    //it->id = counter + __LAST_DATA_TYPE;
 					it->id = counter;
                     it->name = temp;
                     it->next = NULL;
                     debug("New last node: %s",it->name);
                     node->next = it;
 					++counter;
-					return 0;
+					return it->id;
                 }
                 debug("[Next node]: %p",node);
             }
@@ -153,10 +142,9 @@ int dataType_Add(const char name[]){
         default:{
 			free(it);
             debug("Already found in the system\n");
+			return -3;
         }
     }
-    
-    return 1;
     
     error:
 		return -1;
