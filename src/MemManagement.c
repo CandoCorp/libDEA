@@ -209,7 +209,7 @@ void remove_ref (void *ptr,char *objName){
     debug_if_all_levels(false)
         type = dataTypeCodeToString(a->id);
 
-    debug("The object %s of type %s in the %s location has been removed",objName,type,a->addr);
+    debug("The object %s of type %s in the %lx location has been removed",objName,type,a->addr);
     init_ref(a);
 
     free(ptr);
