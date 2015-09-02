@@ -18,7 +18,7 @@ extern "C" {
     
 	
 enum __Exception {
-    NullPointer = 0,
+    NullPointer = 1,
     ArrayStore,
     IllegalArgument,        
     NegativeArraySize,
@@ -67,19 +67,22 @@ typedef enum __Exception Exception;
    They should also be declared as thread-local. */
 
 /* Flag to be set by ON? */
-//extern volatile int __exc_handled;
+extern volatile int __exc_handled;
 
 /* Throw it in upper level of catcher blocks. */
-//extern void __exc_rethrow();
+extern void __exc_rethrow();
 
 #ifdef _WIN32
 /* Throw an exception in FILE at LINE, with code CODE.  Used in THROW. */
-//extern void __exc_throw (char *, char *, unsigned, __EXC_TYPE);
+extern void __exc_throw (char *, char *, unsigned, __EXC_TYPE);
 
 /* What a f...  Somewhy I can't get GCC's __attribute__ working here
 to tell that FILE and LINE are unused in non-debuging mode. */
 
-//extern int __exc_on (char *, char *, unsigned, __EXC_TYPE);
+extern int __exc_on (char *, char *, unsigned, __EXC_TYPE);
+
+extern void __exc_pop(jmp_buf *j);
+
 #else
 /* Throw an exception in FILE at LINE, with code CODE.  Used in THROW. */
 extern __attribute__((noreturn)) void __exc_throw (char *, char *, unsigned, __EXC_TYPE);
@@ -89,6 +92,7 @@ extern __attribute__((noreturn)) void __exc_throw (char *, char *, unsigned, __E
 
 extern __attribute__ ((noreturn)) int __exc_on (char *, char *, unsigned, __EXC_TYPE);
 #endif
+
 /* Start catching. */
 
 /* Obviously, there is no way to check if appropriate EXCEPT exists.
@@ -96,33 +100,34 @@ extern __attribute__ ((noreturn)) int __exc_on (char *, char *, unsigned, __EXC_
    the thing after TRY, without any error handling.  Raising from
    there works. */
 
-#define try                                  \
-  if (({jmp_buf __exc_j;                     \
-        int __exc_ret;                       \
-        __exc_ret = setjmp (__exc_j);        \
-        __exc_push (&__exc_j, __exc_ret);})) \
-    __EXC_END(__exc_pop (0))
+#define try                                 \
+	jmp_buf __exc_j;						\
+    int __exc_ret;							\
+    __exc_ret = setjmp (__exc_j);		    \
+	if (__exc_push (&__exc_j, __exc_ret)) \
+		__EXC_END(__exc_pop (0))
 
 #define throw(code)                       \
-  __exc_throw (__FILE__, __EXC_FUNCTION,     \
+  __exc_throw_new (__FILE__, __func__,     \
 	       __LINE__, (#code))
 
 /* THROW in EXCEPT block won't go into itself, because corresping item
    from __EXC_GLOBAL was already popped. */
 
-#define except                               \
-  else                                       \
-    __EXC_BLOCK (__exc_handled = 0,          \
-                 ({ if (__exc_handled == 0)  \
-                     __exc_rethrow (); }))
+#define except									\
+    else										\
+    __EXC_BLOCK (	__exc_handled = 0,          \
+					__exc_handled == 0 ? __exc_rethrow() : 0	)
+                 /*if (__exc_handled == 0)  \
+                     __exc_rethrow (); )*/
 
 /* EXPECT is an alias for EXCEPT. */
 
-#define expect                         except
+#define expect		except
 
 /* CATCH is an alias for EXCEPT. */
 
-#define catch      except 
+#define catch		except 
 
 /* Try to handle an exception. */
 

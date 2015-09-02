@@ -1,0 +1,227 @@
+[----------------------- Debug started on: Sep  1 2015 at 18:24:30 -----------------------]
+[Debug in function: __exc_push]: 
+	 in line 145: 	PUSH (), 0034F7BC, 0
+	 in line 157: 	This is PUSH () number 1
+[Debug in function: __exc_throw]: 
+	 in line 181: 	THROW ()
+[Debug in function: __exc_pop]: 
+	 in line 106: 	POP () to 00000000
+	 in line 127: 	Popped
+[----------------------- Debug started on: Sep  1 2015 at 18:27:27 -----------------------]
+[Debug in function: __exc_push]: 
+	 in line 145: 	PUSH (), 0039FB30, 0
+	 in line 157: 	This is PUSH () number 1
+[Debug in function: __exc_throw_new]: 
+	 in line 212: 	THROW ()
+[Debug in function: addException]: 
+	 in line 345: 	First exception being added to the system by the user
+	 in line 351: 	Exception added to the system
+[Debug in function: __exc_pop]: 
+	 in line 106: 	POP () to 0039F91C
+	 in line 127: 	Popped
+[Debug in function: __exc_throw_new]: 
+	 in line 228: 	Jumping to the handler
+[Debug in function: __exc_push]: 
+	 in line 145: 	PUSH (), 0039FB30, 1
+	 in line 151: 	Returning from THROW
+[Debug in function: __exc_on]: 
+	 in line 264: 	ON ()
+	 in line 265: 	Trying to handle in file "c:\libdea\demo\visual studio\exceptiontest\main.c", at line 18
+[Debug in function: findException]: 
+	 in line 387: 	Exception found in the default system
+[Debug in function: __exc_on]: 
+	 in line 281: 	This handler FITS
+[----------------------- Debug started on: Sep  1 2015 at 18:30:07 -----------------------]
+[Debug in function: __exc_push]: 
+	 in line 145: 	PUSH (), 002DFB68, 0
+	 in line 157: 	This is PUSH () number 1
+[Debug in function: __exc_throw_new]: 
+	 in line 212: 	THROW ()
+[Debug in function: addException]: 
+	 in line 345: 	First exception being added to the system by the user
+	 in line 351: 	Exception added to the system
+[Debug in function: __exc_pop]: 
+	 in line 106: 	POP () to 002DF954
+	 in line 127: 	Popped
+[Debug in function: __exc_throw_new]: 
+	 in line 228: 	Jumping to the handler
+[Debug in function: __exc_push]: 
+	 in line 145: 	PUSH (), 002DFB68, 1
+	 in line 151: 	Returning from THROW
+[Debug in function: __exc_on]: 
+	 in line 264: 	ON ()
+	 in line 265: 	Trying to handle in file "c:\libdea\demo\visual studio\exceptiontest\main.c", at line 18
+[Debug in function: findException]: 
+	 in line 387: 	Exception found in the default system
+[Debug in function: __exc_on]: 
+	 in line 288: 	This handler DOESN'T FIT
+[Debug in function: __exc_rethrow]: 
+	 in line 240: 	RETHROW ()
+[Debug in function: __exc_pop]: 
+	 in line 106: 	POP () to 002DFA38
+	 in line 110: 	Unhandled exception.
+[----------------------- Debug started on: Sep  1 2015 at 18:32:28 -----------------------]
+[Debug in function: __exc_push]: 
+	 in line 145: 	PUSH (), 004AF7CC, 0
+	 in line 157: 	This is PUSH () number 1
+[Debug in function: __exc_throw_new]: 
+	 in line 212: 	THROW ()
+[Debug in function: addException]: 
+	 in line 345: 	First exception being added to the system by the user
+	 in line 351: 	Exception added to the system
+[Debug in function: __exc_pop]: 
+	 in line 106: 	POP () to 004AF5B8
+	 in line 127: 	Popped
+[Debug in function: __exc_throw_new]: 
+	 in line 228: 	Jumping to the handler
+[Debug in function: __exc_push]: 
+	 in line 145: 	PUSH (), 004AF7CC, 1
+	 in line 151: 	Returning from THROW
+[Debug in function: __exc_on]: 
+	 in line 264: 	ON ()
+	 in line 265: 	Trying to handle in file "c:\libdea\demo\visual studio\exceptiontest\main.c", at line 18
+[Debug in function: findException]: 
+	 in line 387: 	Exception found in the default system
+[Debug in function: __exc_on]: 
+	 in line 288: 	This handler DOESN'T FIT
+[Debug in function: __exc_rethrow]: 
+	 in line 240: 	RETHROW ()
+[Debug in function: __exc_pop]: 
+	 in line 106: 	POP () to 004AF69C
+	 in line 110: 	Unhandled exception.
+[----------------------- Debug started on: Sep  1 2015 at 18:35:39 -----------------------]
+[Debug in function: __exc_push]: 
+	 in line 145: 	PUSH (), 003FFBDC, 0
+	 in line 157: 	This is PUSH () number 1
+[Debug in function: __exc_throw_new]: 
+	 in line 212: 	THROW ()
+[Debug in function: addException]: 
+	 in line 345: 	First exception being added to the system by the user
+	 in line 351: 	Exception added to the system
+[Debug in function: __exc_pop]: 
+	 in line 106: 	POP () to 003FF9C8
+	 in line 127: 	Popped
+[Debug in function: __exc_throw_new]: 
+	 in line 228: 	Jumping to the handler
+[Debug in function: __exc_push]: 
+	 in line 145: 	PUSH (), 003FFBDC, 1
+	 in line 151: 	Returning from THROW
+[Debug in function: __exc_on]: 
+	 in line 264: 	ON ()
+	 in line 265: 	Trying to handle in file "c:\libdea\demo\visual studio\exceptiontest\main.c", at line 18
+[Debug in function: findException]: 
+	 in line 387: 	Exception found in the default system
+[Debug in function: __exc_on]: 
+	 in line 281: 	This handler FITS
+[----------------------- Debug started on: Sep  2 2015 at 00:57:52 -----------------------]
+[Debug in function: __exc_push]: 
+	 in line 145: 	Push (), 003BFCAC, 0
+	 in line 158: 	This is PUSH () number 1
+[Debug in function: __exc_throw_new]: 
+	 in line 209: 	Throw ()
+[Debug in function: addException]: 
+	 in line 337: 	First exception being added to the system by the user
+	 in line 343: 	Exception added to the system
+[Debug in function: __exc_pop]: 
+	 in line 106: 	Pop () to 003BFA98
+	 in line 127: 	Popped
+[Debug in function: __exc_throw_new]: 
+	 in line 221: 	Jumping to the handler
+[Debug in function: __exc_push]: 
+	 in line 145: 	Push (), 003BFCAC, 1
+	 in line 152: 	Returning from THROW
+[Debug in function: __exc_on]: 
+	 in line 253: 	On ()
+	 in line 254: 	Trying to handle in file "c:\libdea\demo\visual studio\exceptiontest\main.c", at line 19
+[Debug in function: findException]: 
+	 in line 379: 	Exception found in the default system
+[Debug in function: __exc_on]: 
+	 in line 272: 	This handler FITS
+[----------------------- Debug started on: Sep  2 2015 at 01:11:50 -----------------------]
+[Debug in function: __exc_push]: 
+	 in line 145: 	Push (), 002AF7C8, 0
+	 in line 158: 	This is PUSH () number 1
+[Debug in function: __exc_throw_new]: 
+	 in line 209: 	Throw ()
+[Debug in function: addException]: 
+	 in line 337: 	First exception being added to the system by the user
+	 in line 343: 	Exception added to the system
+[Debug in function: __exc_pop]: 
+	 in line 106: 	Pop () to 002AF5B4
+	 in line 127: 	Popped
+[Debug in function: __exc_throw_new]: 
+	 in line 221: 	Jumping to the handler
+[Debug in function: __exc_push]: 
+	 in line 145: 	Push (), 002AF7C8, 1
+	 in line 152: 	Returning from THROW
+[Debug in function: __exc_on]: 
+	 in line 253: 	On ()
+	 in line 254: 	Trying to handle in file "c:\libdea\demo\visual studio\exceptiontest\main.c", at line 19
+[Debug in function: findException]: 
+	 in line 379: 	Exception found in the default system
+[----------------------- Debug started on: Sep  2 2015 at 01:13:30 -----------------------]
+[Debug in function: __exc_push]: 
+	 in line 145: 	Push (), 003FFC8C, 0
+	 in line 158: 	This is PUSH () number 1
+[Debug in function: __exc_throw_new]: 
+	 in line 209: 	Throw ()
+[Debug in function: addException]: 
+	 in line 337: 	First exception being added to the system by the user
+	 in line 343: 	Exception added to the system
+[Debug in function: __exc_pop]: 
+	 in line 106: 	Pop () to 003FFA78
+	 in line 127: 	Popped
+[Debug in function: __exc_throw_new]: 
+	 in line 221: 	Jumping to the handler
+[Debug in function: __exc_push]: 
+	 in line 145: 	Push (), 003FFC8C, 1
+	 in line 152: 	Returning from THROW
+[Debug in function: __exc_on]: 
+	 in line 253: 	On ()
+	 in line 254: 	Trying to handle in file "c:\libdea\demo\visual studio\exceptiontest\main.c", at line 19
+[Debug in function: findException]: 
+	 in line 379: 	Exception found in the default system
+[----------------------- Debug started on: Sep  2 2015 at 01:15:16 -----------------------]
+[Debug in function: __exc_push]: 
+	 in line 145: 	Push (), 001FF8BC, 0
+	 in line 158: 	This is PUSH () number 1
+[Debug in function: __exc_throw_new]: 
+	 in line 209: 	Throw ()
+[Debug in function: addException]: 
+	 in line 337: 	First exception being added to the system by the user
+	 in line 343: 	Exception added to the system
+[Debug in function: __exc_pop]: 
+	 in line 106: 	Pop () to 001FF6A8
+	 in line 127: 	Popped
+[Debug in function: __exc_throw_new]: 
+	 in line 221: 	Jumping to the handler
+[Debug in function: __exc_push]: 
+	 in line 145: 	Push (), 001FF8BC, 1
+	 in line 152: 	Returning from THROW
+[Debug in function: __exc_on]: 
+	 in line 253: 	On ()
+	 in line 254: 	Trying to handle in file "c:\libdea\demo\visual studio\exceptiontest\main.c", at line 20
+[Debug in function: findException]: 
+	 in line 379: 	Exception found in the default system
+[----------------------- Debug started on: Sep  2 2015 at 01:15:38 -----------------------]
+[Debug in function: __exc_push]: 
+	 in line 145: 	Push (), 0021FD44, 0
+	 in line 158: 	This is PUSH () number 1
+[Debug in function: __exc_throw_new]: 
+	 in line 209: 	Throw ()
+[Debug in function: addException]: 
+	 in line 337: 	First exception being added to the system by the user
+	 in line 343: 	Exception added to the system
+[Debug in function: __exc_pop]: 
+	 in line 106: 	Pop () to 0021FB30
+	 in line 127: 	Popped
+[Debug in function: __exc_throw_new]: 
+	 in line 221: 	Jumping to the handler
+[Debug in function: __exc_push]: 
+	 in line 145: 	Push (), 0021FD44, 1
+	 in line 152: 	Returning from THROW
+[Debug in function: __exc_on]: 
+	 in line 253: 	On ()
+	 in line 254: 	Trying to handle in file "c:\libdea\demo\visual studio\exceptiontest\main.c", at line 20
+[Debug in function: findException]: 
+	 in line 379: 	Exception found in the default system
