@@ -27,6 +27,8 @@
 # Visual Studio Demo Files
 /demo/Visual Studio/MemTests/Debug/**
 /demo/Visual Studio/MemTests/*.txt
+/demo/Visual Studio/ExceptionTest/Debug/**
+/demo/Visual Studio/ExceptionTest/*.txt
 
 #Netbeans Demo Files
 /demo/Netbeans/Mem_test/build/Debug/**
