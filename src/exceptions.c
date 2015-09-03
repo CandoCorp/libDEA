@@ -114,6 +114,7 @@ __exc_pop (jmp_buf *j){
                      __exc_line, __exc_code);
 
         exit (3);
+		//return;
     }
 
     __exc_global = stored->prev;

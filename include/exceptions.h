@@ -66,6 +66,9 @@ typedef enum __Exception Exception;
 /* All variables are declared volatile to force non-optimization. 
    They should also be declared as thread-local. */
 
+jmp_buf __exc_j;						
+int __exc_ret;							
+
 /* Flag to be set by ON? */
 extern volatile int __exc_handled;
 
@@ -101,13 +104,11 @@ extern __attribute__ ((noreturn)) int __exc_on (char *, char *, unsigned, __EXC_
    there works. */
 
 #define try                                 \
-	jmp_buf __exc_j;						\
-    int __exc_ret;							\
     __exc_ret = setjmp (__exc_j);		    \
-	if (__exc_push (&__exc_j, __exc_ret)) \
+	if (__exc_push (&__exc_j, __exc_ret))   \
 		__EXC_END(__exc_pop (0))
 
-#define throw(code)                       \
+#define throw(code)                        \
   __exc_throw_new (__FILE__, __func__,     \
 	       __LINE__, (#code))
 
