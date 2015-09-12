@@ -13,11 +13,11 @@ typedef struct __UserExceptionList{
 
 static UserExceptionList *__UserExceptions;
 
-static const char *tempstrings[] = {     "NullPointer","ArrayStore","IllegalArgument",
-                                "NegativeArraySize","ArrayIndexOutOfBounds","ArithmeticException",
-                                "NoFileFound","IllegalAccess","Instantiation",
-                                "ClassNotFound","ClassNotSupported","IndexOutOfBounds"
-                                };
+static const char *tempstrings[] = {	"NullPointer","ArrayStore","IllegalArgument",
+										"NegativeArraySize","ArrayIndexOutOfBounds","ArithmeticException",
+										"NoFileFound","IllegalAccess","Instantiation",
+										"ClassNotFound","ClassNotSupported","IndexOutOfBounds"
+									};
 
 static volatile int lastcodeUsed = __LastException;
 
@@ -79,13 +79,31 @@ static struct __exc_stack *__exc_global;
     #define __exc_print_global()
 #endif
 	
+void
+__exc_print(FILE *stream, char *file, char *function, unsigned line,
+__EXC_TYPE code)
+{
+	fprintf(stream, "Exception in file \"%s\", at line %u",
+		file, line);
+	if (function){
+		fprintf(stream, ", in function \"%s\"", function);
+	}
+	fprintf(stream, ".");
+
+#ifdef __EXC_PRINT
+	fprintf(stream, " Exception: ");
+	__EXC_PRINT(code, stream);
+#endif
+	fprintf(stream, "\n");
+}
+
 /* Pop exception from stack, putting into J (if nonzero).  If stack is
    empty, print error message and exit.  Used in EXCEPT. */
 void
 __exc_pop (jmp_buf *j){
     struct __exc_stack *stored = __exc_global;
 
-    debug ("POP () to %p", j);
+    debug ("Pop () to %p", j);
 
     if (stored == NULL)
     {
@@ -96,14 +114,15 @@ __exc_pop (jmp_buf *j){
                      __exc_line, __exc_code);
 
         exit (3);
+		//return;
     }
 
     __exc_global = stored->prev;
 
     if (j){
-      /* This assumes that JMP_BUF is a structure etc. and can be
-	 copied rawely.  This is true in GLIBC, as I know. */
-      memcpy (j, &stored->j, sizeof (jmp_buf));
+		/* This assumes that JMP_BUF is a structure etc. and can be
+		copied rawely.  This is true in GLIBC, as I know. */
+		memcpy (j, &stored->j, sizeof (jmp_buf));
     }
 
     debug ("Popped");
@@ -124,12 +143,13 @@ __exc_push (jmp_buf *j, int returned)
 {
     struct __exc_stack *new;
 
-    debug ("PUSH (), %p, %d", j, returned);
+    debug ("Push (), %p, %d", j, returned);
 
     /* SETJMP returns 0 first time, nonzero from __EXC_THROW.
        Returning false-like value here (0) will enter the
        else branch (that is, EXCEPT.) */
-    if (returned != 0){
+    
+	if (returned != 0){
         debug ("Returning from THROW");
         return 0;
     }
@@ -150,7 +170,7 @@ __exc_push (jmp_buf *j, int returned)
     return 1;
 
     error:
-            return -1;
+        return -1;
 }
 
 /* Throw an exception in FILE at LINE, with code CODE.  Used in THROW. */
@@ -160,11 +180,7 @@ __exc_throw (char *file, char *function, unsigned line, __EXC_TYPE code)
 {
     jmp_buf j;
 
-    debug ("THROW ()");
-
-    #if defined __EXC_DEBUG
-        __exc_print (__EXC_STREAM, file, function, line, code);
-    #endif
+    debug ("Throw ()");
 
     int res = findException(code);
     
@@ -191,11 +207,7 @@ __exc_throw_new (char *file, char *function, unsigned line, __EXC_TYPE code)
 {
     jmp_buf j;
 
-    debug ("THROW ()");
-
-    #if defined __EXC_DEBUG
-        __exc_print (__EXC_STREAM, file, function, line, code);
-    #endif
+    debug ("Throw ()");
 
     addException(code);
 
@@ -219,12 +231,8 @@ void
 __exc_rethrow (){
     jmp_buf j;
 
-    debug ("RETHROW ()");
-    #ifdef __EXC_DEBUG
-        __exc_print(__EXC_STREAM, __exc_file, __exc_function,
-                    __exc_line, __exc_code);
-    #endif
-
+    debug ("Rethrow ()");
+    
     __exc_pop (&j);
     longjmp (j, 1);
 }
@@ -239,12 +247,13 @@ __exc_rethrow (){
 
 int
 __exc_on (__EXC_NDEBUG_UN(char *file),
-	  __EXC_NDEBUG_UN(char *function),
-	  __EXC_NDEBUG_UN(unsigned line),
-	  __EXC_TYPE code){
+		  __EXC_NDEBUG_UN(char *function),
+		  __EXC_NDEBUG_UN(unsigned line),
+		  __EXC_TYPE code){
     
-    debug ("ON ()");
+    debug ("On ()");
     debug ("Trying to handle in file \"%s\", at line %u", file, line);
+
 #ifdef __EXC_DEBUG
     if (function)
       {
@@ -256,11 +265,12 @@ __exc_on (__EXC_NDEBUG_UN(char *file),
       debug ("Exception already handled in this level, skip");
       return 0;
     }
+
     int pos = findException(code);
     if(pos != 0)    
         if (__EXC_EQ (code, __exc_code)){
             
-            debug ("This handler FITS");
+            debug ("This handler fits");
 
             removeException(code,pos);
             __exc_handled = 1;
@@ -272,6 +282,7 @@ __exc_on (__EXC_NDEBUG_UN(char *file),
     /* Not matched. */
     return 0;
 }
+
 inline const char *exceptionString(Exception code){
     switch(code){      
         case NullPointer:{
@@ -362,7 +373,7 @@ inline int findException(const char ExceptionName[]){
     
     if(ExceptionMatchingDefault(ExceptionName) == -1){
         int value = ExceptionMatchingCodeUserList(ExceptionName);
-        if(value != 0)
+        if(	value != 0	)
             return value;
     }
     else{
@@ -405,7 +416,7 @@ inline void removeException(const char ExceptionName[], int position){
 }
 
 inline int ExceptionMatchingDefault(const char string[]){
-    if(strcmp(string,tempstrings[0]) == 0)
+	if(strcmp(string,tempstrings[0]) == 0)
         return NullPointer;
     
     if(strcmp(string,tempstrings[1]) == 0)

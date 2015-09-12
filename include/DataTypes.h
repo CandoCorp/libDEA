@@ -14,6 +14,7 @@ extern "C" {
 	
 #include "Const.h"
 
+<<<<<<< HEAD
 enum __DataTypes{
     BOOL = 0,
     CHAR,
@@ -44,6 +45,8 @@ const char *restrict DataTypesNames[] = {"bool","char","unsigned char","signed c
                                 "float","double","long double","string","complex",
                                 "fraction"};
 
+=======
+>>>>>>> 215b8dc6acfa84dc43be94130de685a0dc6d0316
 extern inline int dataTypeCode(const char *restrict name);
 const char  *restrict dataTypeCodeToString(unsigned int code);
 
