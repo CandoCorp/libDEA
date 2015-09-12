@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "MemManagement.h"
+#include "exceptions.h"
 #include "debugSys.h"
 #include <stdbool.h>
 
