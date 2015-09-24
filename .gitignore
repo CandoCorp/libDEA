@@ -4,7 +4,9 @@
 /build/libDEAVisualStudio/libDEA/libDEA/Debug/**
 /build/libDEAVisualStudio/libDEA/ipch/**
 /build/libDEAVisualStudio/libDEA/Debug/**
-/build/libDEAVisualStudio/libDEA/*.DS_Store
+/build/libDEAVisualStudio/libDEA/*.sdf
+/build/libDEAVisualStudio/libDEA/*.v12.suo
+/build/libDEAVisualStudio/libDEA/**
 
 # NetBeans Project Files
 /build/libDeaNetBeans/build/Debug/**
