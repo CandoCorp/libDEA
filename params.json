@@ -1,0 +1,6 @@
+{
+  "name": "Libdea",
+  "tagline": "This is a library made in C for data structures and algorithms based in the library used for the subject Estructuras de Datos in ESPOL",
+  "body": "# libDEA\r\nThis is a library made in C for data structures and algorithms \r\n\r\n## Description:\r\nThis is a library that has been made using the C99 standard. It has been though to students that have to \r\nunderstand the principles of data structures but they haven't learned an Object-Oriented Language, it also\r\nprovides help to memory managment and also exception handling.\r\nIt allows and extensive logging and debugging system, the data structures handlers have been made in a \r\nstructured programming fashion but also it allows an basic Object system for creation of objects.\r\n\r\nIt has the following implementations:\r\n  * An exception handling system\r\n  * An memory backup for learning memory management in C \r\n  * It helps to introduct the student to OOP\r\n  * There are various kinds of examples in the demo section\r\n  * An really extensive debugging and logging system\r\n  * Error handling system\r\n  * Basic Object System \r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
